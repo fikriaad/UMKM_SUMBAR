@@ -13,7 +13,7 @@ class CreateGambarModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gambar_models', function (Blueprint $table) {
+        Schema::create('tb_gambar', function (Blueprint $table) {
             $table->bigIncrements('gambar_id');
             $table->string('barang_id');
             $table->string('gambar_foto');
@@ -29,6 +29,6 @@ class CreateGambarModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gambar_models');
+        Schema::dropIfExists('tb_gambar');
     }
 }

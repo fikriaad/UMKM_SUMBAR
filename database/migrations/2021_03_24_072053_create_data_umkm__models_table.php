@@ -16,7 +16,6 @@ class CreateDataUmkmModelsTable extends Migration
         Schema::create('tb_data_umkm', function (Blueprint $table) {
             $table->bigIncrements('umkm_id');
             $table->string('umkm_nama');
-            $table->string('umkm_gambar');
             $table->integer('jenis_id');
             $table->string('umkm_lama_usaha');
             $table->string('umkm_nohp');
