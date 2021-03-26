@@ -2,24 +2,25 @@
 <html lang="en">
 
 <head>
-    @include('component/header')
+    @include('backend/component/header')
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('lte/ckeditor/ckeditor.js')}}"> </script>
     <div class="wrapper">
-        @include('component/navbar')
+        @include('backend/component/navbar')
 
-        @include('component/sidebar')
+        @include('backend/component/sidebar')
 
         <div class="content-wrapper">
-
+            @yield('content')
         </div>
 
-        @include('component/footer')
+        @include('backend/component/footer')
     </div>
 
-    @include('component/script')
+    @include('backend/component/script')
 </body>
 
 </html>

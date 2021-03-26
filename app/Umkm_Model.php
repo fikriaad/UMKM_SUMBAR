@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Umkm__Model extends Model
+class Umkm_Model extends Model
 {
     use SoftDeletes;
     protected $table = 'tb_data_umkm';
@@ -19,6 +19,7 @@ class Umkm__Model extends Model
         'kota_id',
         'umkm_alamat',
         'umkm_email',
+        'umkm_password',
         'umkm_instagram',
         'umkm_facebook',
         'umkm_foto',

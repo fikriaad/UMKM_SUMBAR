@@ -17,7 +17,7 @@ class CreateBarangModelsTable extends Migration
             $table->bigIncrements('barang_id');
             $table->string('umkm_id');
             $table->integer('kategori_id');
-            $table->integer('barang_nama');
+            $table->string('barang_nama');
             $table->string('barang_harga');
             $table->text('barang_keterangan');
             $table->timestamps();

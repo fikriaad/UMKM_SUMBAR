@@ -23,6 +23,7 @@ class CreateDataUmkmModelsTable extends Migration
             $table->string('kota_id');
             $table->text('umkm_alamat');
             $table->string('umkm_email');
+            $table->string('umkm_password');
             $table->string('umkm_instagram');
             $table->string('umkm_facebook');
             $table->string('umkm_foto');
