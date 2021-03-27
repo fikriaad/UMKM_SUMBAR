@@ -15,7 +15,9 @@ class SliderController extends Controller
 {
     public function index()
     {
-        $slider = DB::table('tb_slider')->get();
+        $slider = DB::table('tb_slider')
+            ->orderBy('slider_id')
+            ->get();
         return view(
             'backend/page/slider/index',
             [

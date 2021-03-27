@@ -14,7 +14,9 @@ class KategoriController extends Controller
 {
     public function index()
     {
-        $kategori = DB::table('tb_kategori')->get();
+        $kategori = DB::table('tb_kategori')
+            ->orderBy('kategori_id')
+            ->get();
         return view(
             'backend/page/kategori/index',
             [

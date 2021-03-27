@@ -14,7 +14,9 @@ class JenisController extends Controller
 {
     public function index()
     {
-        $jenis = DB::table('tb_jenis_umkm')->get();
+        $jenis = DB::table('tb_jenis_umkm')
+            ->orderBy('jenis_id')
+            ->get();
         return view(
             'backend/page/jenis/index',
             [

@@ -33,7 +33,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{url('backend/umkm')}}" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="nav-icon fas fa-coins"></i>
                         <p>
                             Data UMKM
                         </p>
@@ -50,7 +50,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{url('backend/barang')}}" class="nav-link">
-                        <i class="nav-icon fas fa-pencil-alt"></i>
+                        <i class="nav-icon fas fa-box"></i>
                         <p>
                             Data Barang
                         </p>
@@ -58,7 +58,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{url('backend/gambar')}}" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="nav-icon fas fa-image"></i>
                         <p>
                             Data Gambar Barang
                         </p>
@@ -66,8 +66,16 @@
                 </li>
                 <li class="nav-header">LAYOUT</li>
                 <li class="nav-item ">
+                    <a href="{{url('backend/slider')}}" class="nav-link">
+                        <i class="nav-icon fas fa-sliders-h"></i>
+                        <p>
+                            Data Slider
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
                     <a href="{{url('backend/iklan')}}" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-images"></i>
                         <p>
                             Data Iklan
                         </p>

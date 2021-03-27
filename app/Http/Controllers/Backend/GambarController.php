@@ -16,6 +16,7 @@ class GambarController extends Controller
     {
         $gambar = DB::table('tb_gambar')
             ->join('tb_barang', 'tb_barang.barang_id', '=', 'tb_gambar.barang_id')
+            ->orderBy('gambar_id')
             ->get();
         return view(
             'backend/page/gambar/index',

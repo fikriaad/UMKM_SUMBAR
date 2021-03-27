@@ -9,7 +9,8 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a>
+            <a class="btn btn-dark" href="{{ route('logout') }}" role="button"><i class="fas fa-sign-out-alt"> Logout</i></a>
+            <!-- <button type="button" class="btn btn-danger btn-sm" href="{{ route('logout') }}"><i class="fa fa-sign-out-alt"></i> Logout</button> -->
         </li>
     </ul>
 </nav>

@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label>Nama UMKM</label>
                         <div class="input-group">
-                            <input type="text" class="form-control @error('umkm_nama') {{ 'is-invalid' }} @enderror" name="umkm_nama" value="{{ old('umkm_nama') ?? $siswa->umkm_nama ?? '' }}">
+                            <input type="text" class="form-control @error('umkm_nama') {{ 'is-invalid' }} @enderror" name="umkm_nama" value="{{ old('umkm_nama') ?? $umkm->umkm_nama ?? '' }}">
 
                             @error('umkm_nama')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label>Lama Usaha</label>
                         <div class="input-group">
-                            <input type="text" class="form-control @error('umkm_lama_usaha') {{ 'is-invalid' }} @enderror" name="umkm_lama_usaha" value="{{ old('umkm_lama_usaha') ?? $siswa->umkm_lama_usaha ?? '' }}">
+                            <input type="text" class="form-control @error('umkm_lama_usaha') {{ 'is-invalid' }} @enderror" name="umkm_lama_usaha" value="{{ old('umkm_lama_usaha') ?? $umkm->umkm_lama_usaha ?? '' }}">
 
                             @error('umkm_lama_usaha')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label>No Telfon</label>
                         <div class="input-group">
-                            <input type="number" class="form-control @error('umkm_nohp') {{ 'is-invalid' }} @enderror" name="umkm_nohp" value="{{ old('umkm_nohp') ?? $siswa->umkm_nohp ?? '' }}">
+                            <input type="number" class="form-control @error('umkm_nohp') {{ 'is-invalid' }} @enderror" name="umkm_nohp" value="{{ old('umkm_nohp') ?? $umkm->umkm_nohp ?? '' }}">
 
                             @error('umkm_nohp')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -84,16 +84,16 @@
                         <div class="form-group  col-md-12">
                             <label>Provinsi</label>
                             <select name="prov_id" id="prov_id" class="form-control @error('prov_id') {{ 'is-invalid' }} @enderror">
-                                <option value="">-Pilih-</option>
+                                <option value="">-Pilih Provinsi-</option>
                                 @foreach($prov as $no => $prov)
                                 <option value="{{ $prov->prov_id }}">
                                     {{ $prov->prov_nama}}</option>
                                 @endforeach
                             </select>
-                            @if(isset($prov))
+                            @if(isset($umkm))
                             <script>
                                 document.getElementById('prov_id').value =
-                                    '<?php echo $prov->prov_id ?>'
+                                    '<?php echo $umkm->prov_id ?>'
                             </script>
                             @endif
                             @error('prov_id')
@@ -105,37 +105,29 @@
                         <div class="form-group  col-md-12">
                             <label>Kota</label>
                             <select name="kota_id" id="kota_id" class="form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
-                                <option value="">-Pilih-</option>
-                                @foreach($kota as $no => $kota)
-                                <option value="{{ $kota->kota_id }}">
-                                    {{ $kota->kota_nama}}</option>
-                                @endforeach
+                                <option value="">-Pilih Kota-</option>
                             </select>
-                            @if(isset($kota))
-                            <script>
-                                document.getElementById('kota_id').value =
-                                    '<?php echo $kota->kota_id ?>'
-                            </script>
-                            @endif
-                            @error('kota_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
                         <div class="input-group">
-                            <textarea type="text" class="form-control @error('umkm_alamat') {{ 'is-invalid' }} @enderror" name="umkm_alamat" value="{{ old('umkm_alamat') ?? $siswa->umkm_alamat ?? '' }}" style="width: 100%"></textarea>
+                            <textarea type="text" class="form-control @error('umkm_alamat') {{ 'is-invalid' }} @enderror" name="umkm_alamat" style="width: 100%" id="editor1">{{ old('umkm_alamat') ?? $umkm->umkm_alamat ?? '' }}</textarea>
 
                             @error('umkm_alamat')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                            <div class=" invalid-feedback">{{ $message }}</div>
                             @enderror
+                            <script>
+                                CKEDITOR.replace('editor1', {
+                                    width: '100%'
+                                });
+                            </script>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
                         <div class="input-group">
-                            <input type="email" class="form-control @error('umkm_email') {{ 'is-invalid' }} @enderror" name="umkm_email" value="{{ old('umkm_email') ?? $siswa->umkm_email ?? '' }}">
+                            <input type="email" class="form-control @error('umkm_email') {{ 'is-invalid' }} @enderror" name="umkm_email" value="{{ old('umkm_email') ?? $umkm->umkm_email ?? '' }}">
 
                             @error('umkm_email')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -154,7 +146,7 @@
                     <div class="form-group">
                         <label>Instagram</label>
                         <div class="input-group">
-                            <input type="text" class="form-control @error('umkm_instagram') {{ 'is-invalid' }} @enderror" name="umkm_instagram" value="{{ old('umkm_instagram') ?? $siswa->umkm_instagram ?? '' }}">
+                            <input type="text" class="form-control @error('umkm_instagram') {{ 'is-invalid' }} @enderror" name="umkm_instagram" value="{{ old('umkm_instagram') ?? $umkm->umkm_instagram ?? '' }}">
 
                             @error('umkm_instagram')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -164,7 +156,7 @@
                     <div class="form-group">
                         <label>Facebook</label>
                         <div class="input-group">
-                            <input type="text" class="form-control @error('umkm_facebook') {{ 'is-invalid' }} @enderror" name="umkm_facebook" value="{{ old('umkm_facebook') ?? $siswa->umkm_facebook ?? '' }}">
+                            <input type="text" class="form-control @error('umkm_facebook') {{ 'is-invalid' }} @enderror" name="umkm_facebook" value="{{ old('umkm_facebook') ?? $umkm->umkm_facebook ?? '' }}">
 
                             @error('umkm_facebook')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -188,4 +180,47 @@
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 </section>
+<script>
+    // Cara Mengambil Kota Berdasarkan Provinsi
+    $('#prov_id').change(function(e) {
+        e.preventDefault();
+        var kota_id = '';
+        var prov_id = $('#prov_id').val();
+        axios.post("{{url('backend/umkm/carikota')}}", {
+            'prov_id': prov_id,
+        }).then(function(res) {
+            // console.log(res.data.kota)
+            var kota = res.data.kota
+            for (var i = 0; i < kota.length; i++) {
+                kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
+            }
+            $('#kota_id').html(kota_id)
+        }).catch(function(err) {
+            console.log(err);
+        })
+    });
+</script>
+
+@if($umkm)
+<script>
+    $(document).ready(function() {
+        var kota_id = '';
+        var prov_id = '<?= $umkm->prov_id ?>';
+        axios.post("{{url('backend/umkm/carikota')}}", {
+            'prov_id': prov_id,
+        }).then(function(res) {
+            // console.log(res.data.kota)
+            var kota = res.data.kota
+            for (var i = 0; i < kota.length; i++) {
+                kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
+            }
+            $('#kota_id').html(kota_id)
+            $('#kota_id').val('<?= $umkm->kota_id ?>').change()
+        }).catch(function(err) {
+            console.log(err);
+        })
+    });
+</script>
+@endif
+
 @endsection
