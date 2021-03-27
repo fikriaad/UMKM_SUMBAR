@@ -14,7 +14,9 @@ class IklanController extends Controller
 {
     public function index()
     {
-        $iklan = DB::table('tb_iklan')->get();
+        $iklan = DB::table('tb_iklan')
+            ->orderBy('iklan_id')
+            ->get();
         return view(
             'backend/page/iklan/index',
             [

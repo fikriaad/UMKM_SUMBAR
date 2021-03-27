@@ -18,6 +18,7 @@ class BarangController extends Controller
         $barang  = DB::table('tb_barang')
             ->join('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
             ->join('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
+            ->orderBy('barang_id')
             ->get();
         return view(
             'backend/page/barang/index',
@@ -65,12 +66,14 @@ class BarangController extends Controller
 
     public function edit(Barang_Model $barang)
     {
-        $barang = Barang_Model::all();
+        // $barang = Barang_Model::all();
         $kategori = Kategori_Model::all();
+        $umkm = Umkm_Model::all();
         return view(
             'backend/page/barang/form',
             [
                 'barang' => $barang,
+                'umkm' => $umkm,
                 'kategori' => $kategori,
                 'url' => 'barang.store'
             ]

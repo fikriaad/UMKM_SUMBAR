@@ -77,7 +77,7 @@
                     <div class="form-group">
                         <label>Nama Barang</label>
                         <div class="input-group">
-                            <input type="text" class="form-control @error('barang_nama') {{ 'is-invalid' }} @enderror" name="barang_nama" value="{{ old('barang_nama') ?? $siswa->barang_nama ?? '' }}">
+                            <input type="text" class="form-control @error('barang_nama') {{ 'is-invalid' }} @enderror" name="barang_nama" value="{{ old('barang_nama') ?? $barang->barang_nama ?? '' }}">
 
                             @error('barang_nama')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -87,7 +87,7 @@
                     <div class="form-group">
                         <label>Harga</label>
                         <div class="input-group">
-                            <input type="number" class="form-control @error('barang_harga') {{ 'is-invalid' }} @enderror" name="barang_harga" value="{{ old('barang_harga') ?? $siswa->barang_harga ?? '' }}">
+                            <input type="number" class="form-control @error('barang_harga') {{ 'is-invalid' }} @enderror" name="barang_harga" value="{{ old('barang_harga') ?? $barang->barang_harga ?? '' }}">
 
                             @error('barang_harga')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -97,7 +97,7 @@
                     <div class="form-group">
                         <label>Keterangan</label>
                         <div class="input-group">
-                            <textarea type="text" class="form-control @error('informasi_isi') {{ 'is-invalid' }} @enderror" name="barang_keterangan" id="editor1" value="{{ old('barang_keterangan') ?? $siswa->barang_keterangan ?? '' }}" style="width: 100%"></textarea>
+                            <textarea type="text" class="form-control @error('informasi_isi') {{ 'is-invalid' }} @enderror" name="barang_keterangan" id="editor1" value="{{ old('barang_keterangan') ?? $barang->barang_keterangan ?? '' }}" style="width: 100%"></textarea>
 
                             @error('barang_keterangan')
                             <div class="invalid-feedback">{{ $message }}</div>

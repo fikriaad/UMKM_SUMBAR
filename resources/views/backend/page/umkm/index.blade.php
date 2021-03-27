@@ -117,5 +117,29 @@
         $('#ModalHapus').modal()
         $('#formDelete').attr('action', url);
     }
+
+    function cekStatus(id, ceklis) {
+        if (ceklis.checked) {
+            // alert("ceklis Dihidupkan")
+            axios.post("{{url('backend/umkm/aktif')}}", {
+                'id': id,
+            }).then(function(res) {
+                // console.log(res.data.message)
+                toastr.info(res.data.message)
+            }).catch(function(err) {
+                console.log(err);
+            })
+        } else {
+            // alert("Ceklis dimatikan")
+            axios.post("{{url('backend/umkm/mati')}}", {
+                'id': id,
+            }).then(function(res) {
+                // console.log(res.data.message)
+                toastr.warning(res.data.message)
+            }).catch(function(err) {
+                console.log(err);
+            })
+        }
+    }
 </script>
 @endsection

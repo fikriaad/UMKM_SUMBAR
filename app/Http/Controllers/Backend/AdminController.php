@@ -16,7 +16,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $admin = DB::table('tb_admin')->get();
+        $admin = DB::table('tb_admin')
+            ->orderBy('admin_id')
+            ->get();
         return view(
             'backend/page/admin/index',
             [

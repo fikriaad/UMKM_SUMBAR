@@ -53,6 +53,12 @@ Route::prefix('backend')->group(function () {
         Route::get('umkm/{umkm}', 'Backend\UmkmController@edit')->name('umkm.edit');
         Route::put('umkm/{umkm}', 'Backend\UmkmController@update')->name('umkm.update');
         Route::delete('umkm/{umkm}', 'Backend\UmkmController@destroy')->name('umkm.delete');
+        // cari kota
+        Route::post('umkm/carikota', 'Backend\UmkmController@carikota');
+
+        //aktivasi
+        Route::post('umkm/aktif', 'Backend\UmkmController@aktif');
+        Route::post('umkm/mati', 'Backend\UmkmController@mati');
 
         // Kategori Barang
         Route::get('kategori', 'Backend\KategoriController@index')->name('kategori');

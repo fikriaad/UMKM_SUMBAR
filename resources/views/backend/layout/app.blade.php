@@ -8,6 +8,8 @@
 <body class="hold-transition sidebar-mini">
     <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('lte/ckeditor/ckeditor.js')}}"> </script>
+    <script src="{{asset('lte/build/js/axios.min.js')}}"></script>
+    <script src="{{asset('lte/build/js/toastr.min.js')}}"></script>
     <div class="wrapper">
         @include('backend/component/navbar')
 

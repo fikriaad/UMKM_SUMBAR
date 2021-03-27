@@ -21,6 +21,7 @@ class UmkmController extends Controller
             ->join('tb_jenis_umkm', 'tb_jenis_umkm.jenis_id', '=', 'tb_data_umkm.jenis_id')
             ->join('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
             ->join('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
+            ->orderBy('umkm_id')
             ->get();
         return view(
             'backend/page/umkm/index',
@@ -88,20 +89,21 @@ class UmkmController extends Controller
             ->with('message', 'Data berhasil ditambahkan');
     }
 
-    public function edit(Umkm_Model $informasi)
+    public function edit(Umkm_Model $umkm)
     {
-        $umkm = Umkm_Model::all();
+        // $umkm = Umkm_Model::all();
+        // dd($umkm);
         $jenis = Jenis_Model::all();
         $prov = Provinsi_Model::all();
         $kota = Kota_Model::all();
         return view(
-            'backend/page/informasi/form',
+            'backend/page/umkm/form',
             [
                 'umkm' => $umkm,
                 'jenis' => $jenis,
                 'prov' => $prov,
                 'kota' => $kota,
-                'url' => 'umkm.store'
+                'url' => 'umkm.update'
             ]
         );
     }
@@ -155,10 +157,8 @@ class UmkmController extends Controller
             $umkm->kota_id = $request->input('kota_id');
             $umkm->umkm_alamat = $request->input('umkm_alamat');
             $umkm->umkm_email = $request->input('umkm_email');
-            $umkm->umkm_password = $pwd;
             $umkm->umkm_instagram = $request->input('umkm_instagram');
             $umkm->umkm_facebook = $request->input('umkm_facebook');
-            $umkm->umkm_foto = $filename;
             $umkm->save();
 
             return redirect()
@@ -176,5 +176,35 @@ class UmkmController extends Controller
         return redirect()
             ->route('umkm')
             ->with('message', 'Data berhasil dihapus');
+    }
+
+
+    public function aktif(Request $request)
+    {
+        DB::table('tb_data_umkm')
+            ->where('umkm_id', $request->id)
+            ->update(['umkm_status' => 1]);
+        return response()->json([
+            'message' => 'UMKM TELAH AKTIF',
+        ], 200);
+    }
+    public function mati(Request $request)
+    {
+        DB::table('tb_data_umkm')
+            ->where('umkm_id', $request->id)
+            ->update(['umkm_status' => 0]);
+        return response()->json([
+            'message' => 'UMKM TELAH DI NONAKTIFKAN',
+        ], 200);
+    }
+    public function carikota(Request $request)
+    {
+        $kota = DB::table('tb_kota')
+            ->where('prov_id', '=', $request->prov_id)
+            ->get();
+        // dd($kota);
+        return response()->json([
+            'kota' => $kota,
+        ], 200);
     }
 }
