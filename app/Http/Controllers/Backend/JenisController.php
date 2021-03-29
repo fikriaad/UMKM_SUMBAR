@@ -38,7 +38,7 @@ class JenisController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'jenis_nama'         => 'required',
-            'jenis_gambar'         => 'required|mimes:jpg,jpeg,png,bmp',
+            // 'jenis_gambar'         => 'required|mimes:jpg,jpeg,png,bmp',
         ]);
 
         if ($validator->fails()) {
@@ -47,12 +47,12 @@ class JenisController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $foto = $request->file('jenis_gambar');
-            $filename = time() . "." . $foto->getClientOriginalExtension();
-            $foto->move('img/backend/jenis/', $filename);
+            // $foto = $request->file('jenis_gambar');
+            // $filename = time() . "." . $foto->getClientOriginalExtension();
+            // $foto->move('img/backend/jenis/', $filename);
 
             $jenis->jenis_nama = $request->input('jenis_nama');
-            $jenis->jenis_gambar = $filename;
+            // $jenis->jenis_gambar = $filename;
             $jenis->save();
 
             return redirect()
@@ -76,7 +76,7 @@ class JenisController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'jenis_nama'         => 'required',
-            'jenis_gambar'         => 'mimes:jpg,jpeg,png,bmp',
+            // 'jenis_gambar'         => 'mimes:jpg,jpeg,png,bmp',
         ]);
         if ($validator->fails()) {
             return redirect()
@@ -84,13 +84,13 @@ class JenisController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            if ($request->hasFile('jenis_gambar') != null) {
-                unlink('img/backend/jenis/' . $jenis->jenis_gambar);
-                $foto = $request->file('jenis_gambar');
-                $filename = time() . "." . $foto->getClientOriginalExtension();
-                $foto->move('img/backend/jenis/', $filename);
-                $jenis->jenis_gambar = $filename;
-            }
+            // if ($request->hasFile('jenis_gambar') != null) {
+            //     unlink('img/backend/jenis/' . $jenis->jenis_gambar);
+            //     $foto = $request->file('jenis_gambar');
+            //     $filename = time() . "." . $foto->getClientOriginalExtension();
+            //     $foto->move('img/backend/jenis/', $filename);
+            //     $jenis->jenis_gambar = $filename;
+            // }
             $jenis->jenis_nama = $request->input('jenis_nama');
             $jenis->save();
 
@@ -102,8 +102,8 @@ class JenisController extends Controller
 
     public function destroy(Jenis_Model $jenis)
     {
-        $jenis_file = $jenis->jenis_gambar;
-        unlink('img/backend/jenis/' . $jenis_file);
+        // $jenis_file = $jenis->jenis_gambar;
+        // unlink('img/backend/jenis/' . $jenis_file);
         $jenis->forceDelete();
         return redirect()
             ->route('jenis')

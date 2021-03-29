@@ -18,7 +18,7 @@ class CreateIklanModelsTable extends Migration
             $table->string('iklan_judul');
             $table->string('iklan_gambar');
             $table->string('iklan_keterangan');
-            $table->string('iklan_letak')->nullable();
+            $table->text('iklan_letak')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

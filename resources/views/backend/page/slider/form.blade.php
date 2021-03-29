@@ -36,7 +36,7 @@
                         <label>Gambar slider</label>
                         <div class="input-group">
                             <input type="file" class="form-control @error('slider_gambar') {{ 'is-invalid' }} @enderror" name="slider_gambar" value="{{ old('slider_gambar') ?? '' }}">
-                            @error('slider_foto')
+                            @error('slider_gambar')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

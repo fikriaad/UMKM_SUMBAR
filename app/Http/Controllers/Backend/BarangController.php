@@ -111,8 +111,6 @@ class BarangController extends Controller
 
     public function destroy(Barang_Model $barang)
     {
-        $barang_file = $barang->barang_foto;
-        unlink('img/backend/barang/' . $barang_file);
         $barang->forceDelete();
 
         return redirect()

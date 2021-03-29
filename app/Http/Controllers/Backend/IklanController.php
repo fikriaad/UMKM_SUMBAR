@@ -66,6 +66,7 @@ class IklanController extends Controller
 
     public function edit(Iklan_Model $iklan)
     {
+        // $iklan = Iklan_Model::all();        
         return view(
             'backend/page/iklan/form',
             [

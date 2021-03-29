@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Barang_Model extends Model
 {
     use SoftDeletes;
+    use Timestamp;
     protected $table = "tb_barang";
     protected $primaryKey = "barang_id";
     protected $fillable = [

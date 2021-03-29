@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class Admin_Model extends Model
 {
     use SoftDeletes;
+    use Timestamp;
     protected $table = "tb_admin";
     protected $primaryKey = 'admin_id';
     protected $fillable = [

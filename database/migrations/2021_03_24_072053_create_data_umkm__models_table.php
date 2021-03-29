@@ -24,10 +24,12 @@ class CreateDataUmkmModelsTable extends Migration
             $table->text('umkm_alamat');
             $table->string('umkm_email');
             $table->string('umkm_password');
-            $table->string('umkm_instagram');
-            $table->string('umkm_facebook');
+            $table->string('umkm_instagram')->nullable();
+            $table->string('umkm_facebook')->nullable();
             $table->string('umkm_foto');
             $table->string('umkm_status');
+            $table->integer('umkm_viewer')->default(0);
+            $table->string('umkm_slug');
             $table->timestamps();
             $table->softDeletes();
         });

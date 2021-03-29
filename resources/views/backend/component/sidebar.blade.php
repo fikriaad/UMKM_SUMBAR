@@ -49,6 +49,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{url('backend/sub')}}" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Sub Kategori Barang
+                        </p>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
                     <a href="{{url('backend/barang')}}" class="nav-link">
                         <i class="nav-icon fas fa-box"></i>
                         <p>
@@ -63,7 +71,7 @@
                             Data Gambar Barang
                         </p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-header">LAYOUT</li>
                 <li class="nav-item ">
                     <a href="{{url('backend/slider')}}" class="nav-link">
