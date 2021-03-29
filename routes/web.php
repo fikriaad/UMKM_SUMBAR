@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// FRONTEND
+Route::get('/','HomeController@index')->name('home');
+
+
 
 // BACKEND
 Route::prefix('backend')->group(function () {

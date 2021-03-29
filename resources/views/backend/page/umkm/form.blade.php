@@ -201,7 +201,7 @@
     });
 </script>
 
-@if($umkm)
+@if(!empty($umkm))
 <script>
     $(document).ready(function() {
         var kota_id = '';
