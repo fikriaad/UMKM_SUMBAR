@@ -59,8 +59,9 @@ class DashboardController extends Controller
     {
         $request->session()->forget('admin_nama');
         $request->session()->forget('admin_email');
+        $request->session()->forget('token');
         // redirect ke halaman home
-        return redirect('/')->with("pesan", "Anda Sudah Logout");
+        return redirect('backend')->with("pesan", "Anda Sudah Logout");
     }
     function dashboard()
     {

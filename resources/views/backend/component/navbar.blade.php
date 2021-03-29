@@ -9,7 +9,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="btn btn-dark" href="{{ route('logout') }}" role="button"><i class="fas fa-sign-out-alt"> Logout</i></a>
+            <a class="btn btn-dark btn-sm" href="{{ route('logout') }}" role="button"><i class="fas fa-sign-out-alt"></i></a>
             <!-- <button type="button" class="btn btn-danger btn-sm" href="{{ route('logout') }}"><i class="fa fa-sign-out-alt"></i> Logout</button> -->
         </li>
     </ul>
