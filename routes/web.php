@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // FRONTEND
-Route::get('/','HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 
 
@@ -72,6 +72,14 @@ Route::prefix('backend')->group(function () {
         Route::get('kategori/{kategori}', 'Backend\KategoriController@edit')->name('kategori.edit');
         Route::put('kategori/{kategori}', 'Backend\KategoriController@update')->name('kategori.update');
         Route::delete('kategori/{kategori}', 'Backend\KategoriController@destroy')->name('kategori.delete');
+
+        // Sub Kategori Barang
+        Route::get('sub', 'Backend\SubController@index')->name('sub');
+        Route::get('sub.create', 'Backend\SubController@create')->name('sub.create');
+        Route::post('sub', 'Backend\SubController@store')->name('sub.store');
+        Route::get('sub/{sub}', 'Backend\SubController@edit')->name('sub.edit');
+        Route::put('sub/{sub}', 'Backend\SubController@update')->name('sub.update');
+        Route::delete('sub/{sub}', 'Backend\SubController@destroy')->name('sub.delete');
 
         // Data Barang
         Route::get('barang', 'Backend\BarangController@index')->name('barang');

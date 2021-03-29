@@ -11,6 +11,7 @@ use App\Provinsi_Model;
 use App\Kota_Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 
 class UmkmController extends Controller
@@ -57,10 +58,11 @@ class UmkmController extends Controller
             'prov_id'           => 'required',
             'kota_id'           => 'required',
             'umkm_alamat'       => 'required',
-            'umkm_email'        => 'required|email',
+            'umkm_email'        => [
+                'required',
+                Rule::unique('tb_data_umkm')->ignore($umkm),
+            ],
             'umkm_password'     => 'required',
-            'umkm_instagram'    => 'required',
-            'umkm_facebook'     => 'required',
             'umkm_foto'         => 'mimes:jpg,jpeg,png,bmp',
         ]);
         $password = $request->input('umkm_password');
@@ -118,9 +120,10 @@ class UmkmController extends Controller
             'prov_id'           => 'required',
             'kota_id'           => 'required',
             'umkm_alamat'       => 'required',
-            'umkm_email'        => 'required|email',
-            'umkm_instagram'    => 'required',
-            'umkm_facebook'     => 'required',
+            'umkm_email'        => [
+                'required',
+                Rule::unique('tb_data_umkm')->ignore($umkm->umkm_id, 'umkm_id'),
+            ],
         ]);
 
         if ($validator->fails()) {

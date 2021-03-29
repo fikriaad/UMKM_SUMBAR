@@ -62,7 +62,7 @@
                             <!-- <td>{{$umkm->umkm_nohp}}</td> -->
                             <!-- <td>{{$umkm->prov_nama}}</td> -->
                             <td>{{$umkm->kota_nama}}</td>
-                            <td>{{$umkm->umkm_alamat}}</td>
+                            <td>{!!$umkm->umkm_alamat!!}</td>
                             <!-- <td>{{$umkm->umkm_email}}</td> -->
                             <!-- <td>{{$umkm->umkm_instagram}}</td> -->
                             <!-- <td>{{$umkm->umkm_facebook}}</td> -->

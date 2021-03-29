@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJenisUmkmModelsTable extends Migration
+class CreateSubKategoriModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateJenisUmkmModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_jenis_umkm', function (Blueprint $table) {
-            $table->bigIncrements('jenis_id');
-            $table->string('jenis_nama');
-            // $table->string('jenis_gambar');
+        Schema::create('tb_sub_kategori', function (Blueprint $table) {
+            $table->bigIncrements('sub_id');
+            $table->integer('kategori_id');
+            $table->string('sub_nama');
+            $table->string('sub_gambar');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +30,6 @@ class CreateJenisUmkmModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_jenis_umkm');
+        Schema::dropIfExists('tb_sub_kategori');
     }
 }

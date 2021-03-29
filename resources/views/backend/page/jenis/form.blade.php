@@ -42,7 +42,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Gambar Jenis</label>
                         <div class="input-group">
                             <input type="file" class="form-control @error('jenis_gambar') {{ 'is-invalid' }} @enderror" name="jenis_gambar" value="{{ old('jenis_gambar') ?? '' }}">
@@ -50,7 +50,7 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                     <button class="btn btn-warning" type="button" onclick="window.history.back()">Back</button>
                 </form>

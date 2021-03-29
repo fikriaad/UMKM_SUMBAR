@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Umkm_Model extends Model
 {
     use SoftDeletes;
+    use Timestamp;
     protected $table = 'tb_data_umkm';
     protected $primaryKey = 'umkm_id';
     protected $fillable = [
@@ -24,5 +26,7 @@ class Umkm_Model extends Model
         'umkm_facebook',
         'umkm_foto',
         'umkm_status',
+        'umkm_viewer',
+        'umkm_slug',
     ];
 }

@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label>Judul Iklan</label>
                         <div class="input-group">
-                            <input type="text" class="form-control @error('iklan_judul') {{ 'is-invalid' }} @enderror" name="iklan_judul" value="{{ old('iklan_judul') ?? $jenis->iklan_judul ?? '' }}">
+                            <input type="text" class="form-control @error('iklan_judul') {{ 'is-invalid' }} @enderror" name="iklan_judul" value="{{ old('iklan_judul') ?? $iklan->iklan_judul ?? '' }}">
 
                             @error('iklan_judul')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label>Keterangan</label>
                         <div class="input-group">
-                            <textarea type="text" class="form-control @error('iklan_keterangan') {{ 'is-invalid' }} @enderror" name="iklan_keterangan" id="editor1" value="{{ old('iklan_keterangan') ?? $iklan->iklan_keterangan ?? '' }}" style="width: 100%"></textarea>
+                            <textarea type="text" class="form-control @error('iklan_keterangan') {{ 'is-invalid' }} @enderror" name="iklan_keterangan" id="editor1" value="{{ old('iklan_keterangan') ?? $iklan->iklan_keterangan ?? '' }}" style="width: 100%">{{ old('iklan_keterangan') ?? $iklan->iklan_keterangan ?? '' }}</textarea>
 
                             @error('iklan_keterangan')
                             <div class="invalid-feedback">{{ $message }}</div>
