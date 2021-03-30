@@ -23,5 +23,9 @@
             "autoWidth": false,
             "responsive": true,
         });
+        $(".exampledt").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
     });
 </script>

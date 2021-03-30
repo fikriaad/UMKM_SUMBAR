@@ -19,72 +19,156 @@
 <section class="content">
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="card">
-            @if(session()->has('message'))
-            <div class="alert alert-success">
-                <strong>{{ session()->get('message') }}</strong>
-                <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-            </div>
-            @endif
-            <div class="card-header">
-                Amin
+        <div class="card card-primary card-tabs">
+            <div class="card-header p-0 pt-1">
+                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                    <li class="pt-2 px-3">
+                        <h3 class="card-title">Data UMKM</h3>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="verifikasi-tab" data-toggle="pill" href="#verifikasi" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Sudah Verifikasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="belum-verifikasi-tab" data-toggle="pill" href="#belum-verifikasi" role="tab" aria-controls="belum-verifikasi" aria-selected="false">Belum Verifikasi</a>
+                    </li>
+                </ul>
             </div>
             <div class="card-body">
-                <a href="{{route('umkm.create')}}" class="btn btn-primary my-4">
-                    Tambah Data
-                </a>
-                <table class="table" id="example1">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama UMKM</th>
-                            <th scope="col">Jenis</th>
-                            <th scope="col">Lama Usaha</th>
-                            <!-- <th scope="col">No Telfon</th> -->
-                            <!-- <th scope="col">Provinsi</th> -->
-                            <th scope="col">Kota</th>
-                            <th scope="col">Alamat</th>
-                            <!-- <th scope="col">Email</th> -->
-                            <!-- <th scope="col">Instagram</th> -->
-                            <!-- <th scope="col">Facebook</th> -->
-                            <th scope="col">Foto</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($umkm as $no => $umkm)
-                        <tr>
-                            <td>{{$no + 1}}</td>
-                            <td>{{$umkm->umkm_nama}}</td>
-                            <td>{{$umkm->jenis_nama}}</td>
-                            <td>{{$umkm->umkm_lama_usaha}}</td>
-                            <!-- <td>{{$umkm->umkm_nohp}}</td> -->
-                            <!-- <td>{{$umkm->prov_nama}}</td> -->
-                            <td>{{$umkm->kota_nama}}</td>
-                            <td>{!!$umkm->umkm_alamat!!}</td>
-                            <!-- <td>{{$umkm->umkm_email}}</td> -->
-                            <!-- <td>{{$umkm->umkm_instagram}}</td> -->
-                            <!-- <td>{{$umkm->umkm_facebook}}</td> -->
-                            <td><img src="{{ asset('img/backend/umkm/' . $umkm->umkm_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
-                            <td>
-                                <label class="switch">
-                                    <?php $cek = $umkm->umkm_status ?>
-                                    <input type="checkbox" class="cek_umkm" id="cek_umkm<?= $umkm->umkm_id ?>" value="<?= $umkm->umkm_id ?>" onchange="cekStatus(<?= $umkm->umkm_id ?>, this)" <?php echo ($cek == '1') ? "checked" : "" ?>>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                            <td>
-                                <a href="{{ route('umkm.edit', $umkm->umkm_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('umkm.delete', $umkm->umkm_id) }}')"><i class="fa fa-trash"></i> Delete</button>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="tab-content" id="custom-tabs-two-tabContent">
+                    <div class="tab-pane fade show active" id="verifikasi" role="tabpanel" aria-labelledby="verifikasi-tab">
+                        <div class="card">
+                            @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                <strong>{{ session()->get('message') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                            </div>
+                            @endif
+                            <div class="card-body">
+                                <a href="{{route('umkm.create')}}" class="btn btn-primary my-4">
+                                    Tambah Data
+                                </a>
+                                <table class="table exampledt">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama UMKM</th>
+                                            <th scope="col">Jenis</th>
+                                            <th scope="col">Lama Usaha</th>
+                                            <!-- <th scope="col">No Telfon</th> -->
+                                            <!-- <th scope="col">Provinsi</th> -->
+                                            <th scope="col">Kota</th>
+                                            <th scope="col">Alamat</th>
+                                            <!-- <th scope="col">Email</th> -->
+                                            <!-- <th scope="col">Instagram</th> -->
+                                            <!-- <th scope="col">Facebook</th> -->
+                                            <th scope="col">Foto</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($umkmv as $no => $umkm)
+                                        <tr>
+                                            <td>{{$no + 1}}</td>
+                                            <td>{{$umkm->umkm_nama}}</td>
+                                            <td>{{$umkm->jenis_nama}}</td>
+                                            <td>{{$umkm->umkm_lama_usaha}}</td>
+                                            <!-- <td>{{$umkm->umkm_nohp}}</td> -->
+                                            <!-- <td>{{$umkm->prov_nama}}</td> -->
+                                            <td>{{$umkm->kota_nama}}</td>
+                                            <td>{!!$umkm->umkm_alamat!!}</td>
+                                            <!-- <td>{{$umkm->umkm_email}}</td> -->
+                                            <!-- <td>{{$umkm->umkm_instagram}}</td> -->
+                                            <!-- <td>{{$umkm->umkm_facebook}}</td> -->
+                                            <td><img src="{{ asset('img/backend/umkm/' . $umkm->umkm_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
+                                            <td>
+                                                <label class="switch">
+                                                    <?php $cek = $umkm->umkm_status ?>
+                                                    <input type="checkbox" class="cek_umkm" id="cek_umkm<?= $umkm->umkm_id ?>" value="<?= $umkm->umkm_id ?>" onchange="cekStatus(<?= $umkm->umkm_id ?>, this)" <?php echo ($cek == '1') ? "checked" : "" ?>>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('umkm.edit', $umkm->umkm_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('umkm.delete', $umkm->umkm_id) }}')"><i class="fa fa-trash"></i> Delete</button>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="belum-verifikasi" role="tabpanel" aria-labelledby="belum-verifikasi-tab">
+                        <div class="card">
+                            @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                <strong>{{ session()->get('message') }}</strong>
+                                <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                            </div>
+                            @endif
+                            <div class="card-body">
+                                <a href="{{route('umkm.create')}}" class="btn btn-primary my-4">
+                                    Tambah Data
+                                </a>
+                                <table class="table exampledt">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama UMKM</th>
+                                            <th scope="col">Jenis</th>
+                                            <th scope="col">Lama Usaha</th>
+                                            <!-- <th scope="col">No Telfon</th> -->
+                                            <!-- <th scope="col">Provinsi</th> -->
+                                            <th scope="col">Kota</th>
+                                            <th scope="col">Alamat</th>
+                                            <!-- <th scope="col">Email</th> -->
+                                            <!-- <th scope="col">Instagram</th> -->
+                                            <!-- <th scope="col">Facebook</th> -->
+                                            <th scope="col">Foto</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($umkmb as $no => $umkm)
+                                        <tr>
+                                            <td>{{$no + 1}}</td>
+                                            <td>{{$umkm->umkm_nama}}</td>
+                                            <td>{{$umkm->jenis_nama}}</td>
+                                            <td>{{$umkm->umkm_lama_usaha}}</td>
+                                            <!-- <td>{{$umkm->umkm_nohp}}</td> -->
+                                            <!-- <td>{{$umkm->prov_nama}}</td> -->
+                                            <td>{{$umkm->kota_nama}}</td>
+                                            <td>{!!$umkm->umkm_alamat!!}</td>
+                                            <!-- <td>{{$umkm->umkm_email}}</td> -->
+                                            <!-- <td>{{$umkm->umkm_instagram}}</td> -->
+                                            <!-- <td>{{$umkm->umkm_facebook}}</td> -->
+                                            <td><img src="{{ asset('img/backend/umkm/' . $umkm->umkm_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
+                                            <td>
+                                                <label class="switch">
+                                                    <?php $cek = $umkm->umkm_status ?>
+                                                    <input type="checkbox" class="cek_umkm" id="cek_umkm<?= $umkm->umkm_id ?>" value="<?= $umkm->umkm_id ?>" onchange="cekStatus(<?= $umkm->umkm_id ?>, this)" <?php echo ($cek == '1') ? "checked" : "" ?>>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('umkm.edit', $umkm->umkm_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('umkm.delete', $umkm->umkm_id) }}')"><i class="fa fa-trash"></i> Delete</button>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- /.card -->
         </div>
-        <!-- /.row (main row) -->
+    </div>
+    <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 </section>
 <div class="modal fade" id="ModalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">

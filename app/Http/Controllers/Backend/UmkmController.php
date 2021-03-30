@@ -12,22 +12,32 @@ use App\Kota_Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-
+use App\Helper\SlugHelper;
 
 class UmkmController extends Controller
 {
     public function index()
     {
-        $umkm  = DB::table('tb_data_umkm')
+        $umkmv  = DB::table('tb_data_umkm')
             ->join('tb_jenis_umkm', 'tb_jenis_umkm.jenis_id', '=', 'tb_data_umkm.jenis_id')
             ->join('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
             ->join('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
             ->orderBy('umkm_id')
+            ->where('umkm_status', '=', '1')
+            ->get();
+        $umkmb  = DB::table('tb_data_umkm')
+            ->join('tb_jenis_umkm', 'tb_jenis_umkm.jenis_id', '=', 'tb_data_umkm.jenis_id')
+            ->join('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
+            ->join('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
+            ->orderBy('umkm_id')
+            ->where('umkm_status', '=', '0')
             ->get();
         return view(
             'backend/page/umkm/index',
             [
-                'umkm' => $umkm
+                'umkmv' => $umkmv,
+                'umkmb' => $umkmb
+
             ]
         );
     }
@@ -71,6 +81,9 @@ class UmkmController extends Controller
         $filename = time() . "." . $foto->getClientOriginalExtension();
         $foto->move('img/backend/umkm/', $filename);
 
+        $slug = SlugHelper::seo_title($request->input('umkm_nama'));
+
+
         $umkm->umkm_nama = $request->input('umkm_nama');
         $umkm->jenis_id = $request->input('jenis_id');
         $umkm->umkm_lama_usaha = $request->input('umkm_lama_usaha');
@@ -84,6 +97,8 @@ class UmkmController extends Controller
         $umkm->umkm_facebook = $request->input('umkm_facebook');
         $umkm->umkm_foto = $filename;
         $umkm->umkm_status = "0";
+        $umkm->umkm_slug = $slug .  "-" . rand(100, 10000);
+
         $umkm->save();
 
         return redirect()
@@ -152,6 +167,8 @@ class UmkmController extends Controller
                 $foto->move('img/backend/umkm/', $filename);
                 $umkm->umkm_foto = $filename;
             }
+            $slug = SlugHelper::seo_title($request->input('umkm_nama'));
+
             $umkm->umkm_nama = $request->input('umkm_nama');
             $umkm->jenis_id = $request->input('jenis_id');
             $umkm->umkm_lama_usaha = $request->input('umkm_lama_usaha');
@@ -162,6 +179,7 @@ class UmkmController extends Controller
             $umkm->umkm_email = $request->input('umkm_email');
             $umkm->umkm_instagram = $request->input('umkm_instagram');
             $umkm->umkm_facebook = $request->input('umkm_facebook');
+            $umkm->umkm_slug = $slug .  "-" . rand(100, 10000);
             $umkm->save();
 
             return redirect()
