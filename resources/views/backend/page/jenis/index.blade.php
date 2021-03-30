@@ -49,7 +49,7 @@
                         @foreach ($jenis as $no => $jenis)
                         <tr>
                             <td>{{$no + 1}}</td>
-                            <td>{{$jenis->jenis_nama}}</td>
+                            <td>{{$jenis->jenis_nama}}</td> 
                             <td>
                                 <a href="{{ route('jenis.edit', $jenis->jenis_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('jenis.delete', $jenis->jenis_id) }}')"><i class="fa fa-trash"></i> Delete</button>
