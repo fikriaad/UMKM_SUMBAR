@@ -2188,3 +2188,91 @@ textarea.input {
     margin-top: 10px;
   }
 }
+
+
+/* with my self */
+
+/* Kunjungan */
+
+.hot-deal .hot-deal-countdown {
+  margin-bottom: 30px;
+}
+
+.hot-deal .kunjungan>li {
+  position: relative;
+  display: inline-block;
+  width: 81px;
+  height: 81px;
+  background: #D10024e6;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0px 5px;
+}
+
+.hot-deal .kunjungan>li>div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.hot-deal .kunjungan>li>div h3 {
+  color: #FFF;
+  margin-bottom: 0px;
+}
+
+.hot-deal .kunjungan>li>div span {
+  display: block;
+  font-size: 9px;
+  text-transform: uppercase;
+  color: #FFF;
+}
+
+/* follow us */
+.newsletter .followus {
+  text-align: center;
+}
+
+.newsletter .followus li {
+  display: inline-block;
+  margin-right: 5px;
+  background-color: #D10024e6;
+}
+
+.newsletter .followus li:last-child {
+  margin-right: 0px;
+}
+
+.newsletter .followus li a {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid #D10024e6;
+  background-color: #D10024e6;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.newsletter .followus li a {
+color: #FFF;
+}
+
+.newsletter .followus li a:hover, .newsletter .followus li a:focus {
+  background-color: #E4E7ED;
+  color: #D10024;
+  border: 1px solid #E4E7ED;
+}
+
+.newsletter .followus-title{
+  padding-top: 64px;
+  color: #FFF;
+  text-transform: uppercase;
+  font-size: 18px;
+  /* margin: 0px 0px 30px; */
+}

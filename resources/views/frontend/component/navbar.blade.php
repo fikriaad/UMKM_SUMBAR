@@ -6,18 +6,16 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Hot Deals</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Laptops</a></li>
-                    <li><a href="#">Smartphones</a></li>
-                    <li><a href="#">Cameras</a></li>
-                    <li><a href="#">Accessories</a></li>
+                    <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home')}}">Home</a></li>
+                    <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="#">Tentang Kami</a></li>
+                    <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('product')}}">Produk</a></li>
+                    <li class="{{ $active == 'listUmkm' ? 'active' : '' }}"><a href="{{ route('listUmkm')}}">UMKM</a></li>
+                    <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="#">Hubungi Kami</a></li>
                 </ul>
                 <!-- /NAV -->
             </div>
             <!-- /responsive-nav -->
         </div>
-        <!-- /container -->
+        <!-- /container --> 
     </nav>
     <!-- /NAVIGATION -->
