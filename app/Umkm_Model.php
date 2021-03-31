@@ -13,20 +13,25 @@ class Umkm_Model extends Model
     protected $table = 'tb_data_umkm';
     protected $primaryKey = 'umkm_id';
     protected $fillable = [
+        'pemilik',
+        'pemilik_tgl_lahir',
+        'pemilik_nohp',
+        'pemilik_alamat',
+        'pemilik_ktp',
         'umkm_nama',
+        'umkm_email',
+        'umkm_password',
         'jenis_id',
-        'umkm_lama_usaha',
         'umkm_nohp',
+        'umkm_foto',
+        'umkm_lama_usaha',
         'prov_id',
         'kota_id',
         'umkm_alamat',
-        'umkm_email',
-        'umkm_password',
+        'umkm_status',
+        'umkm_slug',
         'umkm_instagram',
         'umkm_facebook',
-        'umkm_foto',
-        'umkm_status',
         'umkm_viewer',
-        'umkm_slug',
     ];
 }

@@ -13,12 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // FRONTEND
+// Navbar
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/product', 'HomeController@product')->name('product');
+Route::get('/listUmkm', 'HomeController@listUmkm')->name('listUmkm');
+
+Route::prefix('umkm')->group(function () {
+    Route::middleware(['belum_login'])->group(function () {
+        Route::get('/', 'Umkm\DashboardController@index')->name('/');
+        Route::get('register-umkm', 'Umkm\DashboardController@register')->name('register-umkm');
+        Route::post('aksiregister-umkm', 'Umkm\DashboardController@registerAdmin')->name('aksiregister-umkm');
+        Route::post('aksilogin-umkm', 'Umkm\DashboardController@loginAdmin')->name('aksilogin-umkm');
+    });
+
+    Route::middleware(['sudah_login'])->group(function () {
+        Route::get('dashboard-umkm', 'Umkm\DashboardController@dashboard-umkm')->name('dashboard-umkm');
+        Route::get('logout-umkm', 'Umkm\DashboardController@logout')->name('logout-umkm');
+    });
+});
 
 
 

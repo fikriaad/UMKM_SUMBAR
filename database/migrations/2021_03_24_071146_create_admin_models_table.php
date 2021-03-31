@@ -11,10 +11,11 @@ class CreateAdminModelsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up()    
     {
         Schema::create('tb_admin', function (Blueprint $table) {
             $table->bigIncrements('admin_id');
+            $table->string('admin_nama');
             $table->string('admin_nama');
             $table->string('admin_email');
             $table->string('admin_password');

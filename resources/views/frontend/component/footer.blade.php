@@ -1,47 +1,33 @@
-    <!-- NEWSLETTER -->
-    <div id="newsletter" class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="newsletter">
-                        <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-                        <form>
-                            <input class="input" type="email" placeholder="Enter Your Email">
-                            <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-                        </form>
-                        <ul class="newsletter-follow">
-                            <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /NEWSLETTER -->
-
     <!-- FOOTER -->
     <footer id="footer">
         <!-- top footer -->
-        <div class="section">
+        <div class="section" style="margin-top: 64px">
             <!-- container -->
             <div class="container">
                 <!-- row -->
                 <div class="row">
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <div class="newsletter">
+                                <h3 class="followus-title">Ikuti Kami</h3>
+                                <ul class="followus">
+                                    <li>
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
                             <h3 class="footer-title">About Us</h3>
@@ -81,19 +67,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div class="col-md-3 col-xs-6">
-                        <div class="footer">
-                            <h3 class="footer-title">Service</h3>
-                            <ul class="footer-links">
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">View Cart</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Track My Order</a></li>
-                                <li><a href="#">Help</a></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
                 <!-- /row -->
             </div>
@@ -107,17 +80,17 @@
                 <!-- row -->
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <ul class="footer-payments">
+                        <!-- <ul class="footer-payments">
                             <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
                             <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
                             <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
                             <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
                             <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
                             <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                        </ul>
+                        </ul> -->
                         <span class="copyright">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            Copyright &copy; <script>document.write(new Date().getFullYear());</script> <a href="http://mediatamaweb.co.id/" target="_blank" style="color: #B9BABC">CV. MEDIATAMA WEB INDONESIA</a> | <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/taufanomt/" target="_blank">Taufano.</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </span>
 
