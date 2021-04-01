@@ -56,7 +56,7 @@
                         </p>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{url('backend/barang')}}" class="nav-link">
                         <i class="nav-icon fas fa-box"></i>
                         <p>
@@ -71,7 +71,7 @@
                             Data Gambar Barang
                         </p>
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-header">LAYOUT</li>
                 <li class="nav-item ">
                     <a href="{{url('backend/slider')}}" class="nav-link">

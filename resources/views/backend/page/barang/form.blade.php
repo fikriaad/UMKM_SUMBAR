@@ -74,6 +74,14 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="form-group  col-md-12">
+                            <label>Sub Kategori</label>
+                            <select name="sub_id" id="sub_id" class="form-control @error('sub_id') {{ 'is-invalid' }} @enderror">
+                                <option value="">-Pilih Sub Kategori-</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label>Nama Barang</label>
                         <div class="input-group">
@@ -117,4 +125,24 @@
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 </section>
+<script>
+    // Cara Mengambil Kota Berdasarkan Provinsi
+    $('#kategori_id').change(function(e) {
+        e.preventDefault();
+        var sub_id = '';
+        var kategori_id = $('#kategori_id').val();
+        axios.post("{{url('backend/barang/carisub')}}", {
+            'kategori_id': kategori_id,
+        }).then(function(res) {
+            // console.log(res.data.sub)
+            var sub = res.data.sub
+            for (var i = 0; i < sub.length; i++) {
+                sub_id += "<option value='" + sub[i].sub_id + "'>" + sub[i].sub_nama + "</option>"
+            }
+            $('#sub_id').html(sub_id)
+        }).catch(function(err) {
+            console.log(err);
+        })
+    });
+</script>
 @endsection
