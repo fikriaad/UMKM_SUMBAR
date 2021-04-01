@@ -64,6 +64,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'belum_login' => \App\Http\Middleware\BelumLogin::class,
-        'sudah_login' => \App\Http\Middleware\SudahLogin::class
+        'sudah_login' => \App\Http\Middleware\SudahLogin::class,
+        'umkm_sudah_login' => \App\Http\Middleware\UmkmSudahLogin::class,
+        'umkm_belum_login' => \App\Http\Middleware\UmkmBelumLogin::class
     ];
 }

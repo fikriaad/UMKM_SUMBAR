@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Hash;
 
 class Umkm_Model extends Model
 {
@@ -34,4 +35,20 @@ class Umkm_Model extends Model
         'umkm_facebook',
         'umkm_viewer',
     ];
+
+    public function CheckLoginUmkm($umkm_email, $umkm_password)
+    {
+        // dd($umkm_password);
+        $data_user = $this->where("umkm_email", $umkm_email)->get();
+        // dd(count($data_user) == 1);
+        // dd(count($data_user));
+        if (count($data_user) == 1) {
+            if (Hash::check($umkm_password, $data_user[0]->umkm_password)) {
+                unset($data_user[0]->umkm_password);
+                // $data_user[0]->level = "Admin";
+                return $data_user[0];
+            }
+        }
+        return false;
+    }
 }

@@ -20,7 +20,7 @@ class DashboardController extends Controller
     {
         // cek data login
         $user = new Umkm_Model();
-        $data_user = $user->CheckLoginAdmin($request->input("umkm_email"), $request->input("umkm_password"));
+        $data_user = $user->CheckLoginUmkm($request->input("umkm_email"), $request->input("umkm_password"));
         $token = JwtHelper::BuatToken($data_user);
         // dd($data_user);
         if ($data_user) {
@@ -62,7 +62,6 @@ class DashboardController extends Controller
     }
     function logout(Request $request)
     {
-        $request->session()->forget('umkm_nama');
         $request->session()->forget('umkm_email');
         $request->session()->forget('token');
         // redirect ke halaman home
@@ -70,6 +69,6 @@ class DashboardController extends Controller
     }
     function dashboard()
     {
-        return view('frontend/page/home');
+        return view('frontend/umkm/home');
     }
 }
