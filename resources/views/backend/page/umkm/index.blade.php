@@ -17,14 +17,12 @@
     </div><!-- /.container-fluid -->
 </div>
 <section class="content">
+    <button class="btn btn-success my-4" onclick="location.reload(true);" style="margin-left: 20px;"><i class="fas fa-redo-alt"></i></button>
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="card card-primary card-tabs">
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                    <li class="pt-2 px-3">
-                        <h3 class="card-title">Data UMKM</h3>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" id="verifikasi-tab" data-toggle="pill" href="#verifikasi" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Sudah Verifikasi</a>
                     </li>

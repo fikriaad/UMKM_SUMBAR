@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/product', 'HomeController@product')->name('product');
 Route::get('/listUmkm', 'HomeController@listUmkm')->name('listUmkm');
+Route::get('/detailProduct/{product}', 'HomeController@detailProduct')->name('detailProduct');
 
 Route::prefix('umkm')->group(function () {
     Route::middleware(['umkm_belum_login'])->group(function () {
@@ -102,6 +103,8 @@ Route::prefix('backend')->group(function () {
         Route::get('barang/{barang}', 'Backend\BarangController@edit')->name('barang.edit');
         Route::put('barang/{barang}', 'Backend\BarangController@update')->name('barang.update');
         Route::delete('barang/{barang}', 'Backend\BarangController@destroy')->name('barang.delete');
+        Route::post('barang/carisub', 'Backend\BarangController@carisub');
+
 
         // Data Gambar
         Route::get('gambar', 'Backend\GambarController@index')->name('gambar');

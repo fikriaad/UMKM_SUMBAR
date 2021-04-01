@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Barang_Model;
 use App\Kategori_Model;
 use App\Umkm_Model;
+use App\Sub_Kategori_Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,12 +32,14 @@ class BarangController extends Controller
     public function create()
     {
         $kategori = Kategori_Model::all();
+        $sub = Sub_Kategori_Model::all();
         $umkm = Umkm_Model::all();
         return view(
             'backend/page/barang/form',
             [
                 'url' => 'barang.store',
                 'kategori' => $kategori,
+                'sub' => $sub,
                 'umkm' => $umkm
             ]
         );
@@ -47,6 +50,7 @@ class BarangController extends Controller
         $request->validate([
             'umkm_id'           => 'required',
             'kategori_id'           => 'required',
+            'sub_id'           => 'required',
             'barang_nama'           => 'required',
             'barang_harga'          => 'required|numeric',
             'barang_keterangan'     => 'required',
@@ -54,6 +58,7 @@ class BarangController extends Controller
 
         $barang->umkm_id = $request->input('umkm_id');
         $barang->kategori_id = $request->input('kategori_id');
+        $barang->sub_id = $request->input('sub_id');
         $barang->barang_nama = $request->input('barang_nama');
         $barang->barang_harga = $request->input('barang_harga');
         $barang->barang_keterangan = $request->input('barang_keterangan');
@@ -116,5 +121,15 @@ class BarangController extends Controller
         return redirect()
             ->route('barang')
             ->with('message', 'Data berhasil dihapus');
+    }
+    public function carisub(Request $request)
+    {
+        $sub = DB::table('tb_sub_kategori')
+            ->where('kategori_id', '=', $request->kategori_id)
+            ->get();
+        // dd($sub);
+        return response()->json([
+            'sub' => $sub,
+        ], 200);
     }
 }
