@@ -19,16 +19,16 @@ class UmkmController extends Controller
     public function index()
     {
         $umkmv  = DB::table('tb_data_umkm')
-            ->join('tb_jenis_umkm', 'tb_jenis_umkm.jenis_id', '=', 'tb_data_umkm.jenis_id')
-            ->join('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
-            ->join('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
+            ->leftjoin('tb_jenis_umkm', 'tb_jenis_umkm.jenis_id', '=', 'tb_data_umkm.jenis_id')
+            ->leftjoin('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
+            ->leftjoin('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
             ->orderBy('umkm_id')
             ->where('umkm_status', '=', '1')
             ->get();
         $umkmb  = DB::table('tb_data_umkm')
-            ->join('tb_jenis_umkm', 'tb_jenis_umkm.jenis_id', '=', 'tb_data_umkm.jenis_id')
-            ->join('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
-            ->join('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
+            ->leftjoin('tb_jenis_umkm', 'tb_jenis_umkm.jenis_id', '=', 'tb_data_umkm.jenis_id')
+            ->leftjoin('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
+            ->leftjoin('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
             ->orderBy('umkm_id')
             ->where('umkm_status', '=', '0')
             ->get();

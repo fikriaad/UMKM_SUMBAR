@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class SudahLogin
+class UmkmBelumLogin
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class SudahLogin
      */
     public function handle($request, Closure $next)
     {
-        if (session()->has('token')) {
+        if (!session()->has('token')) {
             return $next($request);
         } else {
-            return redirect("/")->with("pesan", "Anda Belum Login");
+            return redirect("umkm/dashboard-umkm")->with("pesan", "Selamat Datang!!!");;
         }
     }
 }
