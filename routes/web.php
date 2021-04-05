@@ -33,7 +33,16 @@ Route::prefix('umkm')->group(function () {
         Route::get('dashboard-umkm', 'Umkm\DashboardController@dashboard')->name('dashboard-umkm');
         Route::get('logout-umkm', 'Umkm\DashboardController@logout')->name('logout-umkm');
         Route::get('profile-umkm', 'Umkm\ProfileController@index')->name('profile-umkm');
+        
+        // PRODUCT-UMKM
         Route::get('product-umkm', 'Umkm\ProductController@index')->name('product-umkm');
+        Route::post('product-umkm', 'Umkm\ProductController@store')->name('product-store');
+
+        // Data Barang
+        Route::get('barang/{barang}', 'Backend\BarangController@edit')->name('barang.edit');
+        Route::put('barang/{barang}', 'Backend\BarangController@update')->name('barang.update');
+        Route::delete('barang/{barang}', 'Backend\BarangController@destroy')->name('barang.delete');
+        Route::post('barang/carisub', 'Backend\BarangController@carisub');
     });
 });
 

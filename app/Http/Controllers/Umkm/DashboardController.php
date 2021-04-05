@@ -27,6 +27,7 @@ class DashboardController extends Controller
         if ($data_user) {
             // masukan data login ke session
             $request->session()->put('umkm_email', $data_user->umkm_email);
+            $request->session()->put('umkm_id', $data_user->umkm_id);
             $request->session()->put('token', $token);
             // redirect ke halaman home
             // dd(session('admin_username'));

@@ -45,22 +45,45 @@
                     <h4 class="modal-title">Input Product Baru</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{{ route('product-store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
-                            <label for="nama_barang">Nama Barang</label>
-                            <input type="text" class="form-control" name="barang_nama" id="nama_barang" placeholder="Nama Barang">
+                            <label for="kategori_id">Kategori</label>
+                            <select name="kategori_id" id="kategori_id" class="form-control @error('kategori_id') {{ 'is-invalid' }} @enderror">
+                                <option value="">-Pilih-</option>
+                                @foreach($kategori as $no => $kategori)
+                                <option value="{{ $kategori->kategori_id }}">
+                                    {{ $kategori->kategori_nama}}</option>
+                                @endforeach
+                            </select>
+                            @if(isset($kategori))
+                            <script>
+                                document.getElementById('kategori_id').value =
+                                    '<?php echo $kategori->kategori_id ?>'
+                            </script>
+                            @endif
+                            @error('kategori_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="harga_barang">Harga</label>
-                            <input type="text" class="form-control" name="barang_harga" id="harga_barang" placeholder="Nama Barang">
+                            <label for="barang_nama">Nama Barang</label>
+                            <input type="text" class="form-control @error('barang_nama') {{ 'is-invalid' }} @enderror" name="barang_nama" id="barang_nama" placeholder="Nama Barang" required>
                         </div>
                         <div class="form-group">
-                            <label for="keterangan">Keterangan Barang</label>
-                            <textarea class="form-control" rows="3" name="barang_keterangan" id="keterangan"></textarea>
+                            <label for="barang_harga">Harga</label>
+                            <input type="number" class="form-control" name="barang_harga" id="barang_harga" placeholder="Harga Barang">
+                        </div>
+                        <div class="form-group">
+                            <label for="barang_keterangan">Keterangan Barang</label>
+                            <textarea class="form-control" rows="3" name="barang_keterangan" id="barang_keterangan" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="barang_gambar">Foto Barang</label>
+                            <input type="file" class="form-control" name="barang_gambar" id="barang_gambar" required>
                         </div>
                         <div class="row text-right" style="margin-right: 2px">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                         </div>
                     </form>
                 </div>
