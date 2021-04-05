@@ -63,13 +63,21 @@ class HomeController extends Controller
         $gambar = DB::table('tb_gambar')
             ->where('barang_id', '=', $product)
             ->get();
-            
+
+        $list = DB::table('tb_barang')
+            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+            ->leftjoin('tb_sub_kategori', 'tb_sub_kategori.sub_id', '=', 'tb_barang.sub_id')
+            ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
+            ->where('tb_barang.kategori_id', '=', $barang->kategori_id)
+            ->get();
+
         $active = "detailProduct";
         return view(
             'frontend.page.detail_product',
             [
                 'barang' => $barang,
                 'gambar' => $gambar,
+                'list'   => $list,
                 'active' => $active
             ]
         );
