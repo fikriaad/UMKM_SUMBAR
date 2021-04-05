@@ -36,14 +36,14 @@
 				<div class="col-md-3 clearfix">
 					<div class="header-ctn">
 
-						<!-- Login -->
+						<!-- Log Out -->
 						<div>
-							<a href="{{route('login')}}">
-								<i class="fa fa-sign-in" style="background-color: #D10024; height: 36px; width: 36px; padding-top: 9px; margin: auto; border-radius: 25px;"></i>
-								<span>Register/Login</span>
+							<a href="{{route('logout-umkm')}}">
+								<i class="fa fa-sign-out" style="background-color: #D10024; height: 36px; width: 36px; padding-top: 9px; padding-left: 4px; margin: auto; border-radius: 25px;"></i>
+								<span>Log Out</span>
 							</a>
 						</div>
-						<!-- /Login -->
+						<!-- /Log Out -->
 
 						<!-- Menu Toogle -->
 						<div class="menu-toggle">

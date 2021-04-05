@@ -55,6 +55,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="input-group  mb-3">
+                        <select name="jenis_id" id="jenis_id" class="form-control @error('jenis_id') {{ 'is-invalid' }} @enderror">
+                            <option value="">-Pilih-</option>
+                            @foreach($jenis as $no => $jenis)
+                            <option value="{{ $jenis->jenis_id }}">
+                                {{ $jenis->jenis_nama}}</option>
+                            @endforeach
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>  
+                        @if(isset($jenis))
+                        <script>
+                            document.getElementById('jenis_id').value =
+                                '<?php echo $jenis->jenis_id ?>'
+                        </script>
+                        @endif
+                        @error('jenis_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Alamat" name="umkm_alamat">
                         <div class="input-group-append">
