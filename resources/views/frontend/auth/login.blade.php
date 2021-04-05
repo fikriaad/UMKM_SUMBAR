@@ -53,6 +53,11 @@
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </div>
+                        <div class="col-4">
+                        </div>
+                        <div class="col-4">
+                            <a href="{{route('register-umkm')}}" class="btn btn-primary btn-block">Register</a>
+                        </div>
                     </div>
                 </form>
             </div>

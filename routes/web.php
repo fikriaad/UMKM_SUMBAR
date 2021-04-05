@@ -22,7 +22,7 @@ Route::get('/listUmkm', 'HomeController@listUmkm')->name('listUmkm');
 
 Route::prefix('umkm')->group(function () {
     Route::middleware(['umkm_belum_login'])->group(function () {
-        Route::get('/', 'Umkm\DashboardController@index')->name('/');
+        Route::get('/', 'Umkm\DashboardController@index')->name('login');
         Route::get('register-umkm', 'Umkm\DashboardController@register')->name('register-umkm');
         Route::post('aksiregister-umkm', 'Umkm\DashboardController@registerAdmin')->name('aksiregister-umkm');
         Route::post('aksilogin-umkm', 'Umkm\DashboardController@loginAdmin')->name('aksilogin-umkm');
@@ -31,6 +31,8 @@ Route::prefix('umkm')->group(function () {
     Route::middleware(['umkm_sudah_login'])->group(function () {
         Route::get('dashboard-umkm', 'Umkm\DashboardController@dashboard')->name('dashboard-umkm');
         Route::get('logout-umkm', 'Umkm\DashboardController@logout')->name('logout-umkm');
+        Route::get('profile-umkm', 'Umkm\ProfileController@index')->name('profile-umkm');
+        Route::get('product-umkm', 'Umkm\ProductController@index')->name('product-umkm');
     });
 });
 
