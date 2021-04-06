@@ -108,8 +108,6 @@ class UmkmController extends Controller
 
     public function edit(Umkm_Model $umkm)
     {
-        // $umkm = Umkm_Model::all();
-        // dd($umkm);
         $jenis = Jenis_Model::all();
         $prov = Provinsi_Model::all();
         $kota = Kota_Model::all();
@@ -152,7 +150,9 @@ class UmkmController extends Controller
                 $pwd = Hash::make($password);
                 $umkm->umkm_password = $pwd;
             } elseif ($request->input('umkm_password') == null && $request->hasFile('umkm_foto') != null) {
-                unlink('img/backend/umkm/' . $umkm->umkm_foto);
+                if (!empty($umkm->umkm_foto)) {
+                    unlink('img/backend/umkm/' . $umkm->umkm_foto);
+                }
                 $foto = $request->file('umkm_foto');
                 $filename = time() . "." . $foto->getClientOriginalExtension();
                 $foto->move('img/backend/umkm/', $filename);
@@ -161,7 +161,9 @@ class UmkmController extends Controller
                 $password = $request->input('umkm_password');
                 $pwd = Hash::make($password);
                 $umkm->umkm_password = $pwd;
-                unlink('img/backend/umkm/' . $umkm->umkm_foto);
+                if (!empty($umkm->umkm_foto)) {
+                    unlink('img/backend/umkm/' . $umkm->umkm_foto);
+                }
                 $foto = $request->file('umkm_foto');
                 $filename = time() . "." . $foto->getClientOriginalExtension();
                 $foto->move('img/backend/umkm/', $filename);
