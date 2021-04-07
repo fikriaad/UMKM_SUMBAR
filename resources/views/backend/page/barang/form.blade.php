@@ -25,7 +25,7 @@
         <div class="card">
             <div class="card-header">
                 Barang
-            </div>
+            </div> 
             <div class="card-body">
                 <form class="form-horizontal" action="{{ route($url, $barang->barang_id ?? null) }}" method="POST" enctype="multipart/form-data">
                     @csrf

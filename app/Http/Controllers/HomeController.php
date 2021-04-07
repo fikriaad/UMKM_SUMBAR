@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Barang_Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Slider_Model;
-use App\Kategori_Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use App\Barang_Model;
+use App\Slider_Model;
+use App\Kategori_Model;
+use App\Umkm_Model;
 
 class HomeController extends Controller
 {
@@ -17,13 +18,30 @@ class HomeController extends Controller
     {
         $slider = Slider_Model::all();
         $kategori = Kategori_Model::all();
+        $product = Barang_Model::all();
+        $umkm = DB::table('tb_data_umkm')
+        ->limit(3)
+        ->get();
         $active = "home";
         return view(
             'frontend.page.home',
             [
                 'active' => $active,
                 'kategori' => $kategori,
-                'slider' => $slider
+                'slider' => $slider,    
+                'umkm' => $umkm,    
+                'product' => $product
+            ]
+        );
+    }
+
+    public function about()
+    {
+        $active = "about";
+        return view(
+            'frontend.page.about',
+            [
+                'active' => $active
             ]
         );
     }
@@ -31,21 +49,28 @@ class HomeController extends Controller
     public function product()
     {
         $active = "product";
+        $product  = DB::table('tb_barang')
+            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+            ->select('tb_barang.*','tb_kategori.kategori_nama')
+            ->get();
         return view(
             'frontend.page.product',
             [
-                'active' => $active
+                'active' => $active,
+                'product' => $product
             ]
         );
     }
 
     public function listUmkm()
     {
+        $umkm = Umkm_Model::all();
         $active = "listUmkm";
         return view(
             'frontend.page.umkm',
             [
-                'active' => $active
+                'active' => $active,
+                'umkm' => $umkm
             ]
         );
     }
