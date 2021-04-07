@@ -34,6 +34,10 @@ Route::prefix('umkm')->group(function () {
         Route::get('logout-umkm', 'Umkm\DashboardController@logout')->name('logout-umkm');
         //Profile
         Route::get('profile-umkm', 'Umkm\ProfileController@index')->name('profile-umkm');
+        
+        Route::put('profile-umkm/profile/{umkm}', 'Umkm\ProfileController@profileUpdate')->name('profile-umkm.profile');
+        Route::put('profile-umkm/pemilik/{umkm}', 'Umkm\ProfileController@pemilikUpdate')->name('profile-umkm.pemilik');
+        Route::put('profile-umkm/akun/{umkm}', 'Umkm\ProfileController@akunUpdate')->name('profile-umkm.akun');
         //cari kota
         Route::post('profile-umkm/carikota', 'Umkm\ProfileController@carikota');
 
