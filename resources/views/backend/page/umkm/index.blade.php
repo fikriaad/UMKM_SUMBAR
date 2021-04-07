@@ -166,8 +166,6 @@
             <!-- /.card -->
         </div>
     </div>
-    <!-- /.row (main row) -->
-    </div><!-- /.container-fluid -->
 </section>
 <div class="modal fade" id="ModalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">

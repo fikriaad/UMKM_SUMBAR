@@ -33,8 +33,15 @@ Route::prefix('umkm')->group(function () {
     Route::middleware(['umkm_sudah_login'])->group(function () {
         Route::get('dashboard-umkm', 'Umkm\DashboardController@dashboard')->name('dashboard-umkm');
         Route::get('logout-umkm', 'Umkm\DashboardController@logout')->name('logout-umkm');
+        //Profile
         Route::get('profile-umkm', 'Umkm\ProfileController@index')->name('profile-umkm');
         
+        Route::put('profile-umkm/profile/{umkm}', 'Umkm\ProfileController@profileUpdate')->name('profile-umkm.profile');
+        Route::put('profile-umkm/pemilik/{umkm}', 'Umkm\ProfileController@pemilikUpdate')->name('profile-umkm.pemilik');
+        Route::put('profile-umkm/akun/{umkm}', 'Umkm\ProfileController@akunUpdate')->name('profile-umkm.akun');
+        //cari kota
+        Route::post('profile-umkm/carikota', 'Umkm\ProfileController@carikota');
+
         // PRODUCT-UMKM
         Route::get('product-umkm', 'Umkm\ProductController@index')->name('product-umkm');
         Route::post('product-umkm', 'Umkm\ProductController@store')->name('product-store');
