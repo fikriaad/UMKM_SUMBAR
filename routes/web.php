@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 // FRONTEND
 // Navbar
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/product', 'HomeController@product')->name('product');
 Route::get('/listUmkm', 'HomeController@listUmkm')->name('listUmkm');
 Route::get('/detailProduct/{product}', 'HomeController@detailProduct')->name('detailProduct');
@@ -44,11 +45,13 @@ Route::prefix('umkm')->group(function () {
         // PRODUCT-UMKM
         Route::get('product-umkm', 'Umkm\ProductController@index')->name('product-umkm');
         Route::post('product-umkm', 'Umkm\ProductController@store')->name('product-store');
+        Route::put('product/{product}', 'Umkm\ProductController@update')->name('product-update');
+        Route::delete('product/{product}', 'Umkm\ProductController@destroy')->name('product-delete');
+        Route::post('cari_data_produk', 'Umkm\ProductController@cari_data_produk')->name('cari_data_produk');
+        
 
         // Data Barang
         Route::get('barang/{barang}', 'Backend\BarangController@edit')->name('barang.edit');
-        Route::put('barang/{barang}', 'Backend\BarangController@update')->name('barang.update');
-        Route::delete('barang/{barang}', 'Backend\BarangController@destroy')->name('barang.delete');
         Route::post('barang/carisub', 'Backend\BarangController@carisub');
     });
 });

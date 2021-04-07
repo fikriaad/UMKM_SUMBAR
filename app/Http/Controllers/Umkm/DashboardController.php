@@ -46,6 +46,7 @@ class DashboardController extends Controller
     }
     public function registerAdmin(Request $r)
     {
+        $filename = "avatar5.png";
         $pemilik = $r->pemilik;
         $pemilik_nohp = $r->pemilik_nohp;
         $umkm_nama = $r->umkm_nama;
@@ -62,6 +63,7 @@ class DashboardController extends Controller
             'umkm_nama' => $umkm_nama,
             'jenis_id' => $jenis_id,
             'umkm_alamat' => $umkm_alamat,
+            'umkm_foto' => $filename,
             'umkm_email' => $umkm_email,
             'umkm_password' => $pwd,
         );
@@ -78,9 +80,14 @@ class DashboardController extends Controller
     function dashboard()
     {
         $active = "home";
+        $umkm = DB::table('tb_data_umkm')
+        ->where('umkm_id','=', session('umkm_id'))
+        ->first();
+
         return view('frontend/umkm/home',
         [
-            'active' => $active
+            'active' => $active,
+            'umkm' => $umkm
         ]);
     }
 }

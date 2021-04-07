@@ -30,13 +30,13 @@
 <!-- KATEGORI -->
 <script>
     $('.owl-kategory').owlCarousel({
-        center: true,
+        center: false,
         items:2,
         loop:false,
         margin:20,
         responsive:{
             600:{
-                items:10
+                items:7
             }
         }
     })

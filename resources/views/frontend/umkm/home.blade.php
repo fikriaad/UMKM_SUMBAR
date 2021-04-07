@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-8" style="margin-top: 15px">
                 <div class="d-flex">
-                    <h2>Nama Toko</h2>
+                    <h2>{{$umkm->umkm_nama}}</h2>
                 </div>
                 <p>
                     <span class="text-icon" title="XP">

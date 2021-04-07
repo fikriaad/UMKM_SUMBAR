@@ -37,23 +37,21 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+	</head>
+	<body>
+        <!-- jQuery Plugins -->
+        <script src="{{asset('frontend/js/jquery.min.js')}}"></script>
+		    <script src="{{asset('lte/build/js/axios.min.js')}}"></script>
+        
+        @include('frontend/component/header')
 
-</head>
+        @include('frontend/component/navbar')
+        
+        @yield('content')
 
-<body>
-	<!-- jQuery Plugins -->
-	<script src="{{asset('frontend/js/jquery.min.js')}}"></script>
+        @include('frontend/component/footer')
 
-	@include('frontend/component/header')
-
-	@include('frontend/component/navbar')
-
-	@yield('content')
-
-	@include('frontend/component/footer')
-
-	@include('frontend/component/script')
-
-</body>
-
+        @include('frontend/component/script')
+		
+	</body>
 </html>
