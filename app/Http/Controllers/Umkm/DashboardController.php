@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Umkm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Umkm_Model;
-use App\Jenis_Model;
+use App\Kategori_Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Helper\JwtHelper;
@@ -38,10 +38,10 @@ class DashboardController extends Controller
     }
     public function register()
     {
-        $jenis = Jenis_Model::all();
+        $kategori = Kategori_Model::all();
         return view('frontend/auth/register',
     [
-        'jenis' => $jenis
+        'kategori' => $kategori
     ]);
     }
     public function registerAdmin(Request $r)
@@ -50,7 +50,7 @@ class DashboardController extends Controller
         $pemilik = $r->pemilik;
         $pemilik_nohp = $r->pemilik_nohp;
         $umkm_nama = $r->umkm_nama;
-        $jenis_id = $r->jenis_id;
+        $kategori_id = $r->kategori_id;
         $umkm_alamat = $r->umkm_alamat;
         $umkm_email = $r->umkm_email;
         $umkm_password = $r->umkm_password;
@@ -61,7 +61,7 @@ class DashboardController extends Controller
             'pemilik' => $pemilik,
             'pemilik_nohp' => $pemilik_nohp,
             'umkm_nama' => $umkm_nama,
-            'jenis_id' => $jenis_id,
+            'kategori_id' => $kategori_id,
             'umkm_alamat' => $umkm_alamat,
             'umkm_foto' => $filename,
             'umkm_email' => $umkm_email,
