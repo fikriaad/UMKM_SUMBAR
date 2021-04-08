@@ -22,7 +22,7 @@ class Umkm_Model extends Model
         'umkm_nama',
         'umkm_email',
         'umkm_password',
-        'jenis_id',
+        'kategori_id',
         'umkm_nohp',
         'umkm_foto',
         'umkm_lama_usaha',

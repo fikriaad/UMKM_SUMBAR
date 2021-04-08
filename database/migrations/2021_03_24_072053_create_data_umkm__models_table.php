@@ -23,7 +23,7 @@ class CreateDataUmkmModelsTable extends Migration
             $table->string('umkm_nama');
             $table->string('umkm_email');
             $table->string('umkm_password');
-            $table->integer('jenis_id')->nullable();
+            $table->integer('kategori_id');
             $table->string('umkm_nohp')->nullable();
             $table->string('umkm_foto')->nullable();
             $table->string('umkm_lama_usaha')->nullable();

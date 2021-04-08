@@ -2383,7 +2383,8 @@ color: #FFF;
   /* height: 100px; */
   padding: 10px;
   border-radius: 25px;  
-  transition: border-radius .8s;
+  transition: border-radius .25s;
+  margin-bottom: 10px;
 }
 
 .owl-kategory img:hover{

@@ -56,11 +56,11 @@
                         </div>
                     </div>
                     <div class="input-group  mb-3">
-                        <select name="jenis_id" id="jenis_id" class="form-control @error('jenis_id') {{ 'is-invalid' }} @enderror">
+                        <select name="kategori_id" id="kategori_id" class="form-control @error('kategori_id') {{ 'is-invalid' }} @enderror">
                             <option value="">-Pilih-</option>
-                            @foreach($jenis as $no => $jenis)
-                            <option value="{{ $jenis->jenis_id }}">
-                                {{ $jenis->jenis_nama}}</option>
+                            @foreach($kategori as $no => $kategori)
+                            <option value="{{ $kategori->kategori_id }}">
+                                {{ $kategori->kategori_nama}}</option>
                             @endforeach
                         </select>
                         <div class="input-group-append">
@@ -68,13 +68,7 @@
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>  
-                        @if(isset($jenis))
-                        <script>
-                            document.getElementById('jenis_id').value =
-                                '<?php echo $jenis->jenis_id ?>'
-                        </script>
-                        @endif
-                        @error('jenis_id')
+                        @error('kategori_id')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

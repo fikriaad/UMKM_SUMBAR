@@ -12,10 +12,10 @@
                     <h3 class="title">UMKM</h3>
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab1">Category</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Category</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Category</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Category</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab1">Jenis</a></li>
+                            <li><a data-toggle="tab" href="#tab1">Jenis</a></li>
+                            <li><a data-toggle="tab" href="#tab1">Jenis</a></li>
+                            <li><a data-toggle="tab" href="#tab1">Jenis</a></li>
                         </ul>
                     </div>
                 </div>
