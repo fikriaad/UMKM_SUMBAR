@@ -86,7 +86,7 @@
                                                 <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
                                             </div>
                                             <div class="product-body">
-                                                <p class="product-category">Category</p>
+                                                <p class="product-category">{{$products->kategori_nama}}</p>
                                                 <h3 class="product-name"><a href="#">{{$products->barang_nama}}</a></h3>
                                                 <h4 class="product-price">Rp {{$products->barang_harga}}
                                                     <!-- <del class="product-old-price">$990.00</del> -->
@@ -148,9 +148,11 @@
                                         <img src="{{asset('img/frontend/logo_umkm/'.$umkms->umkm_foto)}}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">{{$kategori->kategori_nama}}</p>
+                                        <h3 class="product-name"><a href="#">{{$umkms->umkm_nama}}</a></h3>
+                                        <h4 class="product-price">Ini rating 
+                                            <span class="product-old-price">{{$umkms->umkm_nohp}}</span>
+                                        </h4>
                                     </div>
                                 <!-- /product widget -->
                                 </div>
@@ -169,16 +171,18 @@
 
                     <div class="products-widget-slick" data-nav="#slick-nav-4">
                         <div>
-                            @foreach($umkm as $no => $umkm)
+                            @foreach($umkm as $no => $umkmn)
                                 <!-- product widget -->
                                 <div class="product-widget">
                                     <div class="product-img">
-                                        <img src="{{asset('img/frontend/logo_umkm/'.$umkm->umkm_foto)}}" alt="">
+                                        <img src="{{asset('img/frontend/logo_umkm/'.$umkmn->umkm_foto)}}" alt="">
                                     </div>
                                     <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">{{$kategori->kategori_nama}}</p>
+                                        <h3 class="product-name"><a href="#">{{$umkmn->umkm_nama}}</a></h3>
+                                        <h4 class="product-price">Ini rating 
+                                            <span class="product-old-price">{{$umkmn->umkm_nohp}}</span>
+                                        </h4>
                                     </div>
                                 <!-- /product widget -->
                                 </div>

@@ -46,7 +46,8 @@ Route::prefix('umkm')->group(function () {
         Route::get('product-umkm', 'Umkm\ProductController@index')->name('product-umkm');
         Route::post('product-umkm', 'Umkm\ProductController@store')->name('product-store');
         Route::put('product/{product}', 'Umkm\ProductController@update')->name('product-update');
-        Route::delete('product/{product}', 'Umkm\ProductController@destroy')->name('product-delete');
+        Route::delete('product/{barang}', 'Umkm\ProductController@destroy')->name('product.delete');
+
         Route::post('cari_data_produk', 'Umkm\ProductController@cari_data_produk')->name('cari_data_produk');
         
 

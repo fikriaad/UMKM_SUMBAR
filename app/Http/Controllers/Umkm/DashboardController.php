@@ -28,6 +28,7 @@ class DashboardController extends Controller
             // masukan data login ke session
             $request->session()->put('umkm_email', $data_user->umkm_email);
             $request->session()->put('umkm_id', $data_user->umkm_id);
+            $request->session()->put('kategori_id', $data_user->kategori_id);
             $request->session()->put('token', $token);
             // redirect ke halaman home
             // dd(session('admin_username'));
@@ -48,7 +49,7 @@ class DashboardController extends Controller
     {
         $filename = "avatar5.png";
         $pemilik = $r->pemilik;
-        $pemilik_nohp = $r->pemilik_nohp;
+        $umkm_nohp = $r->umkm_nohp;
         $umkm_nama = $r->umkm_nama;
         $kategori_id = $r->kategori_id;
         $umkm_alamat = $r->umkm_alamat;
@@ -59,7 +60,7 @@ class DashboardController extends Controller
 
         $data = array(
             'pemilik' => $pemilik,
-            'pemilik_nohp' => $pemilik_nohp,
+            'umkm_nohp' => $umkm_nohp,
             'umkm_nama' => $umkm_nama,
             'kategori_id' => $kategori_id,
             'umkm_alamat' => $umkm_alamat,

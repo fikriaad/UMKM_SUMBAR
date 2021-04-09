@@ -59,17 +59,17 @@
                                                             <input class="input" name="umkm_nama" value="{{$umkm->umkm_nama}}">
                                                         </div>
                                                         <div class="form-group">
-                                                            <h4>Jenis UMKM <span class="text-danger">*</span></h4>
-                                                            <select name="jenis_id" id="jenis_id" class="input">
-                                                                @foreach($jenis as $no => $jenis)
-                                                                <option value="{{$jenis->jenis_id }}">
-                                                                    {{$jenis->jenis_nama}}</option>
+                                                            <h4>Kategori UMKM <span class="text-danger">*</span></h4>
+                                                            <select name="kategori_id" id="kategori_id" class="input">
+                                                                @foreach($kategori as $no => $kategori)
+                                                                <option value="{{$kategori->kategori_id }}">
+                                                                    {{$kategori->kategori_nama}}</option>
                                                                 @endforeach
                                                             </select>
-                                                            @if(isset($jenis))
+                                                            @if(isset($kategori))
                                                             <script>
-                                                                document.getElementById('jenis_id').value =
-                                                                    "{{$jenis->jenis_id}}"
+                                                                document.getElementById('kategori_id').value =
+                                                                    "{{$kategori->kategori_id}}"
                                                             </script>
                                                             @endif
                                                         </div>

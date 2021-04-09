@@ -2379,7 +2379,7 @@ color: #FFF;
 }
 
 .owl-kategory img{
-  border: 1px solid #D10024;
+  border: 1px solid;
   /* height: 100px; */
   padding: 10px;
   border-radius: 25px;  
@@ -2388,6 +2388,6 @@ color: #FFF;
 }
 
 .owl-kategory img:hover{
-  border: 1px solid ;
+  border: 1px solid #D10024;
   border-radius: 0px;  
 }

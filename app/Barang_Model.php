@@ -20,5 +20,6 @@ class Barang_Model extends Model
         'barang_harga',
         'barang_keterangan',
         'barang_gambar',
+        'barang_view',
     ];
 }
