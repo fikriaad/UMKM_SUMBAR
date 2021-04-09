@@ -22,6 +22,7 @@ class CreateBarangModelsTable extends Migration
             $table->string('barang_harga');
             $table->text('barang_keterangan');
             $table->string('barang_gambar');
+            $table->integer('barang_view');
             $table->timestamps();
             $table->softDeletes();
         });

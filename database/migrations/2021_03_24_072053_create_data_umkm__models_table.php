@@ -17,14 +17,14 @@ class CreateDataUmkmModelsTable extends Migration
             $table->bigIncrements('umkm_id');
             $table->string('pemilik');
             $table->text('pemilik_tgl_lahir')->nullable();
-            $table->string('pemilik_nohp');
+            $table->string('pemilik_nohp')->nullable();
             $table->text('pemilik_alamat')->nullable();
             $table->string('pemilik_ktp')->nullable();
             $table->string('umkm_nama');
             $table->string('umkm_email');
             $table->string('umkm_password');
             $table->integer('kategori_id');
-            $table->string('umkm_nohp')->nullable();
+            $table->string('umkm_nohp');
             $table->string('umkm_foto')->nullable();
             $table->string('umkm_lama_usaha')->nullable();
             $table->string('prov_id')->nullable();

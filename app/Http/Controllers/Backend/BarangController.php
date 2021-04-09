@@ -122,6 +122,7 @@ class BarangController extends Controller
             ->route('barang')
             ->with('message', 'Data berhasil dihapus');
     }
+    
     public function carisub(Request $request)
     {
         $sub = DB::table('tb_sub_kategori')

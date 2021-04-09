@@ -64,15 +64,21 @@ class HomeController extends Controller
 
     public function listUmkm()
     {
-        $umkm = Umkm_Model::all();
+        $umkm = DB::table('tb_data_umkm')->get();
+        $kategori = DB::table('tb_kategori')->get();
         $active = "listUmkm";
+        // dd($kategori);
+
+        // cara 
+
         return view(
             'frontend.page.umkm',
             [
                 'active' => $active,
+                'kategori' => $kategori,
                 'umkm' => $umkm
             ]
-        );
+        ); 
     }
     public function detailProduct($product)
     {

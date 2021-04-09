@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="Telpon" name="pemilik_nohp">
+                        <input type="text" class="form-control" placeholder="Nama Toko" name="umkm_nama">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nama Toko" name="umkm_nama">
+                        <input type="number" class="form-control" placeholder="WhatAspp UMKM" name="umkm_nohp">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="input-group  mb-3">
                         <select name="kategori_id" id="kategori_id" class="form-control @error('kategori_id') {{ 'is-invalid' }} @enderror">
-                            <option value="">-Pilih-</option>
+                            <option value="">-Kategori UMKM-</option>
                             @foreach($kategori as $no => $kategori)
                             <option value="{{ $kategori->kategori_id }}">
                                 {{ $kategori->kategori_nama}}</option>

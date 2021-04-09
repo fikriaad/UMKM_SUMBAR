@@ -18,25 +18,32 @@ class ProductController extends Controller
     function index()
     {
         $barang  = DB::table('tb_barang')
-            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
-            ->select('tb_barang.*','tb_kategori.kategori_nama')
-            ->get();
+                    ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+                    ->leftjoin('tb_sub_kategori', 'tb_sub_kategori.sub_id', '=', 'tb_barang.sub_id')
+                    ->select('tb_barang.*','tb_kategori.kategori_nama', 'tb_sub_kategori.sub_nama')
+                    ->where('umkm_id',  '=', session()->get('umkm_id'))
+                    ->get();
+
 
         $active = "product";
         $kategori = Kategori_Model::all();
+        $sub = DB::table('tb_sub_kategori')
+                ->where('kategori_id',  '=', session()->get('kategori_id'))
+                ->get();
         
         return view('frontend/umkm/product/index',
         [
             'active' => $active,
             'barang' => $barang,
             'kategori' => $kategori,
+            'sub' => $sub,
         ]);
     }
 
     public function store(Request $request, Barang_Model $barang)
     {
         $validator = Validator::make($request->all(),[
-            'kategori_id'           => 'required',
+            'sub_id'           => 'required',
             'barang_nama'           => 'required',
             'barang_harga'          => 'required|numeric',
             'barang_keterangan'     => 'required',
@@ -53,7 +60,8 @@ class ProductController extends Controller
             $foto->move('img/frontend/product/', $filename);
 
             $barang->umkm_id = session()->get('umkm_id');
-            $barang->kategori_id = $request->input('kategori_id');
+            $barang->kategori_id = session()->get('kategori_id');
+            $barang->sub_id = $request->input('sub_id');
             $barang->barang_nama = $request->input('barang_nama');
             $barang->barang_harga = $request->input('barang_harga');
             $barang->barang_keterangan = $request->input('barang_keterangan');
@@ -71,6 +79,7 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'umkm_id'           => 'required',
             'kategori_id'           => 'required',
+            'sub_id'           => 'required',
             'barang_nama'           => 'required',
             'barang_harga'          => 'required|numeric',
             'barang_facebook'       => 'required',
@@ -84,6 +93,7 @@ class ProductController extends Controller
         } else {
             $barang->umkm_id = $request->input('umkm_id');
             $barang->kategori_id = $request->input('kategori_id');
+            $barang->sub_id = $request->input('sub_id');
             $barang->barang_nama = $request->input('barang_nama');
             $barang->barang_harga = $request->input('barang_harga');
             $barang->barang_keterangan = $request->input('barang_keterangan');
@@ -93,6 +103,16 @@ class ProductController extends Controller
                 ->route('barang')
                 ->with('message', 'Data berhasil diedit');
         }
+    }
+
+    public function destroy(Barang_Model $barang)
+    {
+
+        $barang->forceDelete();
+
+        return redirect()
+            ->route('product-umkm')
+            ->with('message', 'Data berhasil dihapus');
     }
 
     public function cari_data_produk(Request $request)
