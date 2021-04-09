@@ -19,8 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/product', 'HomeController@product')->name('product');
-Route::get('/listUmkm', 'HomeController@listUmkm')->name('listUmkm');
 Route::get('/detailProduct/{product}', 'HomeController@detailProduct')->name('detailProduct');
+Route::get('/listUmkm', 'HomeController@listUmkm')->name('listUmkm');
+Route::get('/detailUmkm/{umkm}', 'HomeController@detailUmkm')->name('detailUmkm');
 
 Route::prefix('umkm')->group(function () {
     Route::middleware(['umkm_belum_login'])->group(function () {
