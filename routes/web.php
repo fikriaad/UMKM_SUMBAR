@@ -35,7 +35,7 @@ Route::prefix('umkm')->group(function () {
         Route::get('logout-umkm', 'Umkm\DashboardController@logout')->name('logout-umkm');
         //Profile
         Route::get('profile-umkm', 'Umkm\ProfileController@index')->name('profile-umkm');
-        
+
         Route::put('profile-umkm/profile/{umkm}', 'Umkm\ProfileController@profileUpdate')->name('profile-umkm.profile');
         Route::put('profile-umkm/pemilik/{umkm}', 'Umkm\ProfileController@pemilikUpdate')->name('profile-umkm.pemilik');
         Route::put('profile-umkm/akun/{umkm}', 'Umkm\ProfileController@akunUpdate')->name('profile-umkm.akun');
@@ -48,7 +48,7 @@ Route::prefix('umkm')->group(function () {
         Route::put('product/{product}', 'Umkm\ProductController@update')->name('product-update');
         Route::delete('product/{product}', 'Umkm\ProductController@destroy')->name('product-delete');
         Route::post('cari_data_produk', 'Umkm\ProductController@cari_data_produk')->name('cari_data_produk');
-        
+
 
         // Data Barang
         Route::get('barang/{barang}', 'Backend\BarangController@edit')->name('barang.edit');
@@ -78,14 +78,6 @@ Route::prefix('backend')->group(function () {
         Route::get('admin/{admin}', 'Backend\AdminController@edit')->name('admin.edit');
         Route::put('admin/{admin}', 'Backend\AdminController@update')->name('admin.update');
         Route::delete('admin/{admin}', 'Backend\AdminController@destroy')->name('admin.delete');
-
-        // Jenis UMKM
-        Route::get('jenis', 'Backend\JenisController@index')->name('jenis');
-        Route::get('jenis.create', 'Backend\JenisController@create')->name('jenis.create');
-        Route::post('jenis', 'Backend\JenisController@store')->name('jenis.store');
-        Route::get('jenis/{jenis}', 'Backend\JenisController@edit')->name('jenis.edit');
-        Route::put('jenis/{jenis}', 'Backend\JenisController@update')->name('jenis.update');
-        Route::delete('jenis/{jenis}', 'Backend\JenisController@destroy')->name('jenis.delete');
 
         // Data UMKM
         Route::get('umkm', 'Backend\UmkmController@index')->name('umkm');
@@ -150,5 +142,13 @@ Route::prefix('backend')->group(function () {
         Route::get('iklan/{iklan}', 'Backend\IklanController@edit')->name('iklan.edit');
         Route::put('iklan/{iklan}', 'Backend\IklanController@update')->name('iklan.update');
         Route::delete('iklan/{iklan}', 'Backend\IklanController@destroy')->name('iklan.delete');
+
+        //Data Artikel
+        Route::get('artikel', 'Backend\ArtikelController@index')->name('artikel');
+        Route::get('artikel.create', 'Backend\ArtikelController@create')->name('artikel.create');
+        Route::post('artikel', 'Backend\ArtikelController@store')->name('artikel.store');
+        Route::get('artikel/{artikel}', 'Backend\ArtikelController@edit')->name('artikel.edit');
+        Route::put('artikel/{artikel}', 'Backend\ArtikelController@update')->name('artikel.update');
+        Route::delete('artikel/{artikel}', 'Backend\ArtikelController@destroy')->name('artikel.delete');
     });
 });

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Umkm_Model;
-use App\Jenis_Model;
+use App\Kategori_Model;
 use App\Provinsi_Model;
 use App\Kota_Model;
 use Illuminate\Support\Facades\Validator;
@@ -20,12 +20,12 @@ class ProfileController extends Controller
     {
         // dd(session()->get('umkm_id'));
         $umkm  = DB::table('tb_data_umkm')
-            ->leftjoin('tb_jenis_umkm', 'tb_jenis_umkm.jenis_id', '=', 'tb_data_umkm.jenis_id')
+            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_data_umkm.kategori_id')
             ->leftjoin('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
             ->leftjoin('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
             ->where('umkm_id', '=', session()->get('umkm_id'))
             ->first();
-        $jenis = Jenis_Model::all();
+        $kategori = Kategori_Model::all();
         $prov = Provinsi_Model::all();
         $kota = Kota_Model::all();
         $active = "profile";
@@ -36,7 +36,7 @@ class ProfileController extends Controller
                 'pemilik' => 'profile-umkm.pemilik',
                 'akun' => 'profile-umkm.akun',
                 'umkm' => $umkm,
-                'jenis' => $jenis,
+                'kategori' => $kategori,
                 'prov' => $prov,
                 'kota' => $kota,
                 'active' => $active
@@ -57,7 +57,7 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'umkm_nama'         => 'required',
-            'jenis_id'          => 'required',
+            'kategori_id'          => 'required',
             'umkm_lama_usaha'   => 'required',
             'umkm_nohp'         => 'required|numeric',
             'prov_id'           => 'required',
@@ -73,17 +73,17 @@ class ProfileController extends Controller
         } else {
             if ($request->hasFile('umkm_foto') != null) {
                 if (!empty($umkm->umkm_foto)) {
-                    unlink('img/backend/umkm/' . $umkm->umkm_foto);
+                    unlink('img/frontend/logo_umkm/' . $umkm->umkm_foto);
                 }
                 $foto = $request->file('umkm_foto');
                 $filename = time() . "." . $foto->getClientOriginalExtension();
-                $foto->move('img/backend/umkm/', $filename);
+                $foto->move('img/frontend/logo_umkm/', $filename);
                 $umkm->umkm_foto = $filename;
             }
             $slug = SlugHelper::seo_title($request->input('umkm_nama'));
 
             $umkm->umkm_nama = $request->input('umkm_nama');
-            $umkm->jenis_id = $request->input('jenis_id');
+            $umkm->kategori_id = $request->input('kategori_id');
             $umkm->umkm_lama_usaha = $request->input('umkm_lama_usaha');
             $umkm->umkm_nohp = $request->input('umkm_nohp');
             $umkm->prov_id = $request->input('prov_id');
@@ -115,12 +115,12 @@ class ProfileController extends Controller
         } else {
             if ($request->hasFile('pemilik_ktp') != null) {
                 if (!empty($umkm->pemilik_ktp)) {
-                    unlink('img/backend/umkm/' . $umkm->pemilik_ktp);
+                    unlink('img/frontend/logo_umkm/' . $umkm->pemilik_ktp);
                 }
-                $foto = $request->file('pemilik_ktp');
-                $filename = time() . "." . $foto->getClientOriginalExtension();
-                $foto->move('img/backend/umkm/', $filename);
-                $umkm->pemilik_ktp = $filename;
+                $ktp = $request->file('pemilik_ktp');
+                $filektp = "ktp" . time() . "." . $ktp->getClientOriginalExtension();
+                $ktp->move('img/frontend/logo_umkm/', $filektp);
+                $umkm->pemilik_ktp = $filektp;
             }
 
             $umkm->pemilik = $request->input('pemilik');
