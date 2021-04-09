@@ -753,7 +753,7 @@ textarea.input {
 }
 
 .shop .shop-img>img {
-  width: 100%;
+  width: 250px;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }

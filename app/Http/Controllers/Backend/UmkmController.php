@@ -283,13 +283,12 @@ class UmkmController extends Controller
 
     public function destroy(Umkm_Model $umkm)
     {
-        $umkm_file = $umkm->pemilik_ktp;
         if (!empty($umkm->pemilik_ktp)) {
             unlink('img/frontend/logo_umkm/' . $umkm->pemilik_ktp);
         }
-
-        $umkm_file = $umkm->umkm_foto;
-        unlink('img/frontend/logo_umkm/' . $umkm_file);
+        if (!empty($umkm->umkm_foto)) {
+            unlink('img/frontend/logo_umkm/' . $umkm->umkm_foto);
+        }
         $umkm->forceDelete();
 
         return redirect()
