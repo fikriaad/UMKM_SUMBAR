@@ -50,7 +50,7 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama UMKM</th>
-                                            <th scope="col">Jenis</th>
+                                            <th scope="col">Kategori</th>
                                             <th scope="col">Lama Usaha</th>
                                             <!-- <th scope="col">No Telfon</th> -->
                                             <!-- <th scope="col">Provinsi</th> -->
@@ -69,7 +69,7 @@
                                         <tr>
                                             <td>{{$no + 1}}</td>
                                             <td>{{$umkm->umkm_nama}}</td>
-                                            <td>{{$umkm->jenis_nama}}</td>
+                                            <td>{{$umkm->kategori_nama}}</td>
                                             <td>{{$umkm->umkm_lama_usaha}}</td>
                                             <!-- <td>{{$umkm->umkm_nohp}}</td> -->
                                             <!-- <td>{{$umkm->prov_nama}}</td> -->
@@ -78,7 +78,7 @@
                                             <!-- <td>{{$umkm->umkm_email}}</td> -->
                                             <!-- <td>{{$umkm->umkm_instagram}}</td> -->
                                             <!-- <td>{{$umkm->umkm_facebook}}</td> -->
-                                            <td><img src="{{ asset('img/backend/umkm/' . $umkm->umkm_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
+                                            <td><img src="{{ asset('img/frontend/logo_umkm/' . $umkm->umkm_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
                                             <td>
                                                 <label class="switch">
                                                     <?php $cek = $umkm->umkm_status ?>
@@ -114,7 +114,7 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama UMKM</th>
-                                            <th scope="col">Jenis</th>
+                                            <th scope="col">Kategori</th>
                                             <th scope="col">Lama Usaha</th>
                                             <!-- <th scope="col">No Telfon</th> -->
                                             <!-- <th scope="col">Provinsi</th> -->
@@ -133,7 +133,7 @@
                                         <tr>
                                             <td>{{$no + 1}}</td>
                                             <td>{{$umkm->umkm_nama}}</td>
-                                            <td>{{$umkm->jenis_nama}}</td>
+                                            <td>{{$umkm->kategori_nama}}</td>
                                             <td>{{$umkm->umkm_lama_usaha}}</td>
                                             <!-- <td>{{$umkm->umkm_nohp}}</td> -->
                                             <!-- <td>{{$umkm->prov_nama}}</td> -->
@@ -142,7 +142,7 @@
                                             <!-- <td>{{$umkm->umkm_email}}</td> -->
                                             <!-- <td>{{$umkm->umkm_instagram}}</td> -->
                                             <!-- <td>{{$umkm->umkm_facebook}}</td> -->
-                                            <td><img src="{{ asset('img/backend/umkm/' . $umkm->umkm_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
+                                            <td><img src="{{ asset('img/frontend/logo_umkm/' . $umkm->umkm_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
                                             <td>
                                                 <label class="switch">
                                                     <?php $cek = $umkm->umkm_status ?>
