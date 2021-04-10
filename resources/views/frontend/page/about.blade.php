@@ -2,32 +2,24 @@
 
 @section ('title', 'Tentang Kami')
 @section ('content')
-<!-- SECTION -->
-<div class="section">
-    <!-- container -->
-    <div class="container"> 
-            <!-- section title -->
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h3 class="title">UMKM</h3>
-                    <div class="section-nav">
-                        <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab1">Category</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Category</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Category</a></li>
-                            <li><a data-toggle="tab" href="#tab1">Category</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- /section title -->
+<div id="breadcrumb" class="section">
+    <div class="container">
         <div class="row">
-        
+            <div class="col-md-12">
+                <h3 class="breadcrumb-header">Tentang Kami</h3>
+            </div>
         </div>
-        <!-- /row -->
     </div>
-    <!-- /container -->
 </div>
-<!-- /SECTION -->
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <p style="font-size: 15pt">
+                Website ini merupakan website yang berfungsi atau bertujuan untuk membantu dan menampung UMKM yang ada di Sumatera Barat untuk memasarkan produk dan UMKMnya. Diharapkan dengan adanya Website UMKM ini dapat membantu UMKM kecil atau UMKM baru agar dapat melakukan pomosi dan menganalkan produk dan UMKMnya dengan jangawan yang lebih luas. Dengan pemasaran produk yang luas baik di Sumatera Barat maupun diluar provinsi maka akan banyak orang yang tau tentang UMKM tersebut beserta produknya. Jika pemasarannya sudah luas maka transaksi yang terjadi makin banyak sehingga UMKM dapat terus barjalan. Website ini juga bertujuan untuk membantu orang di Sumatera Barat atau luar provisi dapat mencari barang yang dibutuhkan dengan lebih mudah.
+            </p>
+        </div>
+    </div>
+</div>
 
 @endsection
