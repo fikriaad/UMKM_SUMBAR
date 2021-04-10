@@ -21,7 +21,7 @@
         <!-- row -->
         <div class="row">
             <div class="col-md-3">
-                <img src="{{asset('frontend/img/pp.jpg')}}" alt="" style="border: 1px solid #D10024; width: 200px; margin-top: -75px; ">
+                <img src="{{asset('img/frontend/logo_umkm/'.$dataUmkm->umkm_foto)}}" alt="" style="border: 1px solid #D10024; width: 200px; margin-top: -75px; ">
             </div>
             <div class="col-md-8" style="margin-top: 15px">
                 <div class="d-flex">
@@ -34,7 +34,7 @@
                 </p>
                 <p>
                     <span class="text-icon">
-                        <i class="fa fa-clock-o"></i> Bergabung sejak 11 Nov 2020
+                        <i class="fa fa-clock-o"></i>
                     </span>
                 </p>
                 <p>

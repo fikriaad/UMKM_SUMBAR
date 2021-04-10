@@ -57,7 +57,7 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'umkm_nama'         => 'required',
-            'kategori_id'          => 'required',
+            'kategori_id'       => 'required',
             'umkm_lama_usaha'   => 'required',
             'umkm_nohp'         => 'required|numeric',
             'prov_id'           => 'required',
@@ -67,7 +67,7 @@ class ProfileController extends Controller
         ]);
         if ($validator->fails()) {
             return redirect()
-                ->route('profile-umkm.profile', $umkm->umkm_id)
+                ->route('profile-umkm')
                 ->withErrors($validator)
                 ->withInput();
         } else {
