@@ -41,7 +41,7 @@
 	<body>
         <!-- jQuery Plugins -->
         <script src="{{asset('frontend/js/jquery.min.js')}}"></script>
-		    <script src="{{asset('lte/build/js/axios.min.js')}}"></script>
+		<script src="{{asset('lte/build/js/axios.min.js')}}"></script>
         
         @include('frontend/component/header')
 

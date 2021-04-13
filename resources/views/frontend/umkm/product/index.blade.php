@@ -45,7 +45,7 @@
                                         <div class="row text-right">
                                             <button class="btn btn-sm btn-primary"><i class="fa fa-image"></i></button>
                                             <button class="btn btn-sm btn-success"><i class="fa fa-info-circle"></i></button>
-                                            <button class="btn btn-sm btn-warning" onclick="modal_product('{{ route("product-update", $semuapdk->barang_id ) }}', '{{ $semuapdk->barang_id  }}')"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-warning" onclick="modal_product('{{ route("product-store") }}', '{{ $semuapdk->barang_id  }}')"><i class="fa fa-edit"></i></button>
                                             <button class="btn btn-sm btn-danger" onclick="mHapus('{{ route('product.delete', $semuapdk->barang_id) }}')" ><i class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
@@ -86,9 +86,9 @@
                                                 <!-- <del class="product-old-price">$990.00</del> -->
                                             </h4>
                                             <div class="row text-right">
-                                                <button class="btn btn-sm btn-primary"><i class="fa fa-image"></i></button>
+                                                <button class="btn btn-sm btn-primary" onclick="tambahGambar()"><i class="fa fa-image"></i></button>
                                                 <button class="btn btn-sm btn-success"><i class="fa fa-info-circle"></i></button>
-                                                <button class="btn btn-sm btn-warning" onclick="modal_product('{{ route("product-update", $subproduk->barang_id ) }}', '{{ $subproduk->barang_id  }}')"><i class="fa fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-warning" onclick="modal_product('{{ route("product-store") }}', '{{ $subproduk->barang_id  }}')"><i class="fa fa-edit"></i></button>
                                                 <button class="btn btn-sm btn-danger" onclick="mHapus('{{ route('product.delete', $subproduk->barang_id) }}')" ><i class="fa fa-trash"></i></button>
                                             </div>
                                         </div>
@@ -125,6 +125,7 @@
                 <div class="modal-body">
                     <form action="" method="POST" enctype="multipart/form-data" id="formProduk">
                         @csrf
+                        <input type="hidden" name="barang_id" id="barang_id">
                         <div class="form-group">
                             <label for="sub_id">Sub Kategori</label>
                             <select name="sub_id" id="sub_id" class="form-control @error('sub_id') {{ 'is-invalid' }} @enderror">
@@ -156,6 +157,29 @@
                             <label for="barang_keterangan">Keterangan Barang</label>
                             <textarea class="form-control" rows="3" name="barang_keterangan" id="barang_keterangan" value="{{ old('barang_keterangan') ?? '' }}" required></textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="barang_gambar">Foto Barang</label>
+                            <input type="file" class="form-control" name="barang_gambar" id="barang_gambar">
+                        </div>
+                        <div class="row text-right" style="margin-right: 2px">
+                            <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    
+    <div class="modal fade" id="ModalGambar" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Input Gambar Baru</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" enctype="multipart/form-data" id="formGambar">
+                        @csrf
                         <div class="form-group">
                             <label for="barang_gambar">Foto Barang</label>
                             <input type="file" class="form-control" name="barang_gambar" id="barang_gambar" required>
@@ -201,11 +225,12 @@
                     'barang_id': aksi,
                 }).then(function(res) {
                     var barang = res.data;
-                    console.log(barang);
+                    $('#barang_id').val(barang.barang_id);
                     $('#barang_nama').val(barang.barang_nama);
                     $('#barang_harga').val(barang.barang_harga);
                     $('#barang_keterangan').val(barang.barang_keterangan);
-                    $('#kategori_id').val(barang.kategori_id).change();
+                    $('#barang_gambar').attr('required', false);
+                    // $('#kategori_id').val(barang.kategori_id).change();
                 }).catch(function(err) {
                     console.log(err)
                 })
@@ -214,9 +239,17 @@
                 $('#barang_harga').val('');
                 $('#barang_keterangan').val('');
                 $('#barang_gambar').val('');
+                $('#barang_gambar').attr('required', true);
             }
             $('#formProduk').attr('action', url);
             $('#MyModal').modal('show');
+        }
+
+        function tambahGambar()
+        {
+            $('#gambar_id').val('');
+            $('#formGambar').attr('action', url);
+            $('#ModalGambar').modal()
         }
 
         // untuk hapus data
@@ -224,6 +257,8 @@
             $('#ModalHapus').modal()
             $('#formDelete').attr('action', url);
         }
+
+
 
     </script>
 

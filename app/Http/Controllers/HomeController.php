@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Barang_Model;
 use App\Slider_Model;
 use App\Kategori_Model;
+use App\Sub_Kategori_Model;
 use App\Umkm_Model;
 
 class HomeController extends Controller
@@ -18,18 +19,23 @@ class HomeController extends Controller
     {
         $slider = Slider_Model::all();
         $kategori = Kategori_Model::all();
-        $product = Barang_Model::all();
+        $sub = Sub_Kategori_Model::first();
+        $product = DB::table('tb_barang')
+                    ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+                    ->select('tb_barang.*', 'tb_kategori.kategori_nama')
+                    ->get();
         $umkm = DB::table('tb_data_umkm')
-            ->limit(3)
-            ->get();
+                    ->limit(3)
+                    ->get();
         $active = "home";
         return view(
             'frontend.page.home',
             [
                 'active' => $active,
                 'kategori' => $kategori,
-                'slider' => $slider,
-                'umkm' => $umkm,
+                'sub' => $sub,
+                'slider' => $slider,    
+                'umkm' => $umkm,    
                 'product' => $product
             ]
         );
@@ -38,15 +44,23 @@ class HomeController extends Controller
     public function product()
     {
         $active = "product";
+        $kategori = Kategori_Model::all();
         $product  = DB::table('tb_barang')
             ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
             ->select('tb_barang.*', 'tb_kategori.kategori_nama')
             ->get();
+        $btpdk = DB::table('tb_barang')
+                    ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+                    ->select('tb_barang.*','tb_kategori.kategori_nama')
+                    ->limit(3)
+                    ->get();
         return view(
             'frontend.page.product',
             [
                 'active' => $active,
-                'product' => $product
+                'kategori' => $kategori,
+                'product' => $product,
+                'btpdk' => $btpdk
             ]
         );
     }

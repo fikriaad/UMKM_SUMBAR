@@ -1029,11 +1029,17 @@ textarea.input {
   transition: 0.2s all;
   z-index: 2;
 }
-
+/* .product:hover .product-img{
+  opacity: .7;
+} */
+    
 .product:hover .add-to-cart {
   -webkit-transform: translateY(100%);
   -ms-transform: translateY(100%);
   transform: translateY(100%);
+  /* z-index: 20;
+  bottom: 1px;
+  padding: 55px 0; */
 }
 
 .product .add-to-cart .add-to-cart-btn {
@@ -2390,4 +2396,8 @@ color: #FFF;
 .owl-kategory img:hover{
   border: 1px solid #D10024;
   border-radius: 0px;  
+}
+
+.section-tab-nav.tab-nav.categori-product li{
+  display: block;
 }

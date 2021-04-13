@@ -26,7 +26,7 @@
         <!-- container -->
         <div class="container">
             <!-- row -->
-            <div class="row">        
+            <div class="row">
                 <!-- section title -->
                 <div class="col-md-12">
                     <div class="section-title">
@@ -37,9 +37,13 @@
 
                 <div class="col-md-12">
                     <div class="owl-carousel owl-kategory owl-theme">
-                    @foreach ($kategori as $no => $kategori)
-                        <div class="item"><img src="{{asset('img/backend/kategori/'.$kategori->kategori_gambar)}}" alt=""></div>
-                    @endforeach
+                        @foreach ($kategori as $no => $kategori)
+                            <div class="item">
+                                <a href="product#{{ $kategori->kategori_nama }}">
+                                    <img src="{{asset('img/backend/kategori/'.$kategori->kategori_gambar)}}" alt="">
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -55,19 +59,10 @@
         <div class="container">
             <!-- row -->
             <div class="row">
-
                 <!-- section title -->
                 <div class="col-md-12">
-                    <div class="section-title">
-                        <h3 class="title">Best Products</h3>
-                        <div class="section-nav">
-                            <ul class="section-tab-nav tab-nav">
-                                <li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-                                <li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-                                <li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-                                <li><a data-toggle="tab" href="#tab1">Accessories</a></li>
-                            </ul>
-                        </div>
+                    <div id="{{ $kategori->kategori_nama }}" class="section-title">
+                        <h3 class="title">Best Product</h3>
                     </div>
                 </div>
                 <!-- /section title -->
@@ -77,40 +72,29 @@
                     <div class="row">
                         <div class="products-tabs">
                             <!-- tab -->
-                            <div id="tab1" class="tab-pane active">
-                                <div class="products-slick" data-nav="#slick-nav-1">
+                            <div class="tab-pane active">
+                                
                                     <!-- product -->
                                     @foreach($product as $no => $products)
-                                        <div class="product">
-                                            <div class="product-img">
-                                                <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <p class="product-category">{{$products->kategori_nama}}</p>
-                                                <h3 class="product-name"><a href="#">{{$products->barang_nama}}</a></h3>
-                                                <h4 class="product-price">Rp {{$products->barang_harga}}
-                                                    <!-- <del class="product-old-price">$990.00</del> -->
-                                                </h4>
-                                                <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
+                                        <div class="col-md-3">
+                                            <div class="product">
+                                                <div class="product-img">
+                                                    <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
                                                 </div>
-                                                <div class="product-btns">
-                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                                <div class="product-body">
+                                                    <p class="product-category">{{$products->kategori_nama}}</p>
+                                                    <h3 class="product-name"><a href="{{route('detailProduct',$products->barang_id)}}">{{$products->barang_nama}}</a></h3>
+                                                    <h4 class="product-price">Rp {{$products->barang_harga}}
+                                                        <!-- <del class="product-old-price">$990.00</del> -->
+                                                    </h4>
                                                 </div>
-                                            </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                <div class="add-to-cart">
+                                                    <button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button>
+                                                </div>
                                             </div>
                                         </div>
                                     @endforeach
                                     <!-- /product -->
-                                </div>
                                 <div id="slick-nav-1" class="products-slick-nav"></div>
                             </div>
                             <!-- /tab -->
