@@ -42,66 +42,131 @@ class ProductController extends Controller
 
     public function store(Request $request, Barang_Model $barang)
     {
+        if($request->barang_id == null){
+            // tambah
+            $validator = Validator::make($request->all(),[
+                'sub_id'           => 'required',
+                'barang_nama'           => 'required',
+                'barang_harga'          => 'required|numeric',
+                'barang_keterangan'     => 'required',
+                'barang_gambar'         => 'required|mimes:jpg,jpeg,png'
+            ]);
+            if ($validator->fails()) {
+                return redirect()
+                    ->route('product-store')
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                $foto = $request->file('barang_gambar');
+                $filename = time() . "." . $foto->getClientOriginalExtension();
+                $foto->move('img/frontend/product/', $filename);
+
+                $barang->umkm_id = session()->get('umkm_id');
+                $barang->kategori_id = session()->get('kategori_id');
+                $barang->sub_id = $request->input('sub_id');
+                $barang->barang_nama = $request->input('barang_nama');
+                $barang->barang_harga = $request->input('barang_harga');
+                $barang->barang_keterangan = $request->input('barang_keterangan');
+                $barang->barang_gambar = $filename;
+                $barang->save();
+
+                return redirect()
+                    ->route('product-umkm')
+                    ->with('message', 'Data berhasil ditambahkan');
+            }
+        }else{
+            // edit
+            $validator = Validator::make($request->all(),[
+                'sub_id'                => 'required',
+                'barang_nama'           => 'required',
+                'barang_harga'          => 'required|numeric',
+                'barang_keterangan'     => 'required',
+                'barang_gambar'         => 'mimes:jpg,jpeg,png'
+            ]);
+            if ($validator->fails()) {
+                return redirect()
+                    ->route('product-update', $request->barang_id)
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                if ($request->hasFile('barang_gambar') != null) {
+                    $brg_gmb = DB::table('tb_barang')
+                                ->where('barang_id', '=', $request->barang_id)
+                                ->first();
+                    // dd($request);
+                    unlink('img/frontend/product/' . $brg_gmb->barang_gambar);
+                    $foto = $request->file('barang_gambar');
+                    $filename = time() . "." . $foto->getClientOriginalExtension();
+                    $foto->move('img/frontend/product/', $filename);
+                    
+
+                    DB::table('tb_barang')
+                        ->where('barang_id', '=', $request->barang_id)
+                        ->update([
+                            'umkm_id' => session()->get('umkm_id'),
+                            'kategori_id' => session()->get('kategori_id'),
+                            'sub_id' => $request->input('sub_id'),
+                            'barang_nama' => $request->input('barang_nama'),
+                            'barang_harga' => $request->input('barang_harga'),
+                            'barang_keterangan' => $request->input('barang_keterangan'),
+                            'barang_gambar' => $filename
+                        ]);
+
+                }else{
+
+                    DB::table('tb_barang')
+                        ->where('barang_id', '=', $request->barang_id)
+                        ->update([
+                            'umkm_id' => session()->get('umkm_id'),
+                            'kategori_id' => session()->get('kategori_id'),
+                            'sub_id' => $request->input('sub_id'),
+                            'barang_nama' => $request->input('barang_nama'),
+                            'barang_harga' => $request->input('barang_harga'),
+                            'barang_keterangan' => $request->input('barang_keterangan')
+                        ]);
+                }
+                return redirect()
+                    ->route('product-umkm')
+                    ->with('message', 'Data berhasil ditambahkan');
+            }
+        }
+
+    }
+
+    public function update(Request $request, Barang_Model $barang)
+    {
         $validator = Validator::make($request->all(),[
-            'sub_id'           => 'required',
+            'sub_id'                => 'required',
             'barang_nama'           => 'required',
             'barang_harga'          => 'required|numeric',
             'barang_keterangan'     => 'required',
-            'barang_gambar'         => 'required|mimes:jpg,jpeg,png'
+            'barang_gambar'         => 'mimes:jpg,jpeg,png'
         ]);
         if ($validator->fails()) {
             return redirect()
-                ->route('product-store')
+                ->route('product-update', $barang->barang_id)
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $foto = $request->file('barang_gambar');
-            $filename = time() . "." . $foto->getClientOriginalExtension();
-            $foto->move('img/frontend/product/', $filename);
-
+            if ($request->hasFile('barang_gambar') != null) {
+                // dd($request);
+                unlink('img/frontend/product/' . $barang->barang_gambar);
+                $foto = $request->file('barang_gambar');
+                $filename = time() . "." . $foto->getClientOriginalExtension();
+                $foto->move('img/frontend/product/', $filename);
+                $barang->barang_gambar = $filename;
+            }
             $barang->umkm_id = session()->get('umkm_id');
             $barang->kategori_id = session()->get('kategori_id');
             $barang->sub_id = $request->input('sub_id');
             $barang->barang_nama = $request->input('barang_nama');
             $barang->barang_harga = $request->input('barang_harga');
             $barang->barang_keterangan = $request->input('barang_keterangan');
-            $barang->barang_gambar = $filename;
             $barang->save();
 
             return redirect()
                 ->route('product-umkm')
                 ->with('message', 'Data berhasil ditambahkan');
-        }
-    }
-
-    public function update(Request $request, Barang_Model $barang)
-    {
-        $validator = Validator::make($request->all(), [
-            'umkm_id'           => 'required',
-            'kategori_id'           => 'required',
-            'sub_id'           => 'required',
-            'barang_nama'           => 'required',
-            'barang_harga'          => 'required|numeric',
-            'barang_facebook'       => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()
-                ->route('barang.update', $barang->barang_id)
-                ->withErrors($validator)
-                ->withInput();
-        } else {
-            $barang->umkm_id = $request->input('umkm_id');
-            $barang->kategori_id = $request->input('kategori_id');
-            $barang->sub_id = $request->input('sub_id');
-            $barang->barang_nama = $request->input('barang_nama');
-            $barang->barang_harga = $request->input('barang_harga');
-            $barang->barang_keterangan = $request->input('barang_keterangan');
-            $barang->save();
-
-            return redirect()
-                ->route('barang')
-                ->with('message', 'Data berhasil diedit');
         }
     }
 
