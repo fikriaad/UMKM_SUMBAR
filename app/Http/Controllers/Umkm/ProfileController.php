@@ -57,7 +57,7 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'umkm_nama'         => 'required',
-            'kategori_id'          => 'required',
+            'kategori_id'       => 'required',
             'umkm_lama_usaha'   => 'required',
             'umkm_nohp'         => 'required|numeric',
             'prov_id'           => 'required',
@@ -67,17 +67,17 @@ class ProfileController extends Controller
         ]);
         if ($validator->fails()) {
             return redirect()
-                ->route('profile-umkm.profile', $umkm->umkm_id)
+                ->route('profile-umkm')
                 ->withErrors($validator)
                 ->withInput();
         } else {
             if ($request->hasFile('umkm_foto') != null) {
                 if (!empty($umkm->umkm_foto)) {
-                    unlink('img/backend/umkm/' . $umkm->umkm_foto);
+                    unlink('img/frontend/logo_umkm/' . $umkm->umkm_foto);
                 }
                 $foto = $request->file('umkm_foto');
                 $filename = time() . "." . $foto->getClientOriginalExtension();
-                $foto->move('img/backend/umkm/', $filename);
+                $foto->move('img/frontend/logo_umkm/', $filename);
                 $umkm->umkm_foto = $filename;
             }
             $slug = SlugHelper::seo_title($request->input('umkm_nama'));
@@ -115,12 +115,12 @@ class ProfileController extends Controller
         } else {
             if ($request->hasFile('pemilik_ktp') != null) {
                 if (!empty($umkm->pemilik_ktp)) {
-                    unlink('img/backend/umkm/' . $umkm->pemilik_ktp);
+                    unlink('img/frontend/logo_umkm/' . $umkm->pemilik_ktp);
                 }
-                $foto = $request->file('pemilik_ktp');
-                $filename = time() . "." . $foto->getClientOriginalExtension();
-                $foto->move('img/backend/umkm/', $filename);
-                $umkm->pemilik_ktp = $filename;
+                $ktp = $request->file('pemilik_ktp');
+                $filektp = "ktp" . time() . "." . $ktp->getClientOriginalExtension();
+                $ktp->move('img/frontend/logo_umkm/', $filektp);
+                $umkm->pemilik_ktp = $filektp;
             }
 
             $umkm->pemilik = $request->input('pemilik');
