@@ -7,39 +7,23 @@
 			<!-- row -->
 			<div class="row">
 				<!-- LOGO -->
-				<div class="col-md-3">
-					<div class="header-logo">
+				<div class="col-md-9 col-xs-6">
+					<!-- <div class="header-logo"> -->
 						<a href="#" class="logo">
 							<img src="{{asset('frontend/img/logo.png')}}" alt="">
 						</a>
-					</div>
+					<!-- </div> -->
 				</div>
 				<!-- /LOGO -->
-
-				<!-- SEARCH BAR -->
-				<div class="col-md-6">
-					<div class="header-search">
-						<form>
-							<select class="input-select">
-								<option value="0">Kategori</option>
-								<option value="1">Category 01</option>
-								<option value="1">Category 02</option>
-							</select>
-							<input class="input" placeholder="Search here">
-							<button class="search-btn">Search</button>
-						</form>
-					</div>
-				</div>
-				<!-- /SEARCH BAR -->
-
+				
 				<!-- ACCOUNT -->
-				<div class="col-md-3 clearfix">
+				<div class="col-md-3 col-xs-6 clearfix">
 					<div class="header-ctn">
 
 						<!-- Login -->
 						<div>
 							<a href="{{route('login')}}">
-								<i class="fa fa-sign-in" style="background-color: #D10024; height: 36px; width: 36px; padding-top: 9px; margin: auto; border-radius: 25px;"></i>
+								<i class="fa fa-sign-in" style="background-color: #29499C; height: 36px; width: 36px; padding-top: 9px; margin: auto; border-radius: 25px;"></i>
 								<span>Register/Login</span>
 							</a>
 						</div>
@@ -48,7 +32,7 @@
 						<!-- Menu Toogle -->
 						<div class="menu-toggle">
 							<a href="#">
-								<i class="fa fa-bars"></i>
+								<i class="fa fa-bars" style="padding-bottom: 10px;"></i>
 								<span>Menu</span>
 							</a>
 						</div>

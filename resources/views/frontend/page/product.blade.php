@@ -16,16 +16,18 @@
                     <h3 class="aside-title">Best Product</h3>
                     @foreach($btpdk as $no => $bestpdk)
                         <div class="product-widget">
-                            <div class="product-img">
-                                <img src="{{asset('img/frontend/product/'.$bestpdk->barang_gambar)}}" alt="">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">{{ $bestpdk->kategori_nama }}</p>
-                                <h3 class="product-name"><a href="{{route('detailProduct',$bestpdk->barang_id)}}">{{$bestpdk->barang_nama}}</a></h3>
-                                <h4 class="product-price">Rp {{ number_format($bestpdk->barang_harga) }} 
-                                    <!-- <del class="product-old-price">$990.00</del> -->
-                                </h4>
-                            </div>
+                            <a href="{{route('detailProduct',$bestpdk->barang_id)}}">
+                                <div class="product-img">
+                                    <img src="{{asset('img/frontend/product/'.$bestpdk->barang_gambar)}}" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">{{ $bestpdk->kategori_nama }}</p>
+                                    <h3 class="product-name">{{$bestpdk->barang_nama}}</h3>
+                                    <h4 class="product-price">Rp {{ number_format($bestpdk->barang_harga) }} 
+                                        <!-- <del class="product-old-price">$990.00</del> -->
+                                    </h4>
+                                </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
@@ -63,20 +65,22 @@
                                     @if(count($product) > 0)
                                         @foreach($product as $no => $pdc)
                                             <div class="col-md-4">
-                                                <div class="product"><a href="">
-                                                    <div class="product-img">
-                                                        <img src="{{asset('img/frontend/product/'.$pdc->barang_gambar)}}" alt="">
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <p class="product-category">{{$pdc->kategori_nama}}</p>
-                                                        <h3 class="product-name"><a href="{{route('detailProduct',$pdc->barang_id)}}">{{$pdc->barang_nama}}</a></h3>
-                                                        <h4 class="product-price">Rp {{ number_format($pdc->barang_harga) }} 
-                                                            <!-- <del class="product-old-price">$990.00</del> -->
-                                                        </h4>
-                                                    </div>
-                                                    <div class="add-to-cart">
-                                                        <a href="{{$wa.$pdc->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
-                                                    </div>
+                                                <div class="product">
+                                                    <a href="{{route('detailProduct',$pdc->barang_id)}}">
+                                                        <div class="product-img">
+                                                            <img src="{{asset('img/frontend/product/'.$pdc->barang_gambar)}}" alt="">
+                                                        </div>
+                                                        <div class="product-body">
+                                                            <p class="product-category">{{$pdc->kategori_nama}}</p>
+                                                            <h3 class="product-name">{{$pdc->barang_nama}}</h3>
+                                                            <h4 class="product-price">Rp {{ number_format($pdc->barang_harga) }} 
+                                                                <!-- <del class="product-old-price">$990.00</del> -->
+                                                            </h4>
+                                                        </div>
+                                                        <div class="add-to-cart">
+                                                            <a href="{{$wa.$pdc->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -107,19 +111,21 @@
                                             @foreach($pdctpl as $no => $pdcktg)
                                                 <div class="col-md-4">
                                                     <div class="product">
-                                                        <div class="product-img">
-                                                            <img src="{{asset('img/frontend/product/'.$pdcktg->barang_gambar)}}" alt="">
-                                                        </div>
-                                                        <div class="product-body">
-                                                            <p class="product-category">{{$pdcktg->kategori_nama}}</p>
-                                                            <h3 class="product-name"><a href="{{route('detailProduct',$pdcktg->barang_id)}}">{{$pdcktg->barang_nama}}</a></h3>
-                                                            <h4 class="product-price">Rp {{ number_format($pdcktg->barang_harga) }} 
-                                                                <!-- <del class="product-old-price">$990.00</del> -->
-                                                            </h4>
-                                                        </div>
-                                                        <div class="add-to-cart">
-                                                            <a href="{{$wa.$pdcktg->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
-                                                        </div>
+                                                        <a href="{{route('detailProduct',$pdcktg->barang_id)}}">
+                                                            <div class="product-img">
+                                                                <img src="{{asset('img/frontend/product/'.$pdcktg->barang_gambar)}}" alt="">
+                                                            </div>
+                                                            <div class="product-body">
+                                                                <p class="product-category">{{$pdcktg->kategori_nama}}</p>
+                                                                <h3 class="product-name">{{$pdcktg->barang_nama}}</h3>
+                                                                <h4 class="product-price">Rp {{ number_format($pdcktg->barang_harga) }} 
+                                                                    <!-- <del class="product-old-price">$990.00</del> -->
+                                                                </h4>
+                                                            </div>
+                                                            <div class="add-to-cart">
+                                                                <a href="{{$wa.$pdcktg->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                                                            </div>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             @endforeach

@@ -17,7 +17,7 @@
         <!-- row -->
         <div class="row">
             <div class="col-md-3">
-                <img src="{{asset('img/frontend/logo_umkm/'.$dataUmkm->umkm_foto)}}" alt="" style="border: 1px solid #D10024; width: 200px; margin-top: -75px; ">
+                <img src="{{asset('img/frontend/logo_umkm/'.$dataUmkm->umkm_foto)}}" alt="" style="border: 1px solid #29499C; width: 200px; margin-top: -75px; ">
             </div>
             <div class="col-md-8" style="margin-top: 15px">
                 <div class="d-flex">
@@ -94,7 +94,7 @@
                             </h4>
                         </div>
                         <div class="add-to-cart">
-                            <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                            <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
                         </div>
                     </div>
                 </div>
