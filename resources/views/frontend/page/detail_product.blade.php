@@ -153,7 +153,7 @@
                         <h4 class="product-price">Rp {{ number_format($list->barang_harga) }}</h4>
                     </div>
                     <div class="add-to-cart">
-                        <a href="{{$wa.$list->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                        <a href="{{$wa.$list->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
                     </div>
                 </div>
             </div>

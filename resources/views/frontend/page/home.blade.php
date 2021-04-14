@@ -78,19 +78,21 @@
                                     @foreach($product as $no => $products)
                                         <div class="col-md-3">
                                             <div class="product">
-                                                <div class="product-img">
-                                                    <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <p class="product-category">{{$products->kategori_nama}}</p>
-                                                    <h3 class="product-name"><a href="{{route('detailProduct',$products->barang_id)}}">{{$products->barang_nama}}</a></h3>
-                                                    <h4 class="product-price">Rp {{ number_format($products->barang_harga) }}
-                                                        <!-- <del class="product-old-price">$990.00</del> -->
-                                                    </h4>
-                                                </div>
-                                                <div class="add-to-cart">
-                                                    <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
-                                                </div>
+                                                <a href="{{route('detailProduct',$products->barang_id)}}">
+                                                    <div class="product-img">
+                                                        <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <p class="product-category">{{$products->kategori_nama}}</p>
+                                                        <h3 class="product-name">{{$products->barang_nama}}</h3>
+                                                        <h4 class="product-price">Rp {{ number_format($products->barang_harga) }}
+                                                            <!-- <del class="product-old-price">$990.00</del> -->
+                                                        </h4>
+                                                    </div>
+                                                    <div class="add-to-cart">
+                                                        <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                                                    </div>
+                                            </a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -128,16 +130,18 @@
                             @foreach($umkm as $no => $umkms)
                             <!-- product widget -->
                                 <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="{{asset('img/frontend/logo_umkm/'.$umkms->umkm_foto)}}" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">{{$umkms->kategori_nama}}</p>
-                                        <h3 class="product-name"><a href="{{ route('detailUmkm', $umkms->umkm_id) }}">{{$umkms->umkm_nama}}</a></h3>
-                                        <h4 class="product-price">Ini rating 
-                                            <span class="product-old-price">{{$umkms->umkm_nohp}}</span>
-                                        </h4>
-                                    </div>
+                                    <a href="{{ route('detailUmkm', $umkms->umkm_id) }}">
+                                        <div class="product-img">
+                                            <img src="{{asset('img/frontend/logo_umkm/'.$umkms->umkm_foto)}}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">{{$umkms->kategori_nama}}</p>
+                                            <h3 class="product-name">{{$umkms->umkm_nama}}</h3>
+                                            <h4 class="product-price">Ini rating 
+                                                <span class="product-old-price">{{$umkms->umkm_nohp}}</span>
+                                            </h4>
+                                        </div>
+                                    </a>
                                 <!-- /product widget -->
                                 </div>
                             @endforeach
@@ -158,16 +162,18 @@
                             @foreach($umkm as $no => $umkmn)
                                 <!-- product widget -->
                                 <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="{{asset('img/frontend/logo_umkm/'.$umkmn->umkm_foto)}}" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">{{$umkmn->kategori_nama}}</p>
-                                        <h3 class="product-name"><a href="{{ route('detailUmkm', $umkms->umkm_id) }}">{{$umkms->umkm_nama}}</a></h3>
-                                        <h4 class="product-price">Ini rating 
-                                            <span class="product-old-price">{{$umkmn->umkm_nohp}}</span>
-                                        </h4>
-                                    </div>
+                                    <a href="{{ route('detailUmkm', $umkms->umkm_id) }}">
+                                        <div class="product-img">
+                                            <img src="{{asset('img/frontend/logo_umkm/'.$umkmn->umkm_foto)}}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">{{$umkmn->kategori_nama}}</p>
+                                            <h3 class="product-name">{{$umkms->umkm_nama}}</h3>
+                                            <h4 class="product-price">Ini rating 
+                                                <span class="product-old-price">{{$umkmn->umkm_nohp}}</span>
+                                            </h4>
+                                        </div>
+                                    </a>
                                 <!-- /product widget -->
                                 </div>
                             @endforeach
