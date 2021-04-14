@@ -18,13 +18,17 @@ class HomeController extends Controller
     public function index()
     {
         $slider = Slider_Model::all();
+        $wa = "https://api.whatsapp.com/send?phone=";
         $kategori = Kategori_Model::all();
         $sub = Sub_Kategori_Model::first();
         $product = DB::table('tb_barang')
+                    ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
                     ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
-                    ->select('tb_barang.*', 'tb_kategori.kategori_nama')
+                    ->select('tb_barang.*', 'tb_data_umkm.umkm_nohp', 'tb_kategori.kategori_nama')
                     ->get();
         $umkm = DB::table('tb_data_umkm')
+                    ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_data_umkm.kategori_id')
+                    ->select('tb_data_umkm.*', 'tb_kategori.kategori_nama')
                     ->limit(3)
                     ->get();
         $active = "home";
@@ -32,6 +36,7 @@ class HomeController extends Controller
             'frontend.page.home',
             [
                 'active' => $active,
+                'wa' => $wa,
                 'kategori' => $kategori,
                 'sub' => $sub,
                 'slider' => $slider,    
@@ -44,10 +49,12 @@ class HomeController extends Controller
     public function product()
     {
         $active = "product";
+        $wa = "https://api.whatsapp.com/send?phone=";
         $kategori = Kategori_Model::all();
         $product  = DB::table('tb_barang')
             ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
-            ->select('tb_barang.*', 'tb_kategori.kategori_nama')
+            ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
+            ->select('tb_barang.*', 'tb_kategori.kategori_nama', 'tb_data_umkm.umkm_nohp')
             ->get();
         $btpdk = DB::table('tb_barang')
                     ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
@@ -58,6 +65,7 @@ class HomeController extends Controller
             'frontend.page.product',
             [
                 'active' => $active,
+                'wa' => $wa,
                 'kategori' => $kategori,
                 'product' => $product,
                 'btpdk' => $btpdk
@@ -85,11 +93,14 @@ class HomeController extends Controller
             ->where('tb_barang.kategori_id', '=', $barang->kategori_id)
             ->get();
 
+        $wa = "https://api.whatsapp.com/send?phone=";
         $active = "detailProduct";
+        
         return view(
             'frontend.page.detail_product',
             [
                 'barang' => $barang,
+                'wa' => $wa,
                 'gambar' => $gambar,
                 'list'   => $list,
                 'active' => $active
@@ -135,11 +146,13 @@ class HomeController extends Controller
             ->where('tb_sub_kategori.kategori_id', '=', $dataUmkm->kategori_id)
             ->get();
         $active = "listUmkm";
+        $wa = "https://api.whatsapp.com/send?phone=";
 
         return view(
             'frontend.page.detail_umkm',
             [
                 'active' => $active,
+                'wa' => $wa,
                 'product' => $product,
                 'dataUmkm' => $dataUmkm,
                 'sub' => $sub

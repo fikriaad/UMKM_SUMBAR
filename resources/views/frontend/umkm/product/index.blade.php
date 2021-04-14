@@ -38,13 +38,12 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">{{$semuapdk->kategori_nama}}</p>
-                                        <h3 class="product-name"><a href="#">{{$semuapdk->barang_nama}}</a></h3>
+                                        <h3 class="product-name"><a href="{{ route('detailProductLogin', $semuapdk->barang_id) }}">{{$semuapdk->barang_nama}}</a></h3>
                                         <h4 class="product-price">Rp {{$semuapdk->barang_harga}} 
                                             <!-- <del class="product-old-price">$990.00</del> -->
                                         </h4>
                                         <div class="row text-right">
                                             <button class="btn btn-sm btn-primary"><i class="fa fa-image"></i></button>
-                                            <button class="btn btn-sm btn-success"><i class="fa fa-info-circle"></i></button>
                                             <button class="btn btn-sm btn-warning" onclick="modal_product('{{ route("product-store") }}', '{{ $semuapdk->barang_id  }}')"><i class="fa fa-edit"></i></button>
                                             <button class="btn btn-sm btn-danger" onclick="mHapus('{{ route('product.delete', $semuapdk->barang_id) }}')" ><i class="fa fa-trash"></i></button>
                                         </div>

@@ -10,7 +10,7 @@
                     <li class="{{ $active == 'profile' ? 'active' : '' }}"><a href="{{ route('profile-umkm')}}">Profile</a></li>
                     <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('product-umkm')}}">Produk</a></li>
                     <!-- <li class="{{ $active == 'listUmkm' ? 'active' : '' }}"><a href="{{ route('listUmkm')}}">Transaksi</a></li> -->
-                    <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="#">Hubungi Kami</a></li>
+                    <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact-umkm')}}">Hubungi Kami</a></li>
                 </ul>
                 <!-- /NAV -->
             </div>
