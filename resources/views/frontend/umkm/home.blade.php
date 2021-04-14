@@ -5,12 +5,7 @@
 
 
 <div class="section profle_jumbotron">
-    <div class="jumbotron">
-        <div class="col-md-4"></div>
-        <div class="col-md-8">
-            <h3>Tutorial Bootstrap Indonesia</h3>
-            <p>Panduan belajar bootstrap berbahasa indonesia</p>
-        </div>
+    <div class="jumbotron" style="background-image: url({{url('frontend/img/bg_jumbotron.png')}}); background-size: 100%;">
     </div>
 </div>
 
@@ -27,16 +22,6 @@
                 <div class="d-flex">
                     <h2>{{$umkm->umkm_nama}}</h2>
                 </div>
-                <p>
-                    <span class="text-icon" title="XP">
-                        <i class="fa fa-star"></i> 400 XP
-                    </span>
-                </p>
-                                                                <p>
-                    <span class="text-icon">
-                        <i class="fa fa-clock-o"></i> Bergabung sejak 11 Nov 2020
-                    </span>
-                </p>
                 <p>
                     <span class="text-icon">
                         <i class="fas fa-map-marker-alt"></i> Kota Padang, Sumatera Barat
@@ -57,51 +42,66 @@
         <!-- row -->
         <div class="row">
             <!-- shop -->
-            <div class="col-md-4 col-xs-6">
-                <div class="shop">
-                    <div class="shop-img">
-                        <img src="{{asset('frontend/img/shop01.png')}}" alt="">
-                    </div>
-                    <div class="shop-body">
-                        <h3>Laptop<br>Collection</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">Sub Kategori</h3>
                 </div>
             </div>
-            <!-- /shop -->
-
-            <!-- shop -->
-            <div class="col-md-4 col-xs-6">
-                <div class="shop">
-                    <div class="shop-img">
-                        <img src="{{asset('frontend/img/shop03.png')}}" alt="">
-                    </div>
-                    <div class="shop-body">
-                        <h3>Accessories<br>Collection</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- /shop -->
-
-            <!-- shop -->
-            <div class="col-md-4 col-xs-6">
-                <div class="shop">
-                    <div class="shop-img">
-                        <img src="{{asset('frontend/img/shop02.png')}}" alt="">
-                    </div>
-                    <div class="shop-body">
-                        <h3>Cameras<br>Collection</h3>
-                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="col-md-12">
+                @foreach($sub as $no => $sub)
+                <div class="col-md-3 col-xs-6">
+                    <div class="shop">
+                        <div class="shop-img" style="text-align: center;">
+                            <img src="{{asset('img/backend/sub/' . $sub->sub_gambar)}}" alt="">
+                        </div>
+                        <div class="shop-body">
+                            <h3>{{$sub->sub_nama}}</h3>
+                            <!-- <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a> -->
+                        </div>
                     </div>
                 </div>
+                @endforeach
+                <!-- /shop -->
             </div>
-            <!-- /shop -->
         </div>
         <!-- /row -->
     </div>
     <!-- /container -->
 </div>
-<!-- /SECTION -->
 
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">Product</h3>
+                </div>
+            </div>
+            <div class="col-md-12">
+                @foreach($product as $no => $products)
+                <div class="col-md-3 col-xs-6">
+                    <div class="product">
+                        <div class="product-img">
+                            <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
+                        </div>
+                        <div class="product-body">
+                            <p class="product-category">{{$products->kategori_nama}}</p>
+                            <h3 class="product-name"><a href="{{ route('detailProduct', $products->barang_id) }}">{{$products->barang_nama}}</a></h3>
+                            <h4 class="product-price">Rp {{ number_format($products->barang_harga) }}
+                                <!-- <del class="product-old-price">$990.00</del> -->
+                            </h4>
+                        </div>
+                        <div class="add-to-cart">
+                            <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /SECTION -->
 @endsection

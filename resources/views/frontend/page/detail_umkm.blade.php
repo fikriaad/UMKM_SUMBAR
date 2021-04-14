@@ -5,12 +5,8 @@
 
 
 <div class="section profle_jumbotron">
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-image: url({{url('frontend/img/bg_jumbotron.png')}}); background-size: 100%;">
         <div class="col-md-4"></div>
-        <div class="col-md-8">
-            <h3>Tutorial Bootstrap Indonesia</h3>
-            <p>Panduan belajar bootstrap berbahasa indonesia</p>
-        </div>
     </div>
 </div>
 
@@ -27,16 +23,6 @@
                 <div class="d-flex">
                     <h2>{{$dataUmkm->umkm_nama}}</h2>
                 </div>
-                <p>
-                    <span class="text-icon" title="XP">
-                        <i class="fa fa-star"></i> 400 XP
-                    </span>
-                </p>
-                <p>
-                    <span class="text-icon">
-                        <i class="fa fa-clock-o"></i>
-                    </span>
-                </p>
                 <p>
                     <span class="text-icon">
                         <i class="fas fa-map-marker-alt"></i> Kota Padang, Sumatera Barat
@@ -64,7 +50,7 @@
             </div>
             <div class="col-md-12">
                 @foreach($sub as $no => $sub)
-                <div class="col-md-4 col-xs-6">
+                <div class="col-md-3 col-xs-6">
                     <div class="shop">
                         <div class="shop-img" style="text-align: center;">
                             <img src="{{asset('img/backend/sub/' . $sub->sub_gambar)}}" alt="">
@@ -95,7 +81,7 @@
             </div>
             <div class="col-md-12">
                 @foreach($product as $no => $products)
-                <div class="col-md-4 col-xs-6">
+                <div class="col-md-3 col-xs-6">
                     <div class="product">
                         <div class="product-img">
                             <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
@@ -103,19 +89,12 @@
                         <div class="product-body">
                             <p class="product-category">{{$products->kategori_nama}}</p>
                             <h3 class="product-name"><a href="{{ route('detailProduct', $products->barang_id) }}">{{$products->barang_nama}}</a></h3>
-                            <h4 class="product-price">${{$products->barang_harga}}
+                            <h4 class="product-price">Rp {{ number_format($products->barang_harga) }}
                                 <!-- <del class="product-old-price">$990.00</del> -->
                             </h4>
-                            <div class="product-rating">
-                            </div>
-                            <div class="product-btns">
-                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                            </div>
                         </div>
                         <div class="add-to-cart">
-                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
                         </div>
                     </div>
                 </div>

@@ -81,14 +81,42 @@ class DashboardController extends Controller
     function dashboard()
     {
         $active = "home";
+        $wa = "https://api.whatsapp.com/send?phone=";
         $umkm = DB::table('tb_data_umkm')
-        ->where('umkm_id','=', session('umkm_id'))
-        ->first();
+                ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_data_umkm.kategori_id')
+                ->leftjoin('tb_kota', 'tb_kota.kota_id', '=', 'tb_data_umkm.kota_id')
+                ->leftjoin('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
+                ->where('umkm_id','=', session('umkm_id'))
+                ->first();
+        $product = DB::table('tb_barang')
+                ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+                ->leftjoin('tb_sub_kategori', 'tb_sub_kategori.sub_id', '=', 'tb_barang.sub_id')
+                ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
+                ->where('tb_barang.umkm_id', '=', session('umkm_id'))
+                ->get();
+        $sub = DB::table('tb_sub_kategori')
+                ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_sub_kategori.kategori_id')
+                ->where('tb_sub_kategori.kategori_id', '=', $umkm->kategori_id)
+                ->get();
 
         return view('frontend/umkm/home',
         [
             'active' => $active,
+            'sub' => $sub,
+            'product' => $product,
+            'wa' => $wa,
             'umkm' => $umkm
         ]);
+    }
+
+    public function contact()
+    {
+        $active = "contact";
+        return view(
+            'frontend.umkm.contact',
+            [
+                'active' => $active
+            ]
+        );
     }
 }

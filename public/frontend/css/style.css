@@ -1037,7 +1037,12 @@ textarea.input {
   -webkit-transform: translateY(100%);
   -ms-transform: translateY(100%);
   transform: translateY(100%);
-  /* z-index: 20;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  /* top: 266px; */
+  z-index: 20;
+  /* 
   bottom: 1px;
   padding: 55px 0; */
 }

@@ -21,8 +21,8 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">{{ $bestpdk->kategori_nama }}</p>
-                                <h3 class="product-name"><a href="#">{{ $bestpdk->barang_nama }}</a></h3>
-                                <h4 class="product-price">Rp {{ $bestpdk->barang_harga }} 
+                                <h3 class="product-name"><a href="{{route('detailProduct',$bestpdk->barang_id)}}">{{$bestpdk->barang_nama}}</a></h3>
+                                <h4 class="product-price">Rp {{ number_format($bestpdk->barang_harga) }} 
                                     <!-- <del class="product-old-price">$990.00</del> -->
                                 </h4>
                             </div>
@@ -69,22 +69,15 @@
                                                     </div>
                                                     <div class="product-body">
                                                         <p class="product-category">{{$pdc->kategori_nama}}</p>
-                                                        <h3 class="product-name"><a href="#">{{$pdc->barang_nama}}</a></h3>
-                                                        <h4 class="product-price">${{$pdc->barang_harga}} 
+                                                        <h3 class="product-name"><a href="{{route('detailProduct',$pdc->barang_id)}}">{{$pdc->barang_nama}}</a></h3>
+                                                        <h4 class="product-price">Rp {{ number_format($pdc->barang_harga) }} 
                                                             <!-- <del class="product-old-price">$990.00</del> -->
                                                         </h4>
-                                                        <div class="product-rating">
-                                                        </div>
-                                                        <div class="product-btns">
-                                                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                                        </div>
                                                     </div>
                                                     <div class="add-to-cart">
-                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                        <a href="{{$wa.$pdc->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
                                                     </div>
-                                                </a></div>
+                                                </div>
                                             </div>
                                         @endforeach
                                     @else
@@ -104,7 +97,8 @@
                                         @php
                                             $pdctpl = DB::table('tb_barang')
                                                             ->join('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
-                                                            ->select('tb_barang.*','tb_kategori.kategori_nama')
+                                                            ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
+                                                            ->select('tb_barang.*', 'tb_kategori.kategori_nama', 'tb_data_umkm.umkm_nohp')
                                                             ->where('kategori_gambar','=', $perktg->kategori_gambar)
                                                             ->get();
                                         @endphp
@@ -118,20 +112,13 @@
                                                         </div>
                                                         <div class="product-body">
                                                             <p class="product-category">{{$pdcktg->kategori_nama}}</p>
-                                                            <h3 class="product-name"><a href="#">{{$pdcktg->barang_nama}}</a></h3>
-                                                            <h4 class="product-price">${{$pdcktg->barang_harga}} 
+                                                            <h3 class="product-name"><a href="{{route('detailProduct',$pdcktg->barang_id)}}">{{$pdcktg->barang_nama}}</a></h3>
+                                                            <h4 class="product-price">Rp {{ number_format($pdcktg->barang_harga) }} 
                                                                 <!-- <del class="product-old-price">$990.00</del> -->
                                                             </h4>
-                                                            <div class="product-rating">
-                                                            </div>
-                                                            <div class="product-btns">
-                                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                                            </div>
                                                         </div>
                                                         <div class="add-to-cart">
-                                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                            <a href="{{$wa.$pdcktg->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #D10024; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
                                                         </div>
                                                     </div>
                                                 </div>

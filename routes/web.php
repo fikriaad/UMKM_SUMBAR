@@ -37,11 +37,10 @@ Route::prefix('umkm')->group(function () {
         Route::get('logout-umkm', 'Umkm\DashboardController@logout')->name('logout-umkm');
         //Profile
         Route::get('profile-umkm', 'Umkm\ProfileController@index')->name('profile-umkm');
-
         Route::put('profile-umkm/profile/{umkm}', 'Umkm\ProfileController@profileUpdate')->name('profile-umkm.profile');
         Route::put('profile-umkm/pemilik/{umkm}', 'Umkm\ProfileController@pemilikUpdate')->name('profile-umkm.pemilik');
         Route::put('profile-umkm/akun/{umkm}', 'Umkm\ProfileController@akunUpdate')->name('profile-umkm.akun');
-        //cari kota
+            //cari kota
         Route::post('profile-umkm/carikota', 'Umkm\ProfileController@carikota');
 
         // PRODUCT-UMKM
@@ -49,14 +48,14 @@ Route::prefix('umkm')->group(function () {
         Route::post('product-umkm', 'Umkm\ProductController@store')->name('product-store');
         Route::put('product/{barang}', 'Umkm\ProductController@update')->name('product-update');
         Route::delete('product/{barang}', 'Umkm\ProductController@destroy')->name('product.delete');
-        
+        Route::get('/detailProduct/{product}', 'Umkm\ProductController@detailProduct')->name('detailProductLogin');
         Route::post('cari_data_produk', 'Umkm\ProductController@cari_data_produk')->name('cari_data_produk');
-        
-        // GAMBAR-PRODUCT
+            // gambar_product
         Route::post('product.gambar', 'Umkm\GambarController@store')->name('product.gambar');
         
-        // Data Barang
-        Route::get('barang/{barang}', 'Backend\BarangController@edit')->name('barang.edit');
+        // CONTACT-UMKM
+        Route::get('/contact', 'Umkm\DashboardController@contact')->name('contact-umkm');
+
     });
 });
 

@@ -189,4 +189,39 @@ class ProductController extends Controller
 
         return json_encode($data);
     }
+
+    public function detailProduct($product)
+    {
+        $barang  = DB::table('tb_barang')
+            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+            ->leftjoin('tb_sub_kategori', 'tb_sub_kategori.sub_id', '=', 'tb_barang.sub_id')
+            ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
+            ->where('barang_id', '=', $product)
+            ->orderBy('barang_id')
+            ->first();
+        $gambar = DB::table('tb_gambar')
+            ->where('barang_id', '=', $product)
+            ->get();
+
+        $list = DB::table('tb_barang')
+            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+            ->leftjoin('tb_sub_kategori', 'tb_sub_kategori.sub_id', '=', 'tb_barang.sub_id')
+            ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
+            ->where('tb_barang.kategori_id', '=', $barang->kategori_id)
+            ->get();
+
+        $wa = "https://api.whatsapp.com/send?phone=";
+        $active = "detailProduct";
+        
+        return view(
+            'frontend.page.detail_product_login',
+            [
+                'barang' => $barang,
+                'wa' => $wa,
+                'gambar' => $gambar,
+                'list'   => $list,
+                'active' => $active
+            ]
+        );
+    }
 }
