@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Data Barang</h1>
+                <h1 class="m-0 text-dark">Data Pesan</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Data Barang</li>
+                    <li class="breadcrumb-item active">Data Pesan</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,32 +30,30 @@
             </div>
             @endif
             <div class="card-header">
-                Amin
+                Data Pesan
             </div>
             <div class="card-body">
-                <!-- <a href="{{route('barang.create')}}" class="btn btn-primary my-4">
-                    Tambah Data
-                </a> -->
                 <table class="table" id="example1">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Nama Barang</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Keterangan</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">No Hp</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Pesan</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($barang as $no => $barang)
+                        @foreach ($pesan as $no => $pesan)
                         <tr>
-                            <td>{{$no + 1}}</td>
-                            <td>{{$barang->kategori_nama}}</td>
-                            <td>{{$barang->barang_nama}}</td>
-                            <td>{{$barang->barang_keterangan}}</td>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$pesan->pesan_nama}}</td>
+                            <td>{{$pesan->pesan_nohp}}</td>
+                            <td>{{$pesan->pesan_email}}</td>
+                            <td>{!!$pesan->pesan_isi!!}</td>
                             <td>
-                                <!-- <a href="{{ route('barang.edit', $barang->barang_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> -->
-                                <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('barang.delete', $barang->barang_id) }}')"><i class="fa fa-trash"></i> Delete</button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('pesan.delete', $pesan->pesan_id) }}')"><i class="fa fa-trash"></i> Delete</button>
                             </td>
                         </tr>
                         @endforeach

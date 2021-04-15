@@ -10,13 +10,13 @@
 </div>
 
 <!-- HEADER PROFILE -->
-<div class="section"  style="padding-top: unset">
+<div class="section" style="padding-top: unset">
     <!-- container -->
     <div class="container">
         <!-- row -->
         <div class="row">
             <div class="col-md-3">
-                <img src="{{asset('frontend/img/pp.jpg')}}" alt=""  style="border: 1px solid #29499C; width: 200px; margin-top: -75px; ">
+                <img src="{{asset('img/frontend/logo_umkm/'.$umkm->umkm_foto)}}" alt="" style="border: 1px solid #29499C; width: 200px; margin-top: -75px; ">
             </div>
             <div class="col-md-8" style="margin-top: 15px">
                 <div class="d-flex">

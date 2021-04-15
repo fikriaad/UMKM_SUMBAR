@@ -104,7 +104,9 @@ class GambarController extends Controller
     public function destroy(Gambar_Model $gambar)
     {
         $gambar_file = $gambar->gambar_foto;
-        unlink('img/backend/gambar/' . $gambar_file);
+        if ($gambar_file != null) {
+            unlink('img/frontend/gambar/' . $gambar_file);
+        }
         $gambar->forceDelete();
 
         return redirect()

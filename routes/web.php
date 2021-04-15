@@ -23,6 +23,8 @@ Route::get('/listUmkm', 'HomeController@listUmkm')->name('listUmkm');
 Route::get('/detailUmkm/{umkm}', 'HomeController@detailUmkm')->name('detailUmkm');
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::post('/contact', 'HomeController@pesan')->name('pesan');
+
 
 Route::prefix('umkm')->group(function () {
     Route::middleware(['umkm_belum_login'])->group(function () {
@@ -40,7 +42,7 @@ Route::prefix('umkm')->group(function () {
         Route::put('profile-umkm/profile/{umkm}', 'Umkm\ProfileController@profileUpdate')->name('profile-umkm.profile');
         Route::put('profile-umkm/pemilik/{umkm}', 'Umkm\ProfileController@pemilikUpdate')->name('profile-umkm.pemilik');
         Route::put('profile-umkm/akun/{umkm}', 'Umkm\ProfileController@akunUpdate')->name('profile-umkm.akun');
-            //cari kota
+        //cari kota
         Route::post('profile-umkm/carikota', 'Umkm\ProfileController@carikota');
 
         // PRODUCT-UMKM
@@ -50,12 +52,12 @@ Route::prefix('umkm')->group(function () {
         Route::delete('product/{barang}', 'Umkm\ProductController@destroy')->name('product.delete');
         Route::get('/detailProduct/{product}', 'Umkm\ProductController@detailProduct')->name('detailProductLogin');
         Route::post('cari_data_produk', 'Umkm\ProductController@cari_data_produk')->name('cari_data_produk');
-            // gambar_product
+        // gambar_product
         Route::post('product.gambar', 'Umkm\GambarController@store')->name('product.gambar');
-        
+
         // CONTACT-UMKM
         Route::get('/contact', 'Umkm\DashboardController@contact')->name('contact-umkm');
-
+        Route::post('/contact', 'Umkm\DashboardController@contact')->name('pesan-umkm');
     });
 });
 
@@ -153,5 +155,9 @@ Route::prefix('backend')->group(function () {
         Route::get('artikel/{artikel}', 'Backend\ArtikelController@edit')->name('artikel.edit');
         Route::put('artikel/{artikel}', 'Backend\ArtikelController@update')->name('artikel.update');
         Route::delete('artikel/{artikel}', 'Backend\ArtikelController@destroy')->name('artikel.delete');
+
+        // Data Pesan
+        Route::get('pesan', 'Backend\PesanController@index')->name('pesan');
+        Route::delete('pesan/{pesan}', 'Backend\PesanController@destroy')->name('pesan.delete');
     });
 });

@@ -33,9 +33,9 @@
                 Amin
             </div>
             <div class="card-body">
-                <a href="{{route('gambar.create')}}" class="btn btn-primary my-4">
+                <!-- <a href="{{route('gambar.create')}}" class="btn btn-primary my-4">
                     Tambah Data
-                </a>
+                </a> -->
                 <table class="table" id="example1">
                     <thead class="thead-dark">
                         <tr>
@@ -50,9 +50,9 @@
                         <tr>
                             <td>{{$no + 1}}</td>
                             <td>{{$gambar->barang_nama}}</td>
-                            <td><img src="{{ asset('img/backend/gambar/' . $gambar->gambar_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
+                            <td><img src="{{asset('img/frontend/gambar/' . $gambar->gambar_foto )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
                             <td>
-                                <a href="{{ route('gambar.edit', $gambar->gambar_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                <!-- <a href="{{ route('gambar.edit', $gambar->gambar_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> -->
                                 <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('gambar.delete', $gambar->gambar_id) }}')"><i class="fa fa-trash"></i> Delete</button>
                             </td>
                         </tr>
