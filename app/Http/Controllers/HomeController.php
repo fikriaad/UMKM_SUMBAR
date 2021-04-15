@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Barang_Model;
+use App\Pesan_Model;
 use App\Slider_Model;
 use App\Kategori_Model;
 use App\Sub_Kategori_Model;
@@ -22,15 +23,15 @@ class HomeController extends Controller
         $kategori = Kategori_Model::all();
         $sub = Sub_Kategori_Model::first();
         $product = DB::table('tb_barang')
-                    ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
-                    ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
-                    ->select('tb_barang.*', 'tb_data_umkm.umkm_nohp', 'tb_kategori.kategori_nama')
-                    ->get();
+            ->leftjoin('tb_data_umkm', 'tb_data_umkm.umkm_id', '=', 'tb_barang.umkm_id')
+            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+            ->select('tb_barang.*', 'tb_data_umkm.umkm_nohp', 'tb_kategori.kategori_nama')
+            ->get();
         $umkm = DB::table('tb_data_umkm')
-                    ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_data_umkm.kategori_id')
-                    ->select('tb_data_umkm.*', 'tb_kategori.kategori_nama')
-                    ->limit(3)
-                    ->get();
+            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_data_umkm.kategori_id')
+            ->select('tb_data_umkm.*', 'tb_kategori.kategori_nama')
+            ->limit(3)
+            ->get();
         $active = "home";
         return view(
             'frontend.page.home',
@@ -39,8 +40,8 @@ class HomeController extends Controller
                 'wa' => $wa,
                 'kategori' => $kategori,
                 'sub' => $sub,
-                'slider' => $slider,    
-                'umkm' => $umkm,    
+                'slider' => $slider,
+                'umkm' => $umkm,
                 'product' => $product
             ]
         );
@@ -57,10 +58,10 @@ class HomeController extends Controller
             ->select('tb_barang.*', 'tb_kategori.kategori_nama', 'tb_data_umkm.umkm_nohp')
             ->get();
         $btpdk = DB::table('tb_barang')
-                    ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
-                    ->select('tb_barang.*','tb_kategori.kategori_nama')
-                    ->limit(3)
-                    ->get();
+            ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_barang.kategori_id')
+            ->select('tb_barang.*', 'tb_kategori.kategori_nama')
+            ->limit(3)
+            ->get();
         return view(
             'frontend.page.product',
             [
@@ -95,7 +96,7 @@ class HomeController extends Controller
 
         $wa = "https://api.whatsapp.com/send?phone=";
         $active = "detailProduct";
-        
+
         return view(
             'frontend.page.detail_product',
             [
@@ -183,5 +184,31 @@ class HomeController extends Controller
                 'active' => $active
             ]
         );
+    }
+
+    public function pesan(Request $request, Pesan_Model $pesan)
+    {
+        $validator = Validator::make($request->all(), [
+            'pesan_nama'           => 'required',
+            'pesan_nohp'           => 'required|numeric',
+            'pesan_email'           => 'required|email',
+            'pesan_isi'           => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()
+                ->route('contact')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $pesan->pesan_nama = $request->input('pesan_nama');
+            $pesan->pesan_nohp = $request->input('pesan_nohp');
+            $pesan->pesan_email = $request->input('pesan_email');
+            $pesan->pesan_isi = $request->input('pesan_isi');
+            $pesan->save();
+
+            return redirect()
+                ->route('contact')
+                ->with('message', 'Data berhasil ditambahkan');
+        }
     }
 }

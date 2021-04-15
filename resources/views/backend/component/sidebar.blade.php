@@ -41,7 +41,23 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">BARANG</li>
+                <li class="nav-item">
+                    <a href="{{url('backend/barang')}}" class="nav-link">
+                        <i class="nav-icon fas fa-box"></i>
+                        <p>
+                            Data Barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('backend/gambar')}}" class="nav-link">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                            Data Gambar Barang
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">Kategori</li>
                 <li class="nav-item">
                     <a href="{{url('backend/kategori')}}" class="nav-link">
                         <i class="nav-icon fas fa-pencil-alt"></i>
@@ -58,22 +74,7 @@
                         </p>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="{{url('backend/barang')}}" class="nav-link">
-                        <i class="nav-icon fas fa-box"></i>
-                        <p>
-                            Data Barang
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('backend/gambar')}}" class="nav-link">
-                        <i class="nav-icon fas fa-image"></i>
-                        <p>
-                            Data Gambar Barang
-                        </p>
-                    </a>
-                </li> -->
+
                 <li class="nav-header">LAYOUT</li>
                 <li class="nav-item ">
                     <a href="{{url('backend/slider')}}" class="nav-link">
@@ -96,6 +97,16 @@
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             Data Artikel
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-header">KOMENTAR</li>
+                <li class="nav-item ">
+                    <a href="{{url('backend/pesan')}}" class="nav-link">
+                        <i class="nav-icon fas fa-comment-alt"></i>
+                        <p>
+                            Data Pesan
                         </p>
                     </a>
                 </li>
