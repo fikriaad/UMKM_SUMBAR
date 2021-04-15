@@ -18,12 +18,32 @@
     <link rel="stylesheet" href="{{asset('lte/dist/css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    
+    <style>
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+        .register-page{
+            background-color: #ACE3F2;
+        }
+        .card{
+            background-color: #D4E5EA;
+        }
+    </style>
 </head>
 
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <b>REGISTER</b>
+            <img src="{{asset('frontend/img/logo.png')}}" alt="">
+            <div>
+                <b>REGISTER</b>
+            </div>
+            <p style="color: #29499C; font-size: 15px">Silahkan daftar untuk membuat akun kamu</p>
         </div>
 
         <div class="card">
@@ -35,7 +55,6 @@
                         <input type="text" class="form-control" placeholder="Nama Pemilik" name="pemilik">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
@@ -43,7 +62,6 @@
                         <input type="text" class="form-control" placeholder="Nama Toko" name="umkm_nama">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
@@ -51,7 +69,6 @@
                         <input type="number" class="form-control" placeholder="WhatAspp UMKM" name="umkm_nohp">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
@@ -65,7 +82,6 @@
                         </select>
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
                             </div>
                         </div>  
                         @error('kategori_id')
@@ -76,7 +92,6 @@
                         <input type="text" class="form-control" placeholder="Alamat" name="umkm_alamat">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
@@ -84,7 +99,6 @@
                         <input type="email" class="form-control" placeholder="Email" name="umkm_email">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
@@ -92,13 +106,13 @@
                         <input type="password" class="form-control" placeholder="Password" name="umkm_password">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+                    <p style="font-size: 12px">Sudah punya akun ? <a href="{{route('login')}}" style="color: #29499C"><b>Login</b></a></p>
                     <div class="row">
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block" style="background-color: #29499C; color: #fff">Daftar</button>
                         </div>
                     </div>
                 </form>

@@ -12,6 +12,9 @@
             <!-- Product main img -->
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
+                    <div class="product-preview">
+                        <img src="{{asset('img/frontend/product/' . $barang->barang_gambar)}}" alt="">
+                    </div>
                     @foreach($gambar as $no => $row)
                     <div class="product-preview">
                         <img src="{{asset('img/backend/gambar/' . $row->gambar_foto)}}" alt="">
@@ -24,6 +27,7 @@
             <!-- Product thumb imgs -->
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
+                    <img src="{{asset('img/frontend/product/' . $barang->barang_gambar)}}" alt="">
                     @foreach($gambar as $no => $row)
                     <div class="product-preview">
                         <img src="{{asset('img/backend/gambar/' . $row->gambar_foto)}}" alt="">
@@ -56,31 +60,25 @@
                                 <option value="0">Red</option>
                             </select>
                         </label>
-                    </div>
+                    </div>-->
 
-                    <div class="add-to-cart">
-                        <div class="qty-label">
-                            Qty
-                            <div class="input-number">
-                                <input type="number">
-                                <span class="qty-up">+</span>
-                                <span class="qty-down">-</span>
-                            </div>
-                        </div>
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                    </div>
-
-                    <ul class="product-btns">
+                    
+                    <!-- <ul class="product-btns"> 
                         <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
                         <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
                     </ul> -->
-
+                    
                     <ul class="product-links">
                         <li>Kategori:</li>
                         <li><a href="#">{{$barang->kategori_nama}}</a></li>
+                        <li>-</li>
                         <li><a href="#">{{$barang->sub_nama}}</a></li>
                     </ul>
-
+                    
+                    <div class="add-to-cart"  style="margin-top: 50px">
+                        <a href="{{$wa.$barang->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                    </div>
+                    
                     <!-- <ul class="product-links">
                         <li>Share:</li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -139,21 +137,21 @@
                 </div>
             </div>
             <!-- product -->
-            @foreach($list as $no => $list)
+            @foreach($list as $no => $lists)
             <div class="col-md-3 col-xs-6">
                 <div class="product">
                     <div class="product-img">
-                        <img src="{{asset('img/frontend/product/' . $list->barang_gambar)}}" alt="">
+                        <img src="{{asset('img/frontend/product/' . $lists->barang_gambar)}}" alt="">
                         <div class="product-label">
                         </div>
                     </div>
                     <div class="product-body">
-                        <p class="product-category">{{$list->kategori_nama}}</p>
-                        <h3 class="product-name"><a href="{{route('detailProduct',$list->barang_id)}}">{{$list->barang_nama}}</a></h3>
-                        <h4 class="product-price">Rp {{ number_format($list->barang_harga) }}</h4>
+                        <p class="product-category">{{$lists->kategori_nama}}</p>
+                        <h3 class="product-name"><a href="{{route('detailProduct',$lists->barang_id)}}">{{$lists->barang_nama}}</a></h3>
+                        <h4 class="product-price">Rp {{ number_format($lists->barang_harga) }}</h4>
                     </div>
                     <div class="add-to-cart">
-                        <a href="{{$wa.$list->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                        <a href="{{$wa.$lists->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
                     </div>
                 </div>
             </div>
@@ -166,4 +164,9 @@
     <!-- /container -->
 </div>
 <!-- /Section -->
+
+<script>
+    
+</script>
+
 @endsection

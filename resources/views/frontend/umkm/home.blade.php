@@ -83,19 +83,21 @@
                 @foreach($product as $no => $products)
                 <div class="col-md-3 col-xs-6">
                     <div class="product">
-                        <div class="product-img">
-                            <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">{{$products->kategori_nama}}</p>
-                            <h3 class="product-name"><a href="{{ route('detailProduct', $products->barang_id) }}">{{$products->barang_nama}}</a></h3>
-                            <h4 class="product-price">Rp {{ number_format($products->barang_harga) }}
-                                <!-- <del class="product-old-price">$990.00</del> -->
-                            </h4>
-                        </div>
-                        <div class="add-to-cart">
-                            <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
-                        </div>
+                        <a href="{{ route('detailProductLogin', $products->barang_id) }}">
+                            <div class="product-img">
+                                <img src="{{asset('img/frontend/product/'.$products->barang_gambar)}}" alt="">
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">{{$products->kategori_nama}}</p>
+                                <h3 class="product-name">{{$products->barang_nama}}</h3>
+                                <h4 class="product-price">Rp {{ number_format($products->barang_harga) }}
+                                    <!-- <del class="product-old-price">$990.00</del> -->
+                                </h4>
+                            </div>
+                            <div class="add-to-cart">
+                                <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 @endforeach

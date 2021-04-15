@@ -126,46 +126,4 @@
 </div>
 <!-- /SECTION -->
 
-<!-- Section -->
-<div class="section">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-
-            <div class="col-md-12">
-                <div class="section-title text-center">
-                    <h3 class="title">Related Products</h3>
-                </div>
-            </div>
-            <!-- product -->
-            @foreach($list as $no => $list)
-            <div class="col-md-3 col-xs-6">
-                <div class="product">
-                    <a href="{{route('detailProduct',$list->barang_id)}}">
-                        <div class="product-img">
-                            <img src="{{asset('img/frontend/product/' . $list->barang_gambar)}}" alt="">
-                            <div class="product-label">
-                            </div>
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">{{$list->kategori_nama}}</p>
-                            <h3 class="product-name">{{$list->barang_nama}}</h3>
-                            <h4 class="product-price">Rp {{ number_format($list->barang_harga) }}</h4>
-                        </div>
-                        <div class="add-to-cart">
-                            <a href="{{$wa.$list->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            @endforeach
-            <!-- /product -->
-
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /Section -->
 @endsection

@@ -137,7 +137,7 @@
                                         <div class="product-body">
                                             <p class="product-category">{{$umkms->kategori_nama}}</p>
                                             <h3 class="product-name">{{$umkms->umkm_nama}}</h3>
-                                            <h4 class="product-price">Ini rating 
+                                            <h4 class="product-price">{{$umkms->umkm_alamat}} 
                                                 <span class="product-old-price">{{$umkms->umkm_nohp}}</span>
                                             </h4>
                                         </div>
@@ -168,8 +168,8 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">{{$umkmn->kategori_nama}}</p>
-                                            <h3 class="product-name">{{$umkms->umkm_nama}}</h3>
-                                            <h4 class="product-price">Ini rating 
+                                            <h3 class="product-name">{{$umkmn->umkm_nama}}</h3>
+                                            <h4 class="product-price">{{$umkmn->umkm_alamat}}
                                                 <span class="product-old-price">{{$umkmn->umkm_nohp}}</span>
                                             </h4>
                                         </div>

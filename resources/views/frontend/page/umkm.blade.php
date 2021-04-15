@@ -33,9 +33,9 @@
                                 <img src="{{asset('img/frontend/logo_umkm/'.$u->umkm_foto)}}" alt="">
                             </div>
                             <div class="product-body">
-                                <p class="product-category"></p>
+                                <p class="product-category">{{$u->kategori_nama}}</p>
                                 <h3 class="product-name"><a href="{{ route('detailUmkm', $u->umkm_id) }}">{{$u->umkm_nama}}</a></h3>
-                                <h4 class="product-price">Ini rating
+                                <h4 class="product-price">{{$u->umkm_alamat}}
                                     <span class="product-old-price">{{$u->umkm_nohp}}</span>
                                 </h4>
                             </div>

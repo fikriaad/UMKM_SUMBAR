@@ -110,7 +110,10 @@ class HomeController extends Controller
 
     public function listUmkm()
     {
-        $umkm = DB::table('tb_data_umkm')->get();
+        $umkm = DB::table('tb_data_umkm')
+                    ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_data_umkm.kategori_id')
+                    ->select('tb_data_umkm.*', 'tb_kategori.kategori_nama')
+                    ->get();
         $kategori = DB::table('tb_kategori')->get();
         $active = "listUmkm";
         // dd($kategori);
