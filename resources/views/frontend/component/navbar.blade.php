@@ -11,6 +11,7 @@
                     <li class="{{ $active == 'listUmkm' ? 'active' : '' }}"><a href="{{ route('listUmkm')}}">UMKM</a></li>
                     <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{route('about')}}">Tentang Kami</a></li>
                     <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{route('contact')}}">Hubungi Kami</a></li>
+                    <li class="hidden-lg hidden-md"><a href="{{route('login')}}">Login</a></li>
                 </ul>
                 <!-- /NAV -->
             </div>

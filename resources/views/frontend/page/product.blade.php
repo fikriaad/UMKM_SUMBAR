@@ -46,9 +46,11 @@
                             <h3 class="title">Store</h3>
                             <div class="section-nav">
                                 <ul class="section-tab-nav tab-nav">
-                                    <li class="active"><a data-toggle="tab" href="#semuaproduct">All</a></li>
+                                    <li id="li_semuaproduct" class="active"><a data-toggle="tab" href="#semuaproduct">All</a></li>
                                     @foreach($kategori as $no => $ktgfilter)
-                                        <li><a data-toggle="tab" href="#{{ $ktgfilter->kategori_nama }}">{{ $ktgfilter->kategori_nama }}</a></li>
+                                        <li id="li{{ $ktgfilter->kategori_nama }}">
+                                            <a data-toggle="tab" href="#{{ $ktgfilter->kategori_nama }}">{{ $ktgfilter->kategori_nama }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -169,7 +171,22 @@
 <!-- /SECTION -->
 
 <script>
+    $(document).ready(function () {
+        var url = window.location.href
+        let hasil = url.split("#")[1];
+        // alert(hasil);
+        // cari tab pane
+        if(hasil != null){
 
+            document.getElementById('li_semuaproduct').classList.remove("active");
+
+            document.getElementById('semuaproduct').classList.remove("active");
+            document.getElementById('li'+hasil).classList.add("active"); 
+            document.getElementById(hasil).classList.add("active"); 
+        }
+
+
+    });
 </script>
 
 @endsection

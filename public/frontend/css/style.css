@@ -444,8 +444,8 @@ textarea.input {
 \*----------------------------*/
 
 #header {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  /* padding-top: 15px;
+  padding-bottom: 15px; */
   background-color: #15161D;
 }
 
@@ -2406,3 +2406,8 @@ color: #FFF;
 .section-tab-nav.tab-nav.categori-product li{
   display: block;
 }
+
+
+/* .hold-transition.login-page{
+  bg
+} */
