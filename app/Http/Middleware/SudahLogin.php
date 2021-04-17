@@ -15,7 +15,7 @@ class SudahLogin
      */
     public function handle($request, Closure $next)
     {
-        if (session()->has('token')) {
+        if (session()->has('token_backend')) {
             return $next($request);
         } else {
             return redirect("/")->with("pesan", "Anda Belum Login");

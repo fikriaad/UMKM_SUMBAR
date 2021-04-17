@@ -112,7 +112,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <h4>Foto</h4>
-                                                            <img src="{{ asset('img/backend/umkm/' . $umkm->umkm_foto )}}" alt="" width="200" style="margin-bottom:20px;">
+                                                            <img src="{{ asset('img/frontend/logo_umkm/' . $umkm->umkm_foto )}}" alt="" width="100" style="margin-bottom:20px;">
                                                             <input class="input" type="file" name="umkm_foto">
                                                         </div>
                                                         <div class="form-group">
@@ -169,8 +169,8 @@
                                                             <textarea class="input" type="text" name="pemilik_alamat">{!!$umkm->pemilik_alamat!!}</textarea>
                                                         </div>
                                                         <div class="form-group">
-                                                            <h4>Foto</h4>
-                                                            <img src="{{ asset('img/backend/umkm/' . $umkm->pemilik_ktp )}}" alt="" width="200" style="margin-bottom:20px;">
+                                                            <h4>Foto KTP</h4>
+                                                            <img src="{{ asset('img/frontend/logo_umkm/' . $umkm->pemilik_ktp )}}" alt="" width="100" style="margin-bottom:20px;">
                                                             <input class="input" type="file" name="pemilik_ktp">
                                                         </div>
                                                         <div class="form-group">
