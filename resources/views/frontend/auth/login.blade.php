@@ -48,8 +48,8 @@
             <p style="color: #29499C; font-size: 15px">Silahkan masuk kedalam akun kamu</p>
         </div>
         <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
+        <div class="card" style="border-radius: 10px;">
+            <div class="card-body login-card-body" style="border-radius: 10px;">
                 @if(Session::has('pesan'))
                 <p class="alert alert-success">{{ Session::get('pesan') }}</p>
                 @endif

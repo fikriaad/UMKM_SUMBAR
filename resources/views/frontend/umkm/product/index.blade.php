@@ -248,7 +248,7 @@
         {
             $('#gambar_id').val('');
             $('#formGambar').attr('action', url);
-            $('#ModalGambar').modal()
+            $('#ModalGambar').modal('show')
         }
 
         // untuk hapus data
