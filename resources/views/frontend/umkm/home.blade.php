@@ -52,7 +52,7 @@
                 <div class="col-md-3 col-xs-6">
                     <div class="shop">
                         <div class="shop-img" style="text-align: center;">
-                            <img src="{{asset('img/backend/sub/' . $sub->sub_gambar)}}" alt="">
+                        <img src="{{asset('img/backend/sub/' . $sub->sub_gambar)}}" style="max-height:250px;" alt="">
                         </div>
                         <div class="shop-body">
                             <h3>{{$sub->sub_nama}}</h3>
