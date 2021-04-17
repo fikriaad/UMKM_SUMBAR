@@ -46,8 +46,8 @@
             <p style="color: #29499C; font-size: 15px">Silahkan daftar untuk membuat akun kamu</p>
         </div>
 
-        <div class="card">
-            <div class="card-body register-card-body">
+        <div class="card" style="border-radius: 10px;">
+            <div class="card-body register-card-body" style="border-radius: 10px;">
 
                 <form action="{{route('aksiregister-umkm')}}" method="post">
                     @csrf

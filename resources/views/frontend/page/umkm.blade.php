@@ -59,7 +59,7 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category"></p>
-                                <h3 class="product-name"><a href="#">{{$u->umkm_nama}}</a></h3>
+                                <h3 class="product-name"><a href="{{ route('detailUmkm', $u->umkm_id) }}">{{$u->umkm_nama}}</a></h3>
                                 <h4 class="product-price">Ini rating
                                     <span class="product-old-price">{{$u->umkm_nohp}}</span>
                                 </h4>
