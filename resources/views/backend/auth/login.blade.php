@@ -16,14 +16,37 @@
     <link rel="stylesheet" href="{{asset('lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('lte/dist/css/adminlte.min.css')}}">
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="{{asset('frontend/css/style.css')}}" />
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .login-page {
+            background-color: #ACE3F2;
+        }
+
+        .card {
+            background-color: #D4E5EA;
+        }
+    </style>
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <b>LOGIN</b>
+            <img src="{{asset('frontend/img/logo.png')}}" alt="">
+            <div>
+                <b>LOGIN ADMIN</b>
+            </div>
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -50,8 +73,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-block" style="background-color: #29499C; color: #fff">Login</button>
                         </div>
                     </div>
                 </form>

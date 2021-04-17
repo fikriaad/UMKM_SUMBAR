@@ -6,7 +6,6 @@
 
 <div class="section profle_jumbotron">
     <div class="jumbotron" style="background-image: url({{url('frontend/img/bg_jumbotron.png')}}); background-size: 100%;">
-        <div class="col-md-4"></div>
     </div>
 </div>
 
@@ -53,10 +52,14 @@
                 <div class="col-md-3 col-xs-6">
                     <div class="shop">
                         <div class="shop-img" style="text-align: center;">
-                            <img src="{{asset('img/backend/sub/' . $sub->sub_gambar)}}" alt="">
+                            <img src="{{asset('img/backend/sub/' . $sub->sub_gambar)}}" style="max-height:250px;" alt="">
                         </div>
-                        <div class="shop-body">
-                            <h3>{{$sub->sub_nama}}</h3>
+                        <div class=" shop-body">
+                            <a href="#">
+                                <h3>
+                                    {{$sub->sub_nama}}
+                                </h3>
+                            </a>
                             <!-- <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a> -->
                         </div>
                     </div>

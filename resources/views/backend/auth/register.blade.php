@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin-UMKM Sumbar-Login</title>
+    <title>Admin-UMKM Sumbar-Regristrasi</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,12 +18,33 @@
     <link rel="stylesheet" href="{{asset('lte/dist/css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .register-page {
+            background-color: #ACE3F2;
+        }
+
+        .card {
+            background-color: #D4E5EA;
+        }
+    </style>
 </head>
 
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <b>REGISTER</b>
+            <img src="{{asset('frontend/img/logo.png')}}" alt="">
+            <div>
+                <b>REGISTER ADMIN</b>
+            </div>
         </div>
 
         <div class="card">
