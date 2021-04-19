@@ -22,7 +22,7 @@
 
 						<!-- Log Out -->
 						<div>
-							<a href="{{route('logout-umkm')}}">
+							<a onclick="logout( '{{ route('logout-umkm')}}' )">
 								<i class="fa fa-sign-out" style="background-color: #29499C; height: 36px; width: 36px; padding-top: 9px; padding-left: 4px; margin: auto; border-radius: 25px;"></i>
 								<span>Log Out</span>
 							</a>
@@ -48,3 +48,34 @@
 	<!-- /MAIN HEADER -->
 </header>
 <!-- /HEADER -->
+
+<div class="modal fade" id="ModalLogout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Logout</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="" method="GET" id="formLogout">
+				<div class="modal-body">
+					@csrf
+					Yakin Ingin Keluar ?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-info">Logout</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+	// untuk logout
+	function logout(url) {
+		$('#ModalLogout').modal()
+		$('#formLogout').attr('action', url);
+	}
+</script>

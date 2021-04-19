@@ -25,7 +25,9 @@
                     </div>
                 </div>
                 <!-- /section title -->
-
+                @if(Session::has('pesan'))
+                    <p class="alert alert-info">{{ Session::get('pesan') }}</p>
+                @endif
                 <!-- Products tab & slick -->
                 <div class="col-md-12">
                     <div class="row">

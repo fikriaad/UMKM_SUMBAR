@@ -21,12 +21,12 @@ class GambarController extends Controller
         $filename = time() . "." . $foto->getClientOriginalExtension();
         $foto->move('img/frontend/gambar/', $filename);
 
-        $gambar->barang_id = session()->get('barang_id');
+        $gambar->barang_id = $request->barang_id;
         $gambar->gambar_foto = $filename;
         $gambar->save();
 
         return redirect()
-            ->route('gambar')
+            ->route('product-umkm')
             ->with('message', 'Data berhasil ditambahkan');
     }
 }

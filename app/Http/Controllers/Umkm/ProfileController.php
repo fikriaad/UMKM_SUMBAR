@@ -18,7 +18,7 @@ class ProfileController extends Controller
 {
     function index()
     {
-        // dd(session()->get('umkm_id'));
+        // dd(session()->get('umkm_status'));
         $umkm  = DB::table('tb_data_umkm')
             ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_data_umkm.kategori_id')
             ->leftjoin('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')

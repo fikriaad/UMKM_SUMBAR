@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Umkm_Model;
 use App\Kategori_Model;
+use App\Provinsi_Model;
+use App\Kota_Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Helper\JwtHelper;
 
 class DashboardController extends Controller
@@ -29,6 +32,7 @@ class DashboardController extends Controller
             $request->session()->put('umkm_email', $data_user->umkm_email);
             $request->session()->put('umkm_id', $data_user->umkm_id);
             $request->session()->put('kategori_id', $data_user->kategori_id);
+            $request->session()->put('umkm_status', $data_user->umkm_status);
             $request->session()->put('token', $token);
             // redirect ke halaman home
             // dd(session('admin_username'));
@@ -40,18 +44,35 @@ class DashboardController extends Controller
     public function register()
     {
         $kategori = Kategori_Model::all();
+        $prov = Provinsi_Model::all();
         return view('frontend/auth/register',
     [
-        'kategori' => $kategori
+        'kategori' => $kategori,
+        'prov' => $prov
     ]);
     }
-    public function registerAdmin(Request $r)
+    public function registerAdmin(Request $r, Umkm_Model $umkm)
     {
+        $validator = $r->validate([
+            'umkm_password'       => 'required|min:8',
+            'umkm_nohp'          => 'required|numeric',
+            'umkm_email'          => 'required|email',
+            ]);
+        // dd($validator->fails());
+
+        // if ($validator->fails()) {
+        //     return redirect()
+        //         ->route('register-umkm')
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // } 
         $filename = "avatar5.png";
         $pemilik = $r->pemilik;
         $umkm_nohp = $r->umkm_nohp;
         $umkm_nama = $r->umkm_nama;
         $kategori_id = $r->kategori_id;
+        $prov_id = $r->prov_id;
+        $kota_id = $r->kota_id;
         $umkm_alamat = $r->umkm_alamat;
         $umkm_email = $r->umkm_email;
         $umkm_password = $r->umkm_password;
@@ -63,6 +84,8 @@ class DashboardController extends Controller
             'umkm_nohp' => $umkm_nohp,
             'umkm_nama' => $umkm_nama,
             'kategori_id' => $kategori_id,
+            'prov_id' => $prov_id,
+            'kota_id' => $kota_id,
             'umkm_alamat' => $umkm_alamat,
             'umkm_foto' => $filename,
             'umkm_email' => $umkm_email,
@@ -119,4 +142,16 @@ class DashboardController extends Controller
             ]
         );
     }
+
+    public function carikota(Request $request)
+    {
+        $kota = DB::table('tb_kota')
+            ->where('prov_id', '=', $request->prov_id)
+            ->get();
+        // dd($kota);
+        return response()->json([
+            'kota' => $kota,
+        ], 200);
+    }
+
 }

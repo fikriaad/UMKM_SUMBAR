@@ -12,10 +12,13 @@
             <!-- Product main img -->
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
-                    @foreach($gambar as $no => $row)
                     <div class="product-preview">
-                        <img src="{{asset('img/backend/gambar/' . $row->gambar_foto)}}" alt="">
+                        <img src="{{asset('img/frontend/product/' . $barang->barang_gambar)}}" alt="">
                     </div>
+                    @foreach($gambar as $no => $row)
+                        <div class="product-preview">
+                            <img src="{{asset('img/frontend/gambar/' . $row->gambar_foto)}}" alt="">
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -24,10 +27,13 @@
             <!-- Product thumb imgs -->
             <div class="col-md-2  col-md-pull-5">
                 <div id="product-imgs">
-                    @foreach($gambar as $no => $row)
                     <div class="product-preview">
-                        <img src="{{asset('img/backend/gambar/' . $row->gambar_foto)}}" alt="">
+                        <img src="{{asset('img/frontend/product/' . $barang->barang_gambar)}}" alt="">
                     </div>
+                    @foreach($gambar as $no => $row)
+                        <div class="product-preview">
+                            <img src="{{asset('img/frontend/gambar/' . $row->gambar_foto)}}" alt="">
+                        </div>
                     @endforeach
                 </div>
             </div>
