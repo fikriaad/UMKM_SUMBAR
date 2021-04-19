@@ -21,7 +21,7 @@
                 </div>
                 <p>
                     <span class="text-icon">
-                        <i class="fas fa-map-marker-alt"></i> Kota Padang, Sumatera Barat
+                        <i class="fas fa-map-marker-alt"></i> {{$dataUmkm->kota_nama}}, {{$dataUmkm->prov_nama}}
                     </span>
                 </p>
             </div>
