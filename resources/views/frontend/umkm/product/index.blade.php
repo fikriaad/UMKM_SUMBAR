@@ -43,7 +43,7 @@
                                             <!-- <del class="product-old-price">$990.00</del> -->
                                         </h4>
                                         <div class="row text-right">
-                                            <button class="btn btn-sm btn-primary"><i class="fa fa-image"></i></button>
+                                            <button class="btn btn-sm btn-primary" onclick="tambahGambar('{{ route('product.gambar') }}', '{{ $semuapdk->barang_id }}')"><i class="fa fa-image"></i></button>
                                             <button class="btn btn-sm btn-warning" onclick="modal_product('{{ route("product-store") }}', '{{ $semuapdk->barang_id  }}')"><i class="fa fa-edit"></i></button>
                                             <button class="btn btn-sm btn-danger" onclick="mHapus('{{ route('product.delete', $semuapdk->barang_id) }}')" ><i class="fa fa-trash"></i></button>
                                         </div>
@@ -80,13 +80,12 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">{{$subproduk->kategori_nama}}</p>
-                                            <h3 class="product-name"><a href="#">{{$subproduk->barang_nama}}</a></h3>
+                                            <h3 class="product-name"><a href="{{ route('detailProductLogin', $subproduk->barang_id) }}">{{$semuapdk->barang_nama}}</a></h3>
                                             <h4 class="product-price">Rp {{$subproduk->barang_harga}} 
                                                 <!-- <del class="product-old-price">$990.00</del> -->
                                             </h4>
                                             <div class="row text-right">
-                                                <button class="btn btn-sm btn-primary" onclick="tambahGambar()"><i class="fa fa-image"></i></button>
-                                                <button class="btn btn-sm btn-success"><i class="fa fa-info-circle"></i></button>
+                                                <button class="btn btn-sm btn-primary" onclick="tambahGambar('{{ route('product.gambar') }}', '{{ $semuapdk->barang_id }}')"><i class="fa fa-image"></i></button>
                                                 <button class="btn btn-sm btn-warning" onclick="modal_product('{{ route("product-store") }}', '{{ $subproduk->barang_id  }}')"><i class="fa fa-edit"></i></button>
                                                 <button class="btn btn-sm btn-danger" onclick="mHapus('{{ route('product.delete', $subproduk->barang_id) }}')" ><i class="fa fa-trash"></i></button>
                                             </div>
@@ -179,9 +178,10 @@
                 <div class="modal-body">
                     <form action="" method="POST" enctype="multipart/form-data" id="formGambar">
                         @csrf
+                        <input type="hidden" id="brg_id" name="barang_id">
                         <div class="form-group">
-                            <label for="barang_gambar">Foto Barang</label>
-                            <input type="file" class="form-control" name="barang_gambar" id="barang_gambar" required>
+                            <label for="gambar_foto">Foto Barang</label>
+                            <input type="file" class="form-control" name="gambar_foto" id="gambar_foto" required>
                         </div>
                         <div class="row text-right" style="margin-right: 2px">
                             <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
@@ -244,9 +244,11 @@
             $('#MyModal').modal('show');
         }
 
-        function tambahGambar()
+        function tambahGambar(url, barang_id)
         {
             $('#gambar_id').val('');
+            $('#brg_id').val(barang_id);
+            $('#gambar_foto').attr('required', true);
             $('#formGambar').attr('action', url);
             $('#ModalGambar').modal('show')
         }

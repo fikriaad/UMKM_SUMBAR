@@ -51,7 +51,7 @@
         <div class="card" style="border-radius: 10px;">
             <div class="card-body login-card-body" style="border-radius: 10px;">
                 @if(Session::has('pesan'))
-                <p class="alert alert-success">{{ Session::get('pesan') }}</p>
+                <p class="alert alert-info">{{ Session::get('pesan') }}</p>
                 @endif
                 <form action="{{route('aksilogin-umkm')}}" method="post">
                     @csrf

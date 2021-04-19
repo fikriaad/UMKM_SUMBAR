@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'belum_login' => \App\Http\Middleware\BelumLogin::class,
         'sudah_login' => \App\Http\Middleware\SudahLogin::class,
         'umkm_sudah_login' => \App\Http\Middleware\UmkmSudahLogin::class,
-        'umkm_belum_login' => \App\Http\Middleware\UmkmBelumLogin::class
+        'umkm_belum_login' => \App\Http\Middleware\UmkmBelumLogin::class,
+        'status_umkm' => \App\Http\Middleware\StatusCheck::class
     ];
 }

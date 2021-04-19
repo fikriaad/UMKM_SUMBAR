@@ -105,7 +105,7 @@
                     <div class="form-group">
                         <label>Keterangan</label>
                         <div class="input-group">
-                            <textarea type="text" class="form-control @error('informasi_isi') {{ 'is-invalid' }} @enderror" name="barang_keterangan" id="editor1" value="{{ old('barang_keterangan') ?? $barang->barang_keterangan ?? '' }}" style="width: 100%"></textarea>
+                            <textarea type="text" class="form-control @error('informasi_isi') {{ 'is-invalid' }} @enderror" name="barang_keterangan" id="editor1" value="{{     old('barang_keterangan') ?? $barang->barang_keterangan ?? '' }}" style="width: 100%"></textarea>
 
                             @error('barang_keterangan')
                             <div class="invalid-feedback">{{ $message }}</div>

@@ -37,6 +37,10 @@
 </head>
 
 <body class="hold-transition register-page">
+    <!-- jQuery Plugins -->
+    <script src="{{asset('frontend/js/jquery.min.js')}}"></script>
+    <script src="{{asset('lte/build/js/axios.min.js')}}"></script>
+
     <div class="register-box">
         <div class="register-logo">
             <img src="{{asset('frontend/img/logo.png')}}" alt="">
@@ -52,25 +56,28 @@
                 <form action="{{route('aksiregister-umkm')}}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nama Pemilik" name="pemilik">
+                        <input type="text" class="form-control" placeholder="Nama Pemilik" name="pemilik" value="{{ old('pemilik') ?? $umkm->pemilik ?? '' }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nama Toko" name="umkm_nama">
+                        <input type="text" class="form-control" placeholder="Nama Toko" name="umkm_nama" value="{{ old('umkm_nama') ?? $umkm->umkm_nama ?? '' }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="WhatAspp UMKM" name="umkm_nohp">
+                        <input type="number" class="form-control" placeholder="WhatAspp UMKM" name="umkm_nohp" value="{{ old('umkm_nohp') ?? $umkm->umkm_nohp ?? '' }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
                         </div>
+                        @error('umkm_nohp')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="input-group  mb-3">
                         <select name="kategori_id" id="kategori_id" class="form-control @error('kategori_id') {{ 'is-invalid' }} @enderror">
@@ -88,26 +95,63 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="input-group  mb-3">
+                        <select name="prov_id" id="prov_id" class="form-control @error('prov_id') {{ 'is-invalid' }} @enderror">
+                            <option value="">-Pilih Provinsi-</option>
+                            @foreach($prov as $no => $prov)
+                            <option value="{{ $prov->prov_id }}">
+                                {{ $prov->prov_nama}}</option>
+                            @endforeach
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                            </div>
+                        </div>  
+                        @if(isset($umkm))
+                        <script>
+                            document.getElementById('prov_id').value =
+                                '<?php echo $umkm->prov_id ?>'
+                        </script>
+                        @endif
+                        @error('prov_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="input-group  mb-3">
+                        <select name="kota_id" id="kota_id" class="form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
+                            <option value="">-Kota-</option>
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                            </div>
+                        </div>  
+                    </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Alamat" name="umkm_alamat">
+                        <input type="text" class="form-control" placeholder="Alamat" name="umkm_alamat" value="{{ old('umkm_alamat') ?? $umkm->umkm_alamat ?? '' }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="umkm_email">
+                        <input type="email" class="form-control" placeholder="Email" name="umkm_email" value="{{ old('umkm_email') ?? $umkm->umkm_email ?? '' }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
                         </div>
+                        @error('umkm_email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="umkm_password">
+                        <input type="password" class="form-control" placeholder="Password min 8 digit" name="umkm_password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                             </div>
                         </div>
+                        @error('umkm_password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <p style="font-size: 12px">Sudah punya akun ? <a href="{{route('login')}}" style="color: #29499C"><b>Login</b></a></p>
                     <div class="row">
@@ -128,6 +172,27 @@
     <script src="{{asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('lte/dist/js/adminlte.min.js')}}"></script>
+
+    <script>
+        // Cara Mengambil Kota Berdasarkan Provinsi
+        $('#prov_id').change(function(e) {
+            e.preventDefault();
+            var kota_id = '';
+            var prov_id = $('#prov_id').val();
+            axios.post("{{url('umkm/carikota')}}", {
+                'prov_id': prov_id,
+            }).then(function(res) {
+                console.log(res)
+                var kota = res.data.kota
+                for (var i = 0; i < kota.length; i++) {
+                    kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
+                }
+                $('#kota_id').html(kota_id)
+            }).catch(function(err) {
+                console.log(err);
+            })
+        });
+    </script>
 </body>
 
 </html>
