@@ -9,11 +9,8 @@
     </div>
 </div>
 
-<!-- HEADER PROFILE -->
 <div class="section" style="padding-top: unset">
-    <!-- container -->
     <div class="container">
-        <!-- row -->
         <div class="row">
             <div class="col-md-3">
                 <img src="{{asset('img/frontend/logo_umkm/'.$umkm->umkm_foto)}}" alt="" style="border: 1px solid #29499C; width: 200px; margin-top: -75px; ">
@@ -24,24 +21,17 @@
                 </div>
                 <p>
                     <span class="text-icon">
-                        <i class="fas fa-map-marker-alt"></i> Kota Padang, Sumatera Barat
+                        <i class="fas fa-map-marker-alt"></i> {{$dataUmkm->kota_nama}}, {{$dataUmkm->prov_nama}}
                     </span>
                 </p>
             </div>
         </div>
-        <!-- /row -->
     </div>
-    <!-- /container -->
 </div>
-<!-- /HEADER PROFILE -->
 
-<!-- SECTION -->
-<div class="section">
-    <!-- container -->
+<!-- <div class="section">
     <div class="container">
-        <!-- row -->
         <div class="row">
-            <!-- shop -->
             <div class="col-md-12">
                 <div class="section-title">
                     <h3 class="title">Sub Kategori</h3>
@@ -56,23 +46,17 @@
                         </div>
                         <div class="shop-body">
                             <h3>{{$sub->sub_nama}}</h3>
-                            <!-- <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a> -->
                         </div>
                     </div>
                 </div>
                 @endforeach
-                <!-- /shop -->
             </div>
         </div>
-        <!-- /row -->
     </div>
-    <!-- /container -->
-</div>
+</div> -->
 
 <div class="section">
-    <!-- container -->
     <div class="container">
-        <!-- row -->
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title">
@@ -91,7 +75,6 @@
                                 <p class="product-category">{{$products->kategori_nama}}</p>
                                 <h3 class="product-name">{{$products->barang_nama}}</h3>
                                 <h4 class="product-price">Rp {{ number_format($products->barang_harga) }}
-                                    <!-- <del class="product-old-price">$990.00</del> -->
                                 </h4>
                             </div>
                             <div class="add-to-cart">
@@ -105,5 +88,4 @@
         </div>
     </div>
 </div>
-<!-- /SECTION -->
 @endsection
