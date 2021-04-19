@@ -65,6 +65,19 @@ class DashboardController extends Controller
     }
     function dashboard()
     {
-        return view('backend/page/home');
+        $umkm = DB::table('tb_data_umkm')
+            ->count();
+        $barang = DB::table('tb_barang')
+            ->count();
+        $pesan = DB::table('tb_pesan')
+            ->count();
+        return view(
+            'backend/page/home',
+            [
+                'umkm'   => $umkm,
+                'barang' => $barang,
+                'pesan'  => $pesan
+            ]
+        );
     }
 }
