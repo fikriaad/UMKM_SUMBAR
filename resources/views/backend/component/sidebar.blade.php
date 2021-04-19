@@ -104,9 +104,9 @@
                 <li class="nav-header">KOMENTAR</li>
                 <li class="nav-item ">
                     <a href="{{url('backend/pesan')}}" class="nav-link">
-                        <i class="nav-icon fas fa-comment-alt"></i>
+                        <i class="nav-icon fas fa-envelope"></i>
                         <p>
-                            Data Pesan
+                            Data Tanggapan
                         </p>
                     </a>
                 </li>

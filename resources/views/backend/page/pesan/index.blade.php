@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Data Pesan</h1>
+                <h1 class="m-0 text-dark">Data Tanggapan</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Data Pesan</li>
+                    <li class="breadcrumb-item active">Data Tanggapan</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,7 +30,7 @@
             </div>
             @endif
             <div class="card-header">
-                Data Pesan
+                Data Tanggapan
             </div>
             <div class="card-body">
                 <table class="table" id="example1">

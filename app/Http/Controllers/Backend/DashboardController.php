@@ -59,12 +59,25 @@ class DashboardController extends Controller
     {
         $request->session()->forget('admin_nama');
         $request->session()->forget('admin_email');
-        $request->session()->forget('token');
+        $request->session()->forget('token_backend');
         // redirect ke halaman home
         return redirect('backend')->with("pesan", "Anda Sudah Logout");
     }
     function dashboard()
     {
-        return view('backend/page/home');
+        $umkm = DB::table('tb_data_umkm')
+            ->count();
+        $barang = DB::table('tb_barang')
+            ->count();
+        $pesan = DB::table('tb_pesan')
+            ->count();
+        return view(
+            'backend/page/home',
+            [
+                'umkm'   => $umkm,
+                'barang' => $barang,
+                'pesan'  => $pesan
+            ]
+        );
     }
 }
