@@ -7,12 +7,6 @@
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark">Data Artikel</h1>
             </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Kelola Data Artikel</li>
-                </ol>
-            </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
@@ -79,6 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label>Gambar artikel</label>
+                        <img src="{{ asset('img/backend/artikel/' .  $artikel->artikel_gambar ?? '')}}" alt="">
                         <div class="input-group">
                             <input type="file" class="form-control @error('artikel_gambar') {{ 'is-invalid' }} @enderror" name="artikel_gambar" value="{{ old('artikel_gambar') ?? '' }}">
                             @error('artikel_foto')

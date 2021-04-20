@@ -47,10 +47,12 @@ class SliderController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $foto = $request->file('slider_gambar');
-            $filename = time() . "." . $foto->getClientOriginalExtension();
-            $foto->move('img/backend/slider/', $filename);
-
+            if ($request->hasFile('slider_gambar') != null) {
+                unlink('img/backend/slider/' . $slider->slider_gambar);
+                $foto = $request->file('slider_gambar');
+                $filename = time() . "." . $foto->getClientOriginalExtension();
+                $foto->move('img/backend/slider/', $filename);
+            }
             $slider->slider_gambar = $filename;
             $slider->save();
 

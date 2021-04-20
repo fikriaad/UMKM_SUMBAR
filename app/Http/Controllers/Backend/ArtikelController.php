@@ -46,7 +46,6 @@ class ArtikelController extends Controller
         $filename = time() . "." . $foto->getClientOriginalExtension();
         $foto->move('img/backend/artikel/', $filename);
 
-        $artikel->artikel_id = $request->input('artikel_id');
         $artikel->artikel_judul = $request->input('artikel_judul');
         $artikel->artikel_tanggal = $request->input('artikel_tanggal');
         $artikel->artikel_penulis = $request->input('artikel_penulis');
@@ -77,26 +76,27 @@ class ArtikelController extends Controller
             'artikel_isi'       => 'required',
             'artikel_gambar'    => 'mimes:jpg,jpeg,png,bmp',
         ]);
-
         if ($validator->fails()) {
             return redirect()
                 ->route('artikel.update', $artikel->artikel_id)
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            if ($request->input('artikel_gambar') != null) {
+            if ($request->hasFile('artikel_gambar') != null) {
                 if (!empty($artikel->artikel_gambar)) {
                     unlink('img/backend/artikel/' . $artikel->artikel_gambar);
+                    $foto = $request->file('artikel_gambar');
+                    $filename = time() . "." . $foto->getClientOriginalExtension();
+                    $foto->move('img/backend/artikel/', $filename);
+                    $artikel->artikel_gambar = $filename;
                 }
-                $foto = $request->file('artikel_gambar');
-                $filename = time() . "." . $foto->getClientOriginalExtension();
-                $foto->move('img/backend/artikel/', $filename);
-                $artikel->artikel_gambar = $filename;
             }
+
             $artikel->artikel_judul = $request->input('artikel_judul');
             $artikel->artikel_tanggal = $request->input('artikel_tanggal');
             $artikel->artikel_penulis = $request->input('artikel_penulis');
             $artikel->artikel_isi = $request->input('artikel_isi');
+            // dd($artikel);
             $artikel->save();
 
             return redirect()
