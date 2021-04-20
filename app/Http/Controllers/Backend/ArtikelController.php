@@ -14,9 +14,7 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        $artikel  = DB::table('tb_artikel')
-            ->orderBy('artikel_id')
-            ->get();
+        $artikel  = Artikel_Model::all();
         return view(
             'backend/page/artikel/index',
             [
@@ -46,7 +44,6 @@ class ArtikelController extends Controller
         $filename = time() . "." . $foto->getClientOriginalExtension();
         $foto->move('img/backend/artikel/', $filename);
 
-        $artikel->artikel_id = $request->input('artikel_id');
         $artikel->artikel_judul = $request->input('artikel_judul');
         $artikel->artikel_tanggal = $request->input('artikel_tanggal');
         $artikel->artikel_penulis = $request->input('artikel_penulis');
@@ -58,6 +55,7 @@ class ArtikelController extends Controller
             ->route('artikel')
             ->with('message', 'Data berhasil ditambahkan');
     }
+
     public function edit(Artikel_Model $artikel)
     {
         return view(

@@ -10,6 +10,10 @@
                     <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('product')}}">Produk</a></li>
                     <li class="{{ $active == 'listUmkm' ? 'active' : '' }}"><a href="{{ route('listUmkm')}}">UMKM</a></li>
                     <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{route('about')}}">Tentang Kami</a></li>
+                    @php
+                        $articel = DB::table('tb_artikel')->first();
+                    @endphp
+                    <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('articel', $articel->artikel_id) }}">Artikel</a></li>
                     <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{route('contact')}}">Hubungi Kami</a></li>
                     <li class="hidden-lg hidden-md"><a href="{{route('login')}}">Login</a></li>
                 </ul>

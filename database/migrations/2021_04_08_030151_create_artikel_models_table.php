@@ -14,7 +14,7 @@ class CreateArtikelModelsTable extends Migration
     public function up()
     {
         Schema::create('tb_artikel', function (Blueprint $table) {
-            $table->bigIncrements('atrikel_id');
+            $table->bigIncrements('artikel_id');
             $table->string('artikel_judul');
             $table->date('artikel_tanggal');
             $table->string('artikel_penulis');
@@ -23,6 +23,7 @@ class CreateArtikelModelsTable extends Migration
             $table->string('artikel_slug')->nullable();
             $table->integer('artikel_viewer')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

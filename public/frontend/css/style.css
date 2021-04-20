@@ -2445,3 +2445,12 @@ color: #FFF;
   color: #FFF;
   background-color: #29499C;
 }
+
+.li_list_judul{
+  transition: .3s ;
+}
+
+.li_list_judul:hover{
+  padding-left: 15px;
+  /* background-color: #ACE3F2; */
+}
