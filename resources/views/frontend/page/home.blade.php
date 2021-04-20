@@ -76,7 +76,7 @@
                                 
                                     <!-- product -->
                                     @foreach($product as $no => $products)
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 col-xs-4">
                                             <div class="product">
                                                 <a href="{{route('detailProduct',$products->barang_id)}}">
                                                     <div class="product-img">
@@ -84,12 +84,12 @@
                                                     </div>
                                                     <div class="product-body">
                                                         <p class="product-category">{{$products->kategori_nama}}</p>
-                                                        <h3 class="product-name">{{$products->barang_nama}}</h3>
+                                                        <h3 class="product-name">{{ Str::limit($products->barang_nama, 12) }}</h3>
                                                         <h4 class="product-price">Rp {{ number_format($products->barang_harga) }}
                                                             <!-- <del class="product-old-price">$990.00</del> -->
                                                         </h4>
                                                     </div>
-                                                    <div class="add-to-cart">
+                                                    <div class="add-to-cart hidden-xs">
                                                         <a href="{{$wa.$products->umkm_nohp}}"><button class="add-to-cart-btn"><i class="fa fa-whatsapp" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px"></i> whatsapp</button></a>
                                                     </div>
                                             </a>

@@ -137,10 +137,15 @@
                 <div class="section-title text-center">
                     <h3 class="title">Related Products</h3>
                 </div>
-            </div>
+            </div>  
+
+        </div>
+
+        <div class="row">
+
             <!-- product -->
             @foreach($list as $no => $lists)
-            <div class="col-md-3 col-xs-6">
+            <div class="col-md-3 col-xs-4">
                 <div class="product">
                     <div class="product-img">
                         <img src="{{asset('img/frontend/product/' . $lists->barang_gambar)}}" alt="">

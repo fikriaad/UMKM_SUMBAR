@@ -10,7 +10,7 @@
         <!-- row -->
         <div class="row">
             <!-- ASIDE -->
-            <div id="aside" class="col-md-3">
+            <div id="aside" class="col-md-3  visible-lg visible-md">
                 <!-- aside Widget -->
                 <div class="aside">
                     <h3 class="aside-title">Best Product</h3>
@@ -66,7 +66,7 @@
                                     <!-- product -->
                                     @if(count($product) > 0)
                                         @foreach($product as $no => $pdc)
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 col-xs-4">
                                                 <div class="product">
                                                     <a href="{{route('detailProduct',$pdc->barang_id)}}">
                                                         <div class="product-img">
@@ -111,7 +111,7 @@
                                         <!-- product -->
                                         @if(count($pdctpl) > 0)
                                             @foreach($pdctpl as $no => $pdcktg)
-                                                <div class="col-md-4">
+                                                <div class="col-md-4 col-xs-4">
                                                     <div class="product">
                                                         <a href="{{route('detailProduct',$pdcktg->barang_id)}}">
                                                             <div class="product-img">

@@ -2454,3 +2454,22 @@ color: #FFF;
   padding-left: 15px;
   /* background-color: #ACE3F2; */
 }
+
+@media only screen and (max-width: 600px) {
+  .col-xs-4{
+    width: 50%;
+  }
+
+  .product .product-body .product-price {
+    font-size: 10px;
+  }
+
+  .product .product-body .product-name {
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+
+  .product .add-to-cart{
+    display: none;
+  }
+}
