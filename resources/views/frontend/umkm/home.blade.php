@@ -65,7 +65,7 @@
             </div>
             <div class="col-md-12">
                 @foreach($product as $no => $products)
-                <div class="col-md-3 col-xs-6">
+                <div class="col-md-3 col-xs-4">
                     <div class="product">
                         <a href="{{ route('detailProductLogin', $products->barang_id) }}">
                             <div class="product-img">
