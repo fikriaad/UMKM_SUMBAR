@@ -6,7 +6,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0 text-dark">Data Artikel</h1>
-            </div><!-- /.col -->            
+            </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
@@ -49,7 +49,7 @@
                             <td>{{$artikel->artikel_judul}}</td>
                             <td>{{$artikel->artikel_tanggal}}</td>
                             <td>{{$artikel->artikel_penulis}}</td>
-                            <td>{!!$artikel->artikel_isi!!}</td>
+                            <td>{!! Str::limit($artikel->artikel_isi,400) !!}</td>
                             <td><img src="{{ asset('img/backend/artikel/' . $artikel->artikel_gambar )}}" alt="homepage" class="light-logo" style="width: 10em;"></td>
                             <td>
                                 <a href="{{ route('artikel.edit', $artikel->artikel_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
