@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Barang_Model;
 use App\Pesan_Model;
+use App\Artikel_Model;
 use App\Slider_Model;
 use App\Kategori_Model;
 use App\Sub_Kategori_Model;
@@ -171,6 +172,24 @@ class HomeController extends Controller
             'frontend.page.about',
             [
                 'active' => $active
+            ]
+        );
+    }
+
+    public function articel($art)
+    {
+        $articel = DB::table('tb_artikel')
+                ->where('artikel_id',$art)
+                ->first();
+        $articel_judul = DB::table('tb_artikel')->simplePaginate(10);
+        // dd($articel_judul);
+        $active = "articel";
+        return view(
+            'frontend.page.articel',
+            [
+                'active' => $active,
+                'articel' => $articel,
+                'articel_judul' => $articel_judul
             ]
         );
     }

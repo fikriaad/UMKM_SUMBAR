@@ -22,6 +22,7 @@ Route::get('/detailProduct/{product}', 'HomeController@detailProduct')->name('de
 Route::get('/listUmkm', 'HomeController@listUmkm')->name('listUmkm');
 Route::get('/detailUmkm/{umkm}', 'HomeController@detailUmkm')->name('detailUmkm');
 Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/articel/{articel}', 'HomeController@articel')->name('articel');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::post('/contact', 'HomeController@pesan')->name('pesan');
 
