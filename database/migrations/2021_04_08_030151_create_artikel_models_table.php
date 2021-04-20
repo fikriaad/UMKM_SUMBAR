@@ -23,6 +23,7 @@ class CreateArtikelModelsTable extends Migration
             $table->string('artikel_slug')->nullable();
             $table->integer('artikel_viewer')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
