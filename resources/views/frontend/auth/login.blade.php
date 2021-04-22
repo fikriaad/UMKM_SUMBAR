@@ -41,7 +41,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <img src="{{asset('frontend/img/logo.png')}}" alt="">
+            <a href="{{route('home')}}"><img src="{{asset('frontend/img/logo.png')}}" alt=""></a>
             <div>
                 <b>LOGIN UMKM</b>
             </div>

@@ -26,7 +26,20 @@ class GambarController extends Controller
         $gambar->save();
 
         return redirect()
-            ->route('product-umkm')
+            ->back()
             ->with('message', 'Data berhasil ditambahkan');
+    }
+
+    public function destroy(Gambar_Model $gambar)
+    {
+        $gambar_file = $gambar->gambar_foto;
+        if ($gambar_file != null) {
+            unlink('img/frontend/gambar/' . $gambar_file);
+        }
+        $gambar->forceDelete();
+
+        return redirect()
+            ->back()
+            ->with('message', 'Data berhasil dihapus');
     }
 }

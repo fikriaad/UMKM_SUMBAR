@@ -224,4 +224,27 @@ class ProductController extends Controller
             ]
         );
     }
+
+    function gambar($barang)
+    {
+        $gambar  = DB::table('tb_gambar')
+                ->where('barang_id',  '=', $barang)
+                ->get();
+        
+        $product = DB::table('tb_barang')
+                ->where('barang_id',  '=', $barang)
+                ->first();
+
+        $barang = $barang;
+        
+        $active = "product";
+        
+        return view('frontend/umkm/product/gambar',
+        [
+            'active' => $active,
+            'gambar' => $gambar,
+            'product' => $product,
+            'barang' => $barang
+        ]);
+    }
 }
