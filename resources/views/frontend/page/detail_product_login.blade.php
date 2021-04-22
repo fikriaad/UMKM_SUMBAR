@@ -12,13 +12,13 @@
             <!-- Product main img -->
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
-                    <div class="product-preview">
+                    <!-- <div class="product-preview"> -->
                         <img src="{{asset('img/frontend/product/' . $barang->barang_gambar)}}" alt="">
-                    </div>
+                    <!-- </div> -->
                     @foreach($gambar as $no => $row)
-                        <div class="product-preview">
+                        <!-- <div class="product-preview"> -->
                             <img src="{{asset('img/frontend/gambar/' . $row->gambar_foto)}}" alt="">
-                        </div>
+                        <!-- </div> -->
                     @endforeach
                 </div>
             </div>
@@ -86,7 +86,15 @@
                         <li><a href="#">{{$barang->kategori_nama}}</a></li>
                         <li><a href="#">{{$barang->sub_nama}}</a></li>
                     </ul>
-
+<!-- 
+                    <div class="add-to-cart"  style="margin-top: 50px">
+                        <a href="">
+                            <button class="add-to-cart-btn">
+                                <i class="fa fa-info" style="background-color: #29499C; color: #fff; border-radius: 50px 0px 0px 50px; margin-top: -2px; margin-left: -1px;">
+                                </i> detail
+                            </button>
+                        </a>
+                    </div> -->
                     <!-- <ul class="product-links">
                         <li>Share:</li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>

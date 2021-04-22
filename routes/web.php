@@ -57,6 +57,8 @@ Route::prefix('umkm')->group(function () {
             Route::post('cari_data_produk', 'Umkm\ProductController@cari_data_produk')->name('cari_data_produk');
             // gambar_product
             Route::post('product.gambar', 'Umkm\GambarController@store')->name('product.gambar');
+            Route::get('gambar-galery/{gambar}', 'Umkm\ProductController@gambar')->name('gambar.galery');
+            Route::delete('gambar.delete/{gambar}', 'Umkm\GambarController@destroy')->name('gambar.delete');
         });
         // CONTACT-UMKM
         Route::get('/contact', 'Umkm\DashboardController@contact')->name('contact-umkm');

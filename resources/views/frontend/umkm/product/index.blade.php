@@ -184,6 +184,7 @@
                             <input type="file" class="form-control" name="gambar_foto" id="gambar_foto" required>
                         </div>
                         <div class="row text-right" style="margin-right: 2px">
+                            <a id="detail_gambar"  class="btn btn-primary"> Detail </a>
                             <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                         </div>
                     </form>
@@ -248,6 +249,7 @@
         {
             $('#gambar_id').val('');
             $('#brg_id').val(barang_id);
+            $('#detail_gambar').attr('href', '{{ url("umkm/gambar-galery") }}/' + barang_id);
             $('#gambar_foto').attr('required', true);
             $('#formGambar').attr('action', url);
             $('#ModalGambar').modal('show')
