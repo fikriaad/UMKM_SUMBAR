@@ -45,7 +45,7 @@ Route::prefix('umkm')->group(function () {
         Route::put('profile-umkm/pemilik/{umkm}', 'Umkm\ProfileController@pemilikUpdate')->name('profile-umkm.pemilik');
         Route::put('profile-umkm/akun/{umkm}', 'Umkm\ProfileController@akunUpdate')->name('profile-umkm.akun');
         //cari kota
-        Route::post('profile-umkm/carikota', 'Umkm\ProfileController@carikota');
+        Route::post('profile-umkm/carikota', 'Umkm\ProfileController@carikota')->name('carikotaumkm');
 
         Route::middleware(['status_umkm'])->group(function () {
             // PRODUCT-UMKM

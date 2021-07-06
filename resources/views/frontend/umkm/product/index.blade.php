@@ -260,9 +260,6 @@
             $('#ModalHapus').modal()
             $('#formDelete').attr('action', url);
         }
-
-
-
     </script>
 
 @endsection
