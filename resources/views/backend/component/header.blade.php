@@ -22,7 +22,7 @@
         display: inline-block;
         width: 50px;
         height: 24px;
-    }
+    } 
 
     .switch input {
         opacity: 0;

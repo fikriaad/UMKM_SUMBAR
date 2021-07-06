@@ -235,7 +235,8 @@ atch(function(err) {
             console.log(err);
         })
     });
-</script><script>
+</script>
+<script>
     // Cara Mengambil Kota Berdasarkan Provinsi
     $('#prov_id').change(function(e) {
         e.preventDefault();
@@ -250,8 +251,11 @@ atch(function(err) {
                 kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
             }
             $('#kota_id').html(kota_id)
-        }).c
-
+        }).catch(function(err) {
+                console.log(err);
+            })
+        });
+    </script>
 @if(!empty($umkm))
 <script>
     $(document).ready(function() {

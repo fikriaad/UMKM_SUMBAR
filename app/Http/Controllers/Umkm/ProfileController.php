@@ -55,6 +55,7 @@ class ProfileController extends Controller
     }
     public function profileUpdate(Request $request, Umkm_Model $umkm)
     {
+        // dd($request);
         $validator = Validator::make($request->all(), [
             'umkm_nama'         => 'required',
             'kategori_id'       => 'required',

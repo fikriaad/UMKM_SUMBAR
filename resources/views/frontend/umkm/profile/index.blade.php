@@ -85,13 +85,15 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <h4>Provinsi <span class="text-danger">*</span></h4>
-                                                            <select name="prov_id" id="prov_id" class="input">
+                                                            <select name="prov_id" id="prov_id" class="input form-control @error('prov_id') {{ 'is-invalid' }} @enderror">
                                                                 <option value="">-Pilih Provinsi-</option>
                                                                 @foreach($prov as $no => $prov)
-                                                                <option value="{{$prov->prov_id }}">
-                                                                    {{ $prov->prov_nama}}</option>
+                                                                <option value="{{ $prov->prov_id }}">
+                                                                    {{ $prov->prov_nama}}
+                                                                </option>
                                                                 @endforeach
                                                             </select>
+                                                            
                                                             @if(isset($umkm))
                                                             <script>
                                                                 document.getElementById('prov_id').value =
@@ -247,19 +249,20 @@
 <!-- /HEADER PROFILE -->
 @if(!empty($umkm))
 <script>
-    $(document).ready(function() {
+    // Cara Mengambil Kota Berdasarkan Provinsi
+    $('#prov_id').change(function(e) {
+        e.preventDefault();
         var kota_id = '';
-        var prov_id = '<?= $umkm->prov_id ?>';
-        axios.post("{{url('umkm/profile-umkm/carikota')}}", {
+        var prov_id = $('#prov_id').val();
+        axios.post("{{route('carikotaumkm')}}", {
             'prov_id': prov_id,
         }).then(function(res) {
-            // console.log(res.data.kota)
+            console.log(res)
             var kota = res.data.kota
             for (var i = 0; i < kota.length; i++) {
                 kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
             }
             $('#kota_id').html(kota_id)
-            $('#kota_id').val('<?= $umkm->kota_id ?>').change()
         }).catch(function(err) {
             console.log(err);
         })

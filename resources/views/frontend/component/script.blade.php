@@ -32,9 +32,12 @@
     $('.owl-kategory').owlCarousel({
         center: false,
         items:2,
-        loop:false,
+        loop:true,
         margin:20,
         responsive:{
+            0:{
+                items:4
+            },
             600:{
                 items:7
             }
