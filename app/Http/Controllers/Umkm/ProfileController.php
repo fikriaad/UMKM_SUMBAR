@@ -18,7 +18,7 @@ class ProfileController extends Controller
 {
     function index()
     {
-        // dd(session()->get('umkm_status'));
+        // dd(session());
         $umkm  = DB::table('tb_data_umkm')
             ->leftjoin('tb_kategori', 'tb_kategori.kategori_id', '=', 'tb_data_umkm.kategori_id')
             ->leftjoin('tb_provinsi', 'tb_provinsi.prov_id', '=', 'tb_data_umkm.prov_id')
@@ -74,7 +74,9 @@ class ProfileController extends Controller
         } else {
             if ($request->hasFile('umkm_foto') != null) {
                 if (!empty($umkm->umkm_foto)) {
-                    unlink('img/frontend/logo_umkm/' . $umkm->umkm_foto);
+                    if ($umkm->umkm_foto != 'avatar5.png') {
+                        unlink('img/frontend/logo_umkm/' . $umkm->umkm_foto);
+                    }
                 }
                 $foto = $request->file('umkm_foto');
                 $filename = time() . "." . $foto->getClientOriginalExtension();
@@ -92,10 +94,9 @@ class ProfileController extends Controller
             $umkm->umkm_alamat = $request->input('umkm_alamat');
             $umkm->umkm_slug = $slug .  "-" . rand(100, 10000);
             $umkm->save();
-
             return redirect()
                 ->route('profile-umkm')
-                ->with('message', 'Data berhasil diedit');
+                ->with('message', 'Data berhasil diedit, silahkan lanjutkan ke halaman update pemilik, jika belum dilengkapi');
         }
     }
 
@@ -132,7 +133,7 @@ class ProfileController extends Controller
 
             return redirect()
                 ->route('profile-umkm')
-                ->with('message', 'Data berhasil diedit');
+                ->with('message', 'Selamat, Data berhasil diedit, silahkan tunggu 1x 24 jam untuk dikonfirmasi admin');
         }
     }
 
