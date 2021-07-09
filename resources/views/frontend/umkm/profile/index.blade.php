@@ -71,7 +71,7 @@
                                                             @if(isset($kategori))
                                                             <script>
                                                                 document.getElementById('kategori_id').value =
-                                                                    "{{$kategori->kategori_id}}"
+                                                                    "{{$umkm->kategori_id}}"
                                                             </script>
                                                             @endif
                                                         </div>
@@ -107,7 +107,7 @@
                                                         <div class="form-group">
                                                             <h4>Kota <span class="text-danger">*</span></h4>
                                                             <select name="kota_id" id="kota_id" class="input">
-                                                                <option value="">-Pilih Kota-</option>
+                                                                <option value="{{$umkm->kota_id}}">{{ $umkm->kota_id != null ? $umkm->kota_nama : '-Pilih Kota-' }}</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group">

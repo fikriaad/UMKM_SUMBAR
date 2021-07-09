@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">{{$subproduk->kategori_nama}}</p>
-                                            <h3 class="product-name"><a href="{{ route('detailProductLogin', $subproduk->barang_id) }}">{{$semuapdk->barang_nama}}</a></h3>
+                                            <h3 class="product-name"><a href="{{ route('detailProductLogin', $subproduk->barang_id) }}">{{$subproduk->barang_nama}}</a></h3>
                                             <h4 class="product-price">Rp {{$subproduk->barang_harga}} 
                                                 <!-- <del class="product-old-price">$990.00</del> -->
                                             </h4>
